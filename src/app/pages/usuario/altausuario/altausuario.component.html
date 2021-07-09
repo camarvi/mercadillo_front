@@ -1,0 +1,143 @@
+<form (ngSubmit)="guardar(f)" #f="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Nombre</label>
+
+      <input type="text" class="form-control" 
+            #nombre="ngModel" 
+            name="nombre" 
+            [class.is-invalid]="nombre.invalid && nombre.touched" 
+            [(ngModel)]="usuario.NOMBRE"
+            required minlength="5">
+      
+      <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Ap1</label>
+      <input type="text" class="form-control" 
+            #ape1 = "ngModel" 
+            name="ape1"  
+            [class.is-invalid]="ape1.invalid && ape1.touched" 
+            [(ngModel)]= "usuario.APE1"
+            required  minlength="5"   
+      >
+      <small *ngIf="ape1.invalid && ape1.touched" class="form-text text-danger">Ingrese 5 letras</small>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Ap2</label>
+      <input type="text" class="form-control" 
+            #ape2 = "ngModel" 
+            name="ape2"  
+            [class.is-invalid]="ape2.invalid && ape2.touched" 
+            [(ngModel)]= "usuario.APE2"   
+      >
+      <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
+    </div>
+  </div>
+  <!--   -->
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label>Nif</label>
+      <input type="text" class="form-control"
+          #nif = "ngModel"
+          name = "nif"
+          [class.is-invalid]="nif.invalid && nif.touched" 
+          [(ngModel)] = "usuario.NIF"
+          required
+      >
+      <small *ngIf="nif.invalid && nif.touched" class="form-text text-danger">Ingrese nif</small>
+    </div>
+    <div class="form-group col-md-2">
+      <label>Sexo</label>
+      <select id="inputState" class="form-control" 
+          #sexo = "ngModel"
+          name = "sexo"  
+          [(ngModel)]="usuario.SEXO">
+        <option [value]="sexo.COD_SEXO" *ngFor="let sexo of tipoSexo"
+          [selected]="sexo.COD_SEXO === usuario.SEXO">{{sexo.DESC_SEXO}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label>Tlf</label>
+      <input type="text" class="form-control" 
+        #tlf = "ngModel"
+        name = "tlf"
+        [class.is-invalid]="tlf.invalid && tlf.touched"
+        [(ngModel)] = "usuario.TLF"
+        >
+    </div>
+    <div class="form-group col-md-6">
+      <label>Email</label>
+      <input type="email" class="form-control" 
+      #email = "ngModel"
+      name = "email"
+      [class.is-invalid]="email.invalid && email.touched"
+      [(ngModel)] = "usuario.EMAIL">
+    </div>
+  </div>
+  <!---->
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Tipo Via</label>
+      <select id="inputState" class="form-control"
+          #tipovia = "ngModel"
+          name = "tipovia"  
+          [(ngModel)]="usuario.TIPOVIA">
+        <option [value]="via.COD_VIA" *ngFor="let via of vias"
+        [selected]="via.COD_VIA === usuario.TIPOVIA">
+          {{via.DESC_VIA}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-8">
+      <label>Direccion</label>
+      <input type="text" class="form-control" 
+        #direccion = "ngModel"
+        name = "direccion"
+        [class.is-invalid]="direccion.invalid && direccion.touched"
+        [(ngModel)] = "usuario.DIRECCION"
+      >
+    </div>
+    <div class="form-group col-md-1">
+      <label>Cp</label>
+      <input type="text" class="form-control" 
+        #cp = "ngModel"
+        name = "cp"
+        [class.is-invalid] = "cp.invalid && cp.touched"
+        [(ngModel)] = "usuario.CP"
+      >
+    </div>
+  </div>
+
+  <!-- -->
+  <div class="form-row">
+
+    <div class="form-group col-md-6">
+      <label>Poblacion</label>
+      <input type="text" class="form-control"
+        #poblacion = "ngModel"
+        name = "poblacion"
+        [class.is-invalid] = "poblacion.invalid && poblacion.touched"
+        [(ngModel)] = "usuario.POBLACION"
+      >
+    </div>
+    <div class="form-group col-md-6">
+      <label>Municipio</label>
+      <input type="text" class="form-control"
+        #municipio = "ngModel"
+        name = "municipio"
+        [class.is-invalid] = "municipio.invalid && municipio.touched"
+        [(ngModel)] = "usuario.MUNICIPIO"
+      >
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary w-25">
+      <i class="fa fa-save"></i>
+      Guardar
+    </button>
+  </div>
+</form>

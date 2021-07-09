@@ -1,0 +1,62 @@
+<h3>Buscar usuario </h3>
+<hr>
+
+<!--
+<div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Nombre</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group col-md-3">
+      <label>Ap1</label>
+      <input type="text" class="form-control">
+    </div>
+  
+    <div class="form-group col-md-3">
+      <label>Ap2</label>
+      <input type="text" class="form-control">
+    </div>
+    
+</div>
+<div class="form-row">
+    <div class="form-group col-md-3">
+        <button type="submit" class=" mt-8 btn btn-outline-danger">
+          <i class="fa fa-search"></i>
+          Buscar
+        </button>
+      </div>
+</div>
+-->
+<form class="form-inline mx-auto">
+    <div class="form-group mx-sm-2 mb-2 col-md-3">
+      <label class="sr-only">Nombre</label>
+      <input #nombre type="text" class="form-control"placeholder="Nombre">
+    </div>
+    <div class="form-group mx-sm-2 mb-2 col-md-3">
+        <label class="sr-only">Ap1</label>
+        <input #ap1 type="text" class="form-control"placeholder="Apellido1">
+    </div>
+    <div class="form-group mx-sm-2 mb-2 col-md-3">
+        <label for="inputPassword2" class="sr-only">Ap2</label>
+        <input #ap2 type="text" class="form-control" placeholder="Apellido2">
+    </div>
+
+    <button (click)="buscarPersona(nombre.value,ap1.value,ap2.value)" type="submit" class="btn btn-outline-danger mb-2">
+        <i class="fa fa-search"></i>
+        Buscar
+      </button>
+  </form>
+
+ 
+  <div *ngIf="!cargando && personas.length ===0">
+    <app-noresultados></app-noresultados>
+  </div>
+
+  <div *ngIf="cargando">
+      <app-cargando></app-cargando>
+  </div>
+
+
+  <app-usuarios-grid *ngIf="personas.length>0" [personas]="personas"></app-usuarios-grid>
+
+  
