@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AltausuarioComponent } from './pages/usuario/altausuario/altausuario.component';
 //import { BuscardniComponent } from './pages/usuario/buscardni/buscardni.component';
 import { BuscarComponent } from './pages/usuario/buscar/buscar.component';
-
+import { MercadilloComponent } from './pages/mercadillo/mercadillo/mercadillo.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -14,6 +14,7 @@ const routes : Routes=[
   { path: 'home', component: HomeComponent },
   { path: 'nuevousuario/:id', component: AltausuarioComponent },
   { path: 'buscarusuario', component: BuscarComponent },
+  { path: 'mercadillo/:id' , component:MercadilloComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { Sexo, Tipovia } from '../interfaces/mercadillos-response';
+import { DiaSemana } from '../interfaces/diasemana-response';
 import { UsuarioModel } from '../models/usuario.model';
 import { PersonaInterface } from '../interfaces/mercadillos-response';
 
@@ -26,6 +27,10 @@ export class MercadillosService {
     return this.http.get<Tipovia[]>(`${this.baseUrl}/tipovia`);
   }
 
+  getDiaSemana(): Observable<DiaSemana[]> {
+    return this.http.get<DiaSemana[]>(`${this.baseUrl}/diassemana`);
+  }
+
 
   crearUsuario(usuario : UsuarioModel){
 
@@ -40,13 +45,13 @@ export class MercadillosService {
       );
   }
 
-/*
+
   updateUsuario(usuario : UsuarioModel){
 
     return this.http.put(`${ this.baseUrl}/persona/${ usuario.IDPERSONA}`, usuario);
 
   }
-*/
+
 
 
   buscarUsuarioAp1(ap1 : string): Observable<PersonaInterface[]>{

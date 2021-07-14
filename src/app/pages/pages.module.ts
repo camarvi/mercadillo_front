@@ -6,6 +6,7 @@ import { AltausuarioComponent } from './usuario/altausuario/altausuario.componen
 import { FormsModule }   from '@angular/forms';
 import { BuscardniComponent } from './usuario/buscardni/buscardni.component';
 import { BuscarComponent } from './usuario/buscar/buscar.component';
+import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.component';
 
 
 
@@ -15,7 +16,8 @@ import { BuscarComponent } from './usuario/buscar/buscar.component';
     HomeComponent,
     AltausuarioComponent,
     BuscardniComponent,
-    BuscarComponent
+    BuscarComponent,
+    MercadilloComponent
 
   ],
   imports: [

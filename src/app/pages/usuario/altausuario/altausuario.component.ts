@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { NgForm , NgModel } from '@angular/forms';
-
+import { Observable } from 'rxjs';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { Sexo, Tipovia } from 'src/app/interfaces/mercadillos-response';
 import { UsuarioModel } from '../../../models/usuario.model';
 
 import { ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -40,6 +40,7 @@ export class AltausuarioComponent implements OnInit {
       this.mercadillosService.buscarUsuarioId(id)
         .subscribe( (resp : UsuarioModel) =>{
           this.usuario = resp[0];
+          this.usuario.IDPERSONA = parseInt(id);
           //console.log("Numero Tipo Via ");
           //console.log(this.usuario.TIPOVIA);
         });
@@ -75,23 +76,36 @@ export class AltausuarioComponent implements OnInit {
       return;
     }
 
-   /* let peticion : Observable<any>;
+    Swal.fire({
+      allowOutsideClick : false,
+      title : 'Espere',
+      text: 'Guardando información..',
+      icon : 'info'
+    });
+    Swal.showLoading();
 
+   
+    let peticion : Observable<any>;
+
+  
     if (this.usuario.IDPERSONA){
       peticion = this.mercadillosService.updateUsuario(this.usuario);
-    } else { //NUEVO REGISTRO 
-      
-      peticion = this.mercadillosService.crearUsuario(this.usuario);
-       
+    } else { //NUEVO REGISTRO  
+      peticion = this.mercadillosService.crearUsuario(this.usuario);   
     }
 
-    peticion.subscribe(resp=>{
-      console.log(resp);
+      peticion.subscribe( resp => {
+        
+        Swal.fire({
+          title : this.usuario.NOMBRE,
+          text : 'Se actualizo correctamente..',
+          icon : 'success'
+        });
 
-    });
-*/
+        });
+  
 
-    console.log("Antes de Llamar al Servicio");
+  /*  console.log("Antes de Llamar al Servicio");
     console.log(this.usuario);
 
     this.mercadillosService.crearUsuario(this.usuario)
@@ -104,6 +118,6 @@ export class AltausuarioComponent implements OnInit {
     console.log("OBJETO USUARIO VALOR");
     console.log(this.usuario); 
   }
-
-
+*/
+  }
 }
