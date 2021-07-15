@@ -16,6 +16,24 @@ export interface PersonaInterface {
 }
 
 
+export interface MercadilloInterface{
+    
+    IDMERCADILLO    : number;
+    DESCRIPCION     : string;
+    MULTITITULAR    : string;
+    NUMERO_DIAS     : number;
+    DIASEMANA       : number;
+    LOCALIZACION    : string;
+}
+
+
+export interface DiaSemanaInterface {
+    NUMERO_DIA:  number;
+    NOMBRE_DIA:  string;
+    ABREVIATURA: string;
+}
+
+
 export interface Parentesco {
     COD_PARENTESCO: number;
     DES_PARENTESCO: string;

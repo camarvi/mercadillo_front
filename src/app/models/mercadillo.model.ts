@@ -1,4 +1,4 @@
-export class Mercadillo{
+export class MercadilloModel{
     
     IDMERCADILLO    : number;
     DESCRIPCION     : string;

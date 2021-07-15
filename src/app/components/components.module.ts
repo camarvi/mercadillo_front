@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { UsuariosGridComponent } from './usuarios-grid/usuarios-grid.component';
 import { CargandoComponent } from './cargando/cargando.component';
 import { NoresultadosComponent } from './noresultados/noresultados.component';
+import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.component';
 
 
 
@@ -14,13 +15,15 @@ import { NoresultadosComponent } from './noresultados/noresultados.component';
     NavbarComponent,
     UsuariosGridComponent,
     CargandoComponent,
-    NoresultadosComponent
+    NoresultadosComponent,
+    MercadillosGridComponent
   ],
   exports : [
     NavbarComponent,
     UsuariosGridComponent,
     CargandoComponent,
-    NoresultadosComponent
+    NoresultadosComponent,
+    MercadillosGridComponent
   ],
   imports: [
     CommonModule,

@@ -43,9 +43,8 @@ export class AltausuarioComponent implements OnInit {
           this.usuario.IDPERSONA = parseInt(id);
           //console.log("Numero Tipo Via ");
           //console.log(this.usuario.TIPOVIA);
-        });
-     
-  }
+        });  
+    }
     
     this.cargaCombox();
  

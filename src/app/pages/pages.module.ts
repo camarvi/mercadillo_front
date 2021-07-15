@@ -7,7 +7,7 @@ import { FormsModule }   from '@angular/forms';
 import { BuscardniComponent } from './usuario/buscardni/buscardni.component';
 import { BuscarComponent } from './usuario/buscar/buscar.component';
 import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.component';
-
+import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarmercadillo.component';
 
 
 
@@ -17,7 +17,8 @@ import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.componen
     AltausuarioComponent,
     BuscardniComponent,
     BuscarComponent,
-    MercadilloComponent
+    MercadilloComponent,
+    BuscarmercadilloComponent
 
   ],
   imports: [

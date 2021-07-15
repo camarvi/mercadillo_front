@@ -1,1 +1,74 @@
-<p>mercadillo works!</p>
+<form (ngSubmit)="guardar(f)" #f="ngForm">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Descripcion</label>
+    
+          <input type="text" class="form-control"
+          #nombre = "ngModel"
+          name = "nombre"
+          [class.is-invalid]="nombre.invalid && nombre.touched" 
+          [(ngModel)] = "mercadillo.DESCRIPCION"
+          required>
+          
+          <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  
+        
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label>Localizacion</label>
+          <input type="text" class="form-control"
+          #localizacion = "ngModel"
+          name = "localizacion"
+          [class.is-invalid] = "localizacion.invalid && localizacion.touched"
+          [(ngModel)] = "mercadillo.LOCALIZACION"
+          >
+             
+        </div>
+       
+    </div>
+
+    <!--SEGUNDA LINEA DEL FORMULARIO-->
+    <div class="form-row">
+        
+        <div class="form-group col-md-3">
+            <label>Multi Titular</label>
+            <br> 
+            <button *ngIf="multi_titular" (click)="multi_titular = false" class="btn btn-outline-success w-75" type="button">
+                <i class="far fa-check-circle"></i>
+                Si
+            </button>
+            <button *ngIf="!multi_titular" (click)="multi_titular = true" class="btn btn-outline-danger w-75" type="button">
+                <i class="far fa-times-circle"></i>
+                No
+            </button>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Número Dias</label>
+            <input type="number" class="form-control"
+            #numerodias = "ngModel"
+            name = "numerodias"
+            [(ngModel)] = "mercadillo.NUMERO_DIAS"
+            >
+        </div>
+        <div class="form-group col-md-3">
+            <label>Día Semana</label>
+            <select class="form-control"
+                #diasemana = "ngModel"
+                name = "diasemana"  
+                [(ngModel)]="mercadillo.DIASEMANA">
+                <option [value]="dia.NUMERO_DIA" *ngFor="let dia of listaDias"
+                [selected]="dia.NUMERO_DIA === mercadillo.DIASEMANA">
+                {{dia.NOMBRE_DIA}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary w-25">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      </div>
+
+</form>

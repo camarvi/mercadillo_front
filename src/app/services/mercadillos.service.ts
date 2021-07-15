@@ -7,6 +7,7 @@ import { Sexo, Tipovia } from '../interfaces/mercadillos-response';
 import { DiaSemana } from '../interfaces/diasemana-response';
 import { UsuarioModel } from '../models/usuario.model';
 import { PersonaInterface } from '../interfaces/mercadillos-response';
+import { MercadilloModel } from '../models/mercadillo.model';
 
 
 
@@ -74,6 +75,28 @@ export class MercadillosService {
 
   buscarUsuarioId(id : string) : Observable<UsuarioModel> {
     return this.http.get<UsuarioModel>(`${this.baseUrl}/personaid/${id}`);
+  }
+
+  buscarMercadilloId(id : string) : Observable<MercadilloModel> {
+    return this.http.get<MercadilloModel>(`${this.baseUrl}/mercadillo/${id}`);
+  }
+
+  
+  crearMercadillo(mercadillo : MercadilloModel){
+
+    return this.http.post(`${ this.baseUrl }/mercadillo`, mercadillo)
+      .pipe(
+        map( (resp:any) => {
+          console.log("Respuesta de Node");
+          console.log(resp[0]);
+          mercadillo.IDMERCADILLO = resp[0];
+          return mercadillo;
+        })
+      );
+  }
+
+  modificarMercadillo(mercadillo : MercadilloModel){
+    return this.http.put(`${ this.baseUrl}/mercadillo/${ mercadillo.IDMERCADILLO}`, mercadillo);
   }
 
 
