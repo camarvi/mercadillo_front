@@ -8,6 +8,8 @@ import { BuscardniComponent } from './usuario/buscardni/buscardni.component';
 import { BuscarComponent } from './usuario/buscar/buscar.component';
 import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.component';
 import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarmercadillo.component';
+import { ParcelaComponent } from './parcelas/parcela/parcela.component';
+import { ListadoparcelasComponent } from './parcelas/listadoparcelas/listadoparcelas.component';
 
 
 
@@ -18,7 +20,9 @@ import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarm
     BuscardniComponent,
     BuscarComponent,
     MercadilloComponent,
-    BuscarmercadilloComponent
+    BuscarmercadilloComponent,
+    ParcelaComponent,
+    ListadoparcelasComponent
 
   ],
   imports: [

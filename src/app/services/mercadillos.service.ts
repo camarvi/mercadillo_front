@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-import { Sexo, Tipovia } from '../interfaces/mercadillos-response';
+import { MercadilloInterface, Sexo, Tipovia } from '../interfaces/mercadillos-response';
 import { DiaSemana } from '../interfaces/diasemana-response';
 import { UsuarioModel } from '../models/usuario.model';
 import { PersonaInterface } from '../interfaces/mercadillos-response';
@@ -54,7 +54,6 @@ export class MercadillosService {
   }
 
 
-
   buscarUsuarioAp1(ap1 : string): Observable<PersonaInterface[]>{
     
     return this.http.get<PersonaInterface[]>(`${this.baseUrl}/persona_ap/${ap1}`);
@@ -81,6 +80,9 @@ export class MercadillosService {
     return this.http.get<MercadilloModel>(`${this.baseUrl}/mercadillo/${id}`);
   }
 
+  getMercadillos(): Observable<MercadilloInterface[]> {
+    return this.http.get<MercadilloInterface[]>(`${this.baseUrl}/mercadillos`);
+  }
   
   crearMercadillo(mercadillo : MercadilloModel){
 

@@ -1,1 +1,39 @@
-<p>mercadillos-grid works!</p>
+<div class="mt-2" id="htmlData">
+<table *ngIf="mercadillos.length > 0" class="table table-bordered table-striped">
+  <thead class="thead-primary">
+    <!--  <tr class="d-flex"> -->
+    <tr class="table-primary">
+      <th scope="col">Cod</th>
+      <th scope="col">Descripcion</th>
+
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mercadillo of mercadillos">
+      <td>{{ mercadillo.IDMERCADILLO}}</td>
+      <td>{{ mercadillo.DESCRIPCION }}</td>
+
+      <td>
+
+        <button class="btn btn-danger mr-1" 
+            data-toggle="tooltip" data-placement="top" title="Editar"    
+            [routerLink]="['/mercadillo', mercadillo.IDMERCADILLO]">
+          <i class="fa fa-pen"></i>
+          <!-- fa-user-edit -->
+        </button>
+
+        <button class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top" 
+        title="Ver Parcelas"
+        [routerLink]="['/listadoparcelas', mercadillo.IDMERCADILLO]"
+        >
+          <!--(click)="borrarHeroe(heroe, i)"> -->
+          <!--  <i class="far fa-eye"></i>
+                  <i class="fa fa-trash"></i> -->
+         <!--  <i class="fas fa-clipboard-list"></i> -->
+          <i class="far fa-clipboard"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

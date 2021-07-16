@@ -16,9 +16,9 @@ export class UsuariosGridComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.cargando = true;
+   // this.cargando = true;
 
-    console.log(this.personas);
+   // console.log(this.personas);
   }
 
 }

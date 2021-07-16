@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { MercadilloInterface} from '../../../interfaces/mercadillos-response';
+import { MercadilloModel } from 'src/app/models/mercadillo.model';
 
 @Component({
   selector: 'app-buscarmercadillo',
@@ -11,7 +12,7 @@ import { MercadilloInterface} from '../../../interfaces/mercadillos-response';
 export class BuscarmercadilloComponent implements OnInit {
 
   public mercadillos : MercadilloInterface[] = [];
-
+  
   public cargando : boolean = false;
   
 
@@ -19,7 +20,12 @@ export class BuscarmercadilloComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
+    this.cargando = true;
+      this.mercadilloService.getMercadillos()
+        .subscribe( resp => {
+            this.mercadillos = resp;
+            this.cargando = false;
+        });
   }
 
 

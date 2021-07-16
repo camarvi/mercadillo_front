@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MercadilloInterface } from '../../interfaces/mercadillos-response';
 
 @Component({
   selector: 'app-mercadillos-grid',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mercadillos-grid.component.css']
 })
 export class MercadillosGridComponent implements OnInit {
+
+  @Input() mercadillos!: MercadilloInterface[];
 
   constructor() { }
 
