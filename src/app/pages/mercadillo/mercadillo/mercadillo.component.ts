@@ -79,7 +79,7 @@ export class MercadilloComponent implements OnInit {
 
     let peticion: Observable<any>;
 
-    if (this.mercadillo.IDMERCADILLO) {
+    if (this.mercadillo.IDMERCADILLO !==0) {
       peticion = this.mercadillosService.modificarMercadillo(this.mercadillo);
     } else {
       //NUEVO REGISTRO

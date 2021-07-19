@@ -18,12 +18,12 @@ export interface PersonaInterface {
 
 export interface MercadilloInterface{
     
-    IDMERCADILLO    : number;
-    DESCRIPCION     : string;
-    MULTITITULAR    : string;
-    NUMERO_DIAS     : number;
-    DIASEMANA       : number;
-    LOCALIZACION    : string;
+    IDMERCADILLO:  number;
+    DESCRIPCION:   string;
+    MULTITITULAR:  string;
+    NUMERO_DIAS:   number;
+    DIASEMANA:     number;
+    LOCALIZACION:  string;
 }
 
 

@@ -87,7 +87,7 @@ export class AltausuarioComponent implements OnInit {
     let peticion : Observable<any>;
 
   
-    if (this.usuario.IDPERSONA){
+    if (this.usuario.IDPERSONA !==0 ){
       peticion = this.mercadillosService.updateUsuario(this.usuario);
     } else { //NUEVO REGISTRO  
       peticion = this.mercadillosService.crearUsuario(this.usuario);   

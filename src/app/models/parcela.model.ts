@@ -1,4 +1,4 @@
-export class Parcela{
+export class ParcelaModel{
 
     IDPARCELAS : number;
     FECHA_ALTA : string;

@@ -1,4 +1,4 @@
-<form>
+<form (ngSubmit)="guardar(f)" #f="ngForm">
 
     <div class="form-row">
         <div class="form-group col-md-3">
@@ -12,9 +12,19 @@
     
         <div class="form-group col-md-9">
           <label>Mercadillo</label>
-          <input type="text" class="form-control">
+          <select class="form-control"
+              #tipovia = "ngModel"
+              name = "parcela"  
+              [(ngModel)]="parcela.IDMERCADILLO">
+            <option [value]="mercadillo.IDMERCADILLO" *ngFor="let mercadillo of listadoMercadillos"
+            [selected]="parcela.IDMERCADILLO === mercadillo.IDMERCADILLO"
+            >
+              {{mercadillo.DESCRIPCION}}</option>
+          </select>
              
         </div>
+
+
        
     </div>
 
@@ -41,7 +51,7 @@
             </button>
           </div>
         
-        <!-- 
+        <!-- Version anterior del boton 
         
         <button type="submit" class="justify-content-center form-group mx-sm-2 btn btn-primary  w-25">
             <i class="fa fa-save"></i>

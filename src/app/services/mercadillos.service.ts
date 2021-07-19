@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { MercadilloInterface, Sexo, Tipovia } from '../interfaces/mercadillos-response';
+import { ParcelaInterface } from '../interfaces/parcela-response';
 import { DiaSemana } from '../interfaces/diasemana-response';
 import { UsuarioModel } from '../models/usuario.model';
 import { PersonaInterface } from '../interfaces/mercadillos-response';
 import { MercadilloModel } from '../models/mercadillo.model';
+import { ParcelaModel } from '../models/parcela.model';
 
 
 
@@ -99,6 +101,35 @@ export class MercadillosService {
 
   modificarMercadillo(mercadillo : MercadilloModel){
     return this.http.put(`${ this.baseUrl}/mercadillo/${ mercadillo.IDMERCADILLO}`, mercadillo);
+  }
+
+  newParcela(parcela :ParcelaModel){
+    return this.http.post(`${ this.baseUrl}/parcela`, parcela)
+      .pipe(
+        map( (resp:any) => {
+          console.log("Respuesta de Node");
+          console.log(resp[0]);
+          parcela.IDPARCELAS = resp[0];
+          return parcela;
+        })
+      );
+  }
+
+  modificaParcela(parcela : ParcelaModel){
+    return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`,parcela);
+  }
+
+  getParcelaId(id : string): Observable<ParcelaInterface> {
+    return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${id}`);
+  }
+
+  getParcelasMer(id : string): Observable<ParcelaInterface[]> {
+    return this.http.get<ParcelaInterface[]>(`${this.baseUrl}/parcelas_mer/${id}`);
+
+  }
+
+  getParcelaNumMer(merc: string, parc : string): Observable<ParcelaInterface> {
+    return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`);
   }
 
 

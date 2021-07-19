@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { MercadilloInterface} from '../../../interfaces/mercadillos-response';
-import { MercadilloModel } from 'src/app/models/mercadillo.model';
+
 
 @Component({
   selector: 'app-buscarmercadillo',
