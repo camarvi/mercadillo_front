@@ -20,7 +20,7 @@ const routes : Routes=[
   { path: 'mercadillo/:id' , component:MercadilloComponent},
   { path: 'buscarmercadillo', component: BuscarmercadilloComponent},
   { path: 'parcela/:id', component: ParcelaComponent},
-  { path: 'listadoparcelas/:id', component: ListadoparcelasComponent},
+  { path: 'listadoparcelas/:id/:desc', component: ListadoparcelasComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

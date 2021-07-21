@@ -1,1 +1,9 @@
-<p>listadoparcelas works!</p>
+
+<div *ngIf="cargando">
+    <app-cargando></app-cargando>
+</div>
+
+<h2>Parcelas : {{ mercadillo }}</h2>
+
+
+<app-parcelas-grid *ngIf="parcelas.length>0" [parcelas]="parcelas"></app-parcelas-grid>

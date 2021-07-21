@@ -1,0 +1,40 @@
+<div class="mt-2" id="htmlData">
+    <table *ngIf="parcelas.length > 0" class="table table-bordered table-striped">
+      <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+        <tr class="table-primary">
+          <th scope="col">Numero</th>
+          <th scope="col">Alta</th>
+          <th scope="col">Sup.</th>
+          <th scope="col">F. Estado</th>
+          <th scope="col">Estado</th>  
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let parcela of parcelas">
+          <td>{{ parcela.NUMERO }}</td>
+          <td>{{ parcela.FECHA_ALTA | date:'dd/MM/yyyy' }}</td>
+          <td>{{ parcela.SUPERFICIE }}</td>
+          <td>{{ parcela.FECHA_ESTADO | date:'dd/MM/yyyy' }}</td>
+          <td>{{ parcela.COD_ESTADO }}</td>  
+          <td>
+    
+            <button class="btn btn-danger mr-1" 
+                data-toggle="tooltip" data-placement="top" title="Editar"    
+                [routerLink]="['/parcela', parcela.IDPARCELAS]">
+              <i class="fa fa-pen"></i>
+              <!-- fa-user-edit -->
+            </button>
+    <!--
+            <button class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top" 
+            title="Ver Parcelas"
+            [routerLink]="['/listadoparcelas', parcela.IDMERCADILLO]"
+            >
+              <i class="far fa-clipboard"></i>
+            </button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    

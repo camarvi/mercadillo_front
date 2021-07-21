@@ -7,6 +7,7 @@ import { UsuariosGridComponent } from './usuarios-grid/usuarios-grid.component';
 import { CargandoComponent } from './cargando/cargando.component';
 import { NoresultadosComponent } from './noresultados/noresultados.component';
 import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.component';
+import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
 
 
 
@@ -16,14 +17,16 @@ import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.co
     UsuariosGridComponent,
     CargandoComponent,
     NoresultadosComponent,
-    MercadillosGridComponent
+    MercadillosGridComponent,
+    ParcelasGridComponent
   ],
   exports : [
     NavbarComponent,
     UsuariosGridComponent,
     CargandoComponent,
     NoresultadosComponent,
-    MercadillosGridComponent
+    MercadillosGridComponent,
+    ParcelasGridComponent
   ],
   imports: [
     CommonModule,

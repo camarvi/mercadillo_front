@@ -10,6 +10,7 @@ import { ParcelaInterface } from 'src/app/interfaces/parcela-response';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 
+
 import { DatePipe } from '@angular/common';
 
 
@@ -24,43 +25,41 @@ export class ParcelaComponent implements OnInit {
 
   datepipe: DatePipe = new DatePipe('en-US');
  
-
   listadoMercadillos: MercadilloInterface[] = [];
 
   parcela = new ParcelaModel();
+  id : string;
 
-  //parcelaBuscada : ParcelaInterface;
   parcelaBuscada = new ParcelaModel();
 
   constructor(
     private mercadilloService: MercadillosService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
 
-    console.log("NGONINIT");
-    console.log(this.parcela);
+    this.id = this.route.snapshot.paramMap.get('id');
 
-    const id = this.route.snapshot.paramMap.get('id');
-
-    if (id !== 'nuevo') {
+    if (this.id !== 'nuevo') {
       this.mercadilloService
-        .getParcelaId(id)
+        .getParcelaId(this.id)
         .subscribe((resp: ParcelaInterface) => {
           this.parcela = resp[0];
-          this.parcela.IDPARCELAS = parseInt(id);
+          this.parcela.IDPARCELAS = parseInt(this.id);
+
+        //  this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'yyyy-MM-dd');
         });
     }
-
+    
+  
     this.cargaCombox();
   }
 
   cargaCombox() {
     this.mercadilloService.getMercadillos().subscribe((resp) => {
-      // console.log(resp);
       this.listadoMercadillos = resp;
-     // console.log(this.listadoMercadillos);
     });
   }
 
@@ -74,6 +73,8 @@ export class ParcelaComponent implements OnInit {
       return;
     }
 
+  if (this.id === 'nuevo') {
+
     let comprueba: Observable<any>;
 
     comprueba = this.mercadilloService.getParcelaNumMer(
@@ -81,7 +82,6 @@ export class ParcelaComponent implements OnInit {
       this.parcela.NUMERO.toString()
     );
 
-    //this.parcelaBuscada = new ParcelaModel();   
 
     comprueba.subscribe((resp) => {
       this.parcelaBuscada = resp;
@@ -96,6 +96,7 @@ export class ParcelaComponent implements OnInit {
           icon: 'error',
         });
       } else {
+        //ES UNA MODIFICACION
         this.almacenaRegistro();
       }
 
@@ -106,51 +107,10 @@ export class ParcelaComponent implements OnInit {
       this.parcelaBuscada = new ParcelaModel();
     });
 
-   // console.log("VALOR DEL CAMPO IDPARCELAS");
-   // console.log(this.parcelaBuscada);
+  } else {
+    this.almacenaRegistro();
+  }
 
-
-
-    //console.log("NUMERO THIS.PARCELABUSCADA");
-    //console.log(this.parcelaBuscada);
-    //console.log("NUMERO THIS.PARCELABUSCADA");
-
-/*
-    if (this.parcelaBuscada[0].IDPARCELAS ===10000) {
-   
-      Swal.fire({
-        allowOutsideClick: false,
-        title: 'Espere',
-        text: 'Guardando información..',
-        icon: 'info',
-      });
-      Swal.showLoading();
-
-      let peticion: Observable<any>;
-
-      //this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'dd/MM/YYYY');
-
-      if (this.parcela.IDPARCELAS !== 0) {
-        peticion = this.mercadilloService.modificaParcela(this.parcela);
-      } else {
-        peticion = this.mercadilloService.newParcela(this.parcela);
-      }
-
-    //  this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'yyyy-MM-dd');
-
-
-      peticion.subscribe((resp) => {
-        Swal.fire({
-          title: this.parcela.NUMERO,
-          text: 'Se almaceno correctamente..',
-          icon: 'success',
-        });
-      });
-    }
-  
-    */
-    
-  
   
   }
 
@@ -167,14 +127,19 @@ export class ParcelaComponent implements OnInit {
 
     let peticion: Observable<any>;
 
-    //this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'dd/MM/YYYY');
 
     if (this.parcela.IDPARCELAS !== 0) {
+     
+      console.log("Modifica Registro");
+      console.log(this.parcela);
       peticion = this.mercadilloService.modificaParcela(this.parcela);
+
     } else {
+      
       peticion = this.mercadilloService.newParcela(this.parcela);
     }
 
+    
   //  this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'yyyy-MM-dd');
 
 
@@ -187,9 +152,7 @@ export class ParcelaComponent implements OnInit {
     });
   }
 
-
-
-  }
+}
 
 
 

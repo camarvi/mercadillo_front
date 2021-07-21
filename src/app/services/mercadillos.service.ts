@@ -111,10 +111,10 @@ export class MercadillosService {
     let miparcela = new ParcelaModel;
     miparcela = parcela;
     
-    miparcela.FECHA_ALTA = datepipe.transform(parcela.FECHA_ALTA, 'dd/MM/YYYY');
+    //miparcela.FECHA_ALTA = datepipe.transform(parcela.FECHA_ALTA, 'dd/MM/YYYY');
 
-    console.log("NEWPARCELA");
-    console.log(parcela);
+    //console.log("NEWPARCELA");
+    //console.log(parcela);
     return this.http.post(`${ this.baseUrl}/parcela`, parcela)
       .pipe(
         map((resp:any) => {
