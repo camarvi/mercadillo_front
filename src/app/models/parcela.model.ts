@@ -10,7 +10,7 @@ export class ParcelaModel{
 
     constructor(){
        this.IDPARCELAS = 0;
-       this.FECHA_ALTA = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+       this.FECHA_ALTA = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' });
        this.IDMERCADILLO = 0;
        this.SUPERFICIE = 0;
        this.NUMERO = 0;

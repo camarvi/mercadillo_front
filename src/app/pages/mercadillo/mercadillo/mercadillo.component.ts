@@ -93,5 +93,8 @@ export class MercadilloComponent implements OnInit {
         icon: 'success',
       });
     });
+
+    this.mercadillo=null;
+    this.mercadillo = new MercadilloModel();
   }
 }

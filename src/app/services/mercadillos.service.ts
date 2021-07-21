@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+import { DatePipe } from '@angular/common';
+
 import { MercadilloInterface, Sexo, Tipovia } from '../interfaces/mercadillos-response';
 import { ParcelaInterface } from '../interfaces/parcela-response';
 import { DiaSemana } from '../interfaces/diasemana-response';
@@ -104,9 +106,18 @@ export class MercadillosService {
   }
 
   newParcela(parcela :ParcelaModel){
+
+    let datepipe: DatePipe = new DatePipe('en-US');
+    let miparcela = new ParcelaModel;
+    miparcela = parcela;
+    
+    miparcela.FECHA_ALTA = datepipe.transform(parcela.FECHA_ALTA, 'dd/MM/YYYY');
+
+    console.log("NEWPARCELA");
+    console.log(parcela);
     return this.http.post(`${ this.baseUrl}/parcela`, parcela)
       .pipe(
-        map( (resp:any) => {
+        map((resp:any) => {
           console.log("Respuesta de Node");
           console.log(resp[0]);
           parcela.IDPARCELAS = resp[0];
@@ -128,8 +139,20 @@ export class MercadillosService {
 
   }
 
-  getParcelaNumMer(merc: string, parc : string): Observable<ParcelaInterface> {
-    return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`);
+  getParcelaNumMer(merc: string, parc : string) : Observable<ParcelaInterface> {
+    return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`)
+   /* this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`)
+    .subscribe(resp=>{
+      if (resp[0]){
+        //Ya existen esos datos
+        return true;
+      } else {
+        return false;
+      }
+    });    */
+
+
+
   }
 
 
