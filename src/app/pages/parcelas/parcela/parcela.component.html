@@ -3,20 +3,19 @@
     <div class="form-row">
         <div class="form-group col-md-3">
         
-        
           <label>Fecha Alta</label>
-      <!--    <input type="date" class="form-control"
-           
-            name = "fecha"
-            value= "2021-07-20"
-            
-          > -->
-        <!--
-          <input type="date" class="form-control"
+        
+          <input *ngIf="id === 'nuevo'" type="date" class="form-control"
             #fecha = "ngModel"
             name = "fecha"
-            [(ngModel)] = "fechaok"
-          > -->
+            [(ngModel)] = "parcela.FECHA_ALTA"
+          > 
+          <input *ngIf="id !== 'nuevo'" type="text" class="form-control"
+          name = "fecha"
+          value = {{fecha_alta_html}}
+          readonly
+          > 
+
         <!--
           <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  
           -->  
@@ -45,6 +44,7 @@
             #numero = "ngModel"
             name = "numero"
             [(ngModel)] = "parcela.NUMERO"
+            [readonly] = "id !== 'nuevo'"
           >
           <!--
           <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  

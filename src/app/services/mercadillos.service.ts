@@ -107,15 +107,28 @@ export class MercadillosService {
 
   newParcela(parcela :ParcelaModel){
 
-    let datepipe: DatePipe = new DatePipe('en-US');
+    //let datepipe: DatePipe = new DatePipe('en-US');
     let miparcela = new ParcelaModel;
     miparcela = parcela;
-    
+    console.log("ANTES DE HACER EL POST EN EL SERVICIO");
+    console.log(miparcela);
+    let anio =  miparcela.FECHA_ALTA.slice(0,4);
+    let mes = miparcela.FECHA_ALTA.slice(5,7);
+    let dia = miparcela.FECHA_ALTA.slice(8,10);
+    console.log(anio);
+    console.log(mes);
+    console.log(dia); 
+    let fechaok=dia+ "/" + mes + "/" + anio;
+    miparcela.FECHA_ALTA = fechaok;
+    miparcela.FECHA_ESTADO = fechaok;
+    console.log("Fechas Modificadas");
+    console.log(miparcela);
+
     //miparcela.FECHA_ALTA = datepipe.transform(parcela.FECHA_ALTA, 'dd/MM/YYYY');
 
     //console.log("NEWPARCELA");
     //console.log(parcela);
-    return this.http.post(`${ this.baseUrl}/parcela`, parcela)
+    return this.http.post(`${ this.baseUrl}/parcela`, miparcela)
       .pipe(
         map((resp:any) => {
           console.log("Respuesta de Node");
@@ -127,7 +140,20 @@ export class MercadillosService {
   }
 
   modificaParcela(parcela : ParcelaModel){
-    return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`,parcela);
+    let miparcela = new ParcelaModel;
+    miparcela = parcela;
+    // Transformar la fecha para poder insertar en oracle
+    let anio =  miparcela.FECHA_ESTADO.slice(0,4);
+    let mes = miparcela.FECHA_ESTADO.slice(5,7);
+    let dia = miparcela.FECHA_ESTADO.slice(8,10);
+    //console.log(anio);
+    //console.log(mes);
+    //console.log(dia); 
+    let fechaok=dia+ "/" + mes + "/" + anio;
+    miparcela.FECHA_ESTADO = fechaok;
+    
+    return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`,miparcela);
+    
   }
 
   getParcelaId(id : string): Observable<ParcelaInterface> {

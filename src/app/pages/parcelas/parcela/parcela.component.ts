@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 
@@ -12,8 +12,6 @@ import { Observable } from 'rxjs';
 
 
 import { DatePipe } from '@angular/common';
-
-
 
 
 @Component({
@@ -29,18 +27,36 @@ export class ParcelaComponent implements OnInit {
 
   parcela = new ParcelaModel();
   id : string;
+  fecha_alta_html : string;
 
   parcelaBuscada = new ParcelaModel();
 
   constructor(
     private mercadilloService: MercadillosService,
     private route: ActivatedRoute,
-    public datePipe: DatePipe
-  ) {}
+    public datePipe: DatePipe,
+    public router : Router
+
+  ) {
+
+   // this.router.routeReuseStrategy.shouldReuseRoute = () => false
+  }
+
+  
 
   ngOnInit(): void {
 
+    
     this.id = this.route.snapshot.paramMap.get('id');
+
+   
+   // CODIGO SIN PROBAR
+    //this.parcela=null;
+    //this.parcela = new ParcelaModel();
+    //
+    //this.parcelaBuscada = null;
+    //this.parcelaBuscada = new ParcelaModel();
+   // FIN CODIGO SIN PROBAR 
 
     if (this.id !== 'nuevo') {
       this.mercadilloService
@@ -48,14 +64,17 @@ export class ParcelaComponent implements OnInit {
         .subscribe((resp: ParcelaInterface) => {
           this.parcela = resp[0];
           this.parcela.IDPARCELAS = parseInt(this.id);
-
-        //  this.parcela.FECHA_ALTA = this.datepipe.transform(this.parcela.FECHA_ALTA, 'yyyy-MM-dd');
-        });
+          console.log("DATOS RECIBIDOS");
+          console.log(this.parcela.FECHA_ALTA);
+          let TuFecha = new Date(this.parcela.FECHA_ALTA);
+          this.fecha_alta_html = TuFecha.toLocaleDateString('es-ES'); // toISOString();
+          this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
+      });
     }
-    
-  
+      
     this.cargaCombox();
   }
+
 
   cargaCombox() {
     this.mercadilloService.getMercadillos().subscribe((resp) => {
@@ -85,8 +104,8 @@ export class ParcelaComponent implements OnInit {
 
     comprueba.subscribe((resp) => {
       this.parcelaBuscada = resp;
-      console.log("Resultado de Comprueba.subscribe");
-      console.log(this.parcelaBuscada[0]);
+     // console.log("Resultado de Comprueba.subscribe");
+     // console.log(this.parcelaBuscada[0]);
       if (resp[0]) {
         //console.log(resp[0]);
      //   this.parcelaBuscada.IDPARCELAS = resp[0].IDPARCELAS;
@@ -130,12 +149,13 @@ export class ParcelaComponent implements OnInit {
 
     if (this.parcela.IDPARCELAS !== 0) {
      
-      console.log("Modifica Registro");
-      console.log(this.parcela);
+      //console.log("Modifica Registro");
+      //console.log(this.parcela);
       peticion = this.mercadilloService.modificaParcela(this.parcela);
 
     } else {
-      
+      console.log("Nuevo Registro");
+      console.log(this.parcela.FECHA_ALTA);
       peticion = this.mercadilloService.newParcela(this.parcela);
     }
 
@@ -145,13 +165,38 @@ export class ParcelaComponent implements OnInit {
 
     peticion.subscribe((resp) => {
       Swal.fire({
-        title: this.parcela.NUMERO,
+        title: "La Parcela ",
         text: 'Se almaceno correctamente..',
         icon: 'success',
       });
     });
+
+   // this.router.navigate(['/user', this.parcela.IDMERCADILLO])
+   // this.router.navigate(['/home']);
+
+
   }
 
+
+  conviertefecha(fecharecibida)
+  {
+    var arrayFecha = fecharecibida.split('/');
+    let dia: string = arrayFecha[0];
+    let mes : string = arrayFecha[1];
+    let anio : string = arrayFecha[2];
+
+    if (dia.length==1) {
+      dia = "0" + dia;
+    }
+    if (mes.length==1) {
+      mes = "0" + mes;
+    }
+    let fechaok : string = dia + "/" + mes + "/" + anio;
+   return  fechaok;
+  }
+
+
+  
 }
 
 
