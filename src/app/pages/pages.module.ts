@@ -10,6 +10,7 @@ import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.componen
 import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarmercadillo.component';
 import { ParcelaComponent } from './parcelas/parcela/parcela.component';
 import { ListadoparcelasComponent } from './parcelas/listadoparcelas/listadoparcelas.component';
+import { TarifaComponent } from './tarifas/tarifa/tarifa.component';
 
 
 
@@ -22,7 +23,8 @@ import { ListadoparcelasComponent } from './parcelas/listadoparcelas/listadoparc
     MercadilloComponent,
     BuscarmercadilloComponent,
     ParcelaComponent,
-    ListadoparcelasComponent
+    ListadoparcelasComponent,
+    TarifaComponent
 
   ],
   imports: [

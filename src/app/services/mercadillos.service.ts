@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-import { DatePipe } from '@angular/common';
+//import { DatePipe } from '@angular/common';
 
 import { MercadilloInterface, Sexo, Tipovia } from '../interfaces/mercadillos-response';
 import { ParcelaInterface } from '../interfaces/parcela-response';
@@ -12,6 +12,9 @@ import { UsuarioModel } from '../models/usuario.model';
 import { PersonaInterface } from '../interfaces/mercadillos-response';
 import { MercadilloModel } from '../models/mercadillo.model';
 import { ParcelaModel } from '../models/parcela.model';
+//import { TarifaInterface } from '../interfaces/tarifa-response';
+import { TarifaModel } from '../models/tarifa.model';
+import { TarifaInterface } from '../interfaces/tarifa-response';
 
 
 
@@ -110,19 +113,19 @@ export class MercadillosService {
     //let datepipe: DatePipe = new DatePipe('en-US');
     let miparcela = new ParcelaModel;
     miparcela = parcela;
-    console.log("ANTES DE HACER EL POST EN EL SERVICIO");
-    console.log(miparcela);
+    //console.log("ANTES DE HACER EL POST EN EL SERVICIO");
+    //console.log(miparcela);
     let anio =  miparcela.FECHA_ALTA.slice(0,4);
     let mes = miparcela.FECHA_ALTA.slice(5,7);
     let dia = miparcela.FECHA_ALTA.slice(8,10);
-    console.log(anio);
-    console.log(mes);
-    console.log(dia); 
+    //console.log(anio);
+    //console.log(mes);
+    //console.log(dia); 
     let fechaok=dia+ "/" + mes + "/" + anio;
     miparcela.FECHA_ALTA = fechaok;
     miparcela.FECHA_ESTADO = fechaok;
-    console.log("Fechas Modificadas");
-    console.log(miparcela);
+    //console.log("Fechas Modificadas");
+    //console.log(miparcela);
 
     //miparcela.FECHA_ALTA = datepipe.transform(parcela.FECHA_ALTA, 'dd/MM/YYYY');
 
@@ -181,5 +184,44 @@ export class MercadillosService {
 
   }
 
+
+  getTarifasMer(id : string): Observable<TarifaInterface[]> {
+
+    return this.http.get<TarifaInterface[]>(`${this.baseUrl}/tarifas/${id}`);
+  }
+
+  newTarifa(tarifa : TarifaModel){
+    
+    let mitarifa = new TarifaModel;
+    mitarifa = tarifa;
+    let fechaFok;
+    let anioA =  mitarifa.F_INICIO.slice(0,4);
+    let mesA = mitarifa.F_INICIO.slice(5,7);
+    let diaA = mitarifa.F_INICIO.slice(8,10);
+    if (mitarifa.F_FIN){
+      let anioF =  mitarifa.F_FIN.slice(0,4);
+      let mesF = mitarifa.F_FIN.slice(5,7);
+      let diaF = mitarifa.F_FIN.slice(8,10);
+      fechaFok=diaF+ "/" + mesF + "/" + anioF;
+        
+    } else {
+      fechaFok = null;
+    }
+
+    let fechaAok=diaA+ "/" + mesA + "/" + anioA;
+    mitarifa.F_INICIO = fechaAok;
+    mitarifa.F_FIN = fechaFok;
+ 
+    return this.http.post(`${ this.baseUrl}/tarifas`, mitarifa)
+      .pipe(
+        map((resp:any) => {
+          console.log("Respuesta de Node");
+          console.log(resp[0]);
+          tarifa.IDTARIFA = resp[0];
+          return tarifa;
+        })
+      );
+
+  }
 
 }

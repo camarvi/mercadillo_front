@@ -8,6 +8,7 @@ import { CargandoComponent } from './cargando/cargando.component';
 import { NoresultadosComponent } from './noresultados/noresultados.component';
 import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.component';
 import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
+import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
 
 
 
@@ -18,7 +19,8 @@ import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
     CargandoComponent,
     NoresultadosComponent,
     MercadillosGridComponent,
-    ParcelasGridComponent
+    ParcelasGridComponent,
+    TarifasGridComponent
   ],
   exports : [
     NavbarComponent,
@@ -26,7 +28,8 @@ import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
     CargandoComponent,
     NoresultadosComponent,
     MercadillosGridComponent,
-    ParcelasGridComponent
+    ParcelasGridComponent,
+    TarifasGridComponent
   ],
   imports: [
     CommonModule,

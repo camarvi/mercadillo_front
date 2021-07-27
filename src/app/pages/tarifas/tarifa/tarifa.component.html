@@ -1,0 +1,46 @@
+<div *ngIf="cargando">
+    <app-cargando></app-cargando>
+</div>
+
+<h3>Tarifas : {{ mercadillo }}</h3>
+
+
+<form class="mb-3" (ngSubmit)="guardar(f)" #f="ngForm">
+
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label class="font-weight-bold">Fecha Inicio</label>
+      <input type="date" class="form-control" #fecha="ngModel" name="finicio" [(ngModel)]="nuevaTarifa.F_INICIO">
+    </div>
+
+    <div class="form-group col-md-3 ml-4">
+      <label class="font-weight-bold ">Tarifa</label>
+      <input type="number" class="form-control" #numero="ngModel" name="tarifa" [(ngModel)]="nuevaTarifa.TARIFA">
+    </div>
+
+    <div class="form-group col-md-3 ml-4 ">
+      <label class="font-weight-bold ">Fecha Fin</label>
+      <input type="date" class="form-control" #fecha="ngModel" name="ffin" [(ngModel)]="nuevaTarifa.F_FIN">
+    </div>
+
+  </div>
+
+  <div class="form-inline">
+
+    <div class="form-group ml-3 justify-content-center">
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-save"></i>
+        Guardar
+      </button>
+    </div>
+
+  </div>
+
+</form>
+
+
+
+<app-tarifas-grid *ngIf="tarifas.length>0" [tarifas]="tarifas"></app-tarifas-grid>
+
+
+

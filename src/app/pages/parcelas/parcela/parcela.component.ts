@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 
 
 import { DatePipe } from '@angular/common';
+import { FechasService } from '../../../services/fechas.service';
 
 
 @Component({
@@ -35,7 +36,8 @@ export class ParcelaComponent implements OnInit {
     private mercadilloService: MercadillosService,
     private route: ActivatedRoute,
     public datePipe: DatePipe,
-    public router : Router
+    public router : Router,
+    public fechaService : FechasService
 
   ) {
 
@@ -68,7 +70,8 @@ export class ParcelaComponent implements OnInit {
           console.log(this.parcela.FECHA_ALTA);
           let TuFecha = new Date(this.parcela.FECHA_ALTA);
           this.fecha_alta_html = TuFecha.toLocaleDateString('es-ES'); // toISOString();
-          this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
+          //this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
+          this.fecha_alta_html = this.fechaService.conviertefecha(this.fecha_alta_html);
       });
     }
       

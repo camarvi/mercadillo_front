@@ -9,6 +9,7 @@ import { MercadilloComponent } from './pages/mercadillo/mercadillo/mercadillo.co
 import { BuscarmercadilloComponent } from './pages/mercadillo/buscarmercadillo/buscarmercadillo.component';
 import { ListadoparcelasComponent } from './pages/parcelas/listadoparcelas/listadoparcelas.component';
 import { ParcelaComponent  } from './pages/parcelas/parcela/parcela.component';
+import { TarifaComponent } from './pages/tarifas/tarifa/tarifa.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -21,6 +22,7 @@ const routes : Routes=[
   { path: 'buscarmercadillo', component: BuscarmercadilloComponent},
   { path: 'parcela/:id', component: ParcelaComponent},
   { path: 'listadoparcelas/:id/:desc', component: ListadoparcelasComponent},
+  { path: 'tarifamer/:id/:desc', component: TarifaComponent },
   { path: '**', redirectTo : '/home'}
 ];
 

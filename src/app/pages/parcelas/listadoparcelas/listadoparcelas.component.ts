@@ -25,13 +25,14 @@ export class ListadoparcelasComponent implements OnInit {
     //Obtener el Id del mercadillo
     const id= this.route.snapshot.paramMap.get('id');
     this.mercadillo = this.route.snapshot.paramMap.get('desc');
-
+    this.cargando = true;
     console.log("Id recibido " + id);
     console.log("Nombre recibido " + this.mercadillo);
     this.mercadilloService.getParcelasMer(id)
       .subscribe( (resp)=>{     
         console.log(resp);
         this.parcelas = resp;
+        this.cargando = false;
       });
   }
 
