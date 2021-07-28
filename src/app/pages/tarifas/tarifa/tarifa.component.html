@@ -40,7 +40,10 @@
 
 
 
-<app-tarifas-grid *ngIf="tarifas.length>0" [tarifas]="tarifas"></app-tarifas-grid>
+<app-tarifas-grid *ngIf="tarifas.length>0" [tarifas]="tarifas" (propagar)="procesaPropagar($event)">
+  
+</app-tarifas-grid>
+
 
 
 

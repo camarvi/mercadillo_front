@@ -5,5 +5,8 @@
 
 <h2>Parcelas : {{ mercadillo }}</h2>
 
+<div class="text-center small">
+    Estados : A-Adjudicado , B-Baja , V-Vacante 
+</div>
 
 <app-parcelas-grid *ngIf="parcelas.length>0" [parcelas]="parcelas"></app-parcelas-grid>

@@ -28,25 +28,13 @@ export class TarifaComponent implements OnInit {
     const id= this.route.snapshot.paramMap.get('id');
     this.mercadillo = this.route.snapshot.paramMap.get('desc');
     this.cargando = true;
+    this.nuevaTarifa.COD_MER = Number(id);
 
     this.mercadilloService.getTarifasMer(id)
         .subscribe( (resp)=>{
           this.tarifas = resp;
           console.log(this.tarifas);
           this.cargando = false;
-          
-         // console.log("TARIFAS[0].F_INICIIO");
-         // console.log(this.tarifas[0].F_INICIO);
-         // 
-         // let TuFecha = new Date(this.tarifas[0].F_INICIO);
-         // console.log("TUFECHA");
-         // console.log(TuFecha);
-         //
-         // let fecha_alta_html = TuFecha.toLocaleDateString('es-ES'); // toISOString();
-         // console.log(fecha_alta_html);
-         //  //this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
-         // this.tarifas[0].F_INICIO = this.fechaService.conviertefecha(fecha_alta_html);
-
         });
   }
 
@@ -61,16 +49,18 @@ export class TarifaComponent implements OnInit {
       return;
     }
 
-    Swal.fire({
-      allowOutsideClick : false,
-      title : 'Espere',
-      text: 'Guardando información..',
-      icon : 'info'
-    });
-    Swal.showLoading();
+   // Swal.fire({
+   //   allowOutsideClick : false,
+   //   title : 'Espere',
+   //   text: 'Guardando información..',
+   //   icon : 'info'
+   // });
+   // Swal.showLoading();
 
    
     let peticion : Observable<any>;
+   // console.log("DATOS NUEVA TARIFA");
+   //console.log(this.nuevaTarifa);
     peticion = this.mercadilloService.newTarifa(this.nuevaTarifa); 
   
    // if (this.nuevaTarifa.IDTARIFA !==0 ){
@@ -84,16 +74,38 @@ export class TarifaComponent implements OnInit {
         
         Swal.fire({
           title : "Tarifa",
-          text : 'Se actualizo correctamente..',
+          text : 'Se almaceno correctamente..',
           icon : 'success'
         });
-
+        this.ngOnInit();
         });
   
-
-
-
-
   }
+
+  eliminar(id: string){
+  
+    //console.log("Dentro de eliminar");
+    //console.log("IDTARIFA RECIBIDO " + id);
+    this.mercadilloService.deleteTarifa(id)
+      .subscribe( resp => {
+        console.log(resp);
+        Swal.fire({
+          title : "Eliminar",
+          text : 'Registro eliminado correctamente..',
+          icon : 'success'
+        });
+      });
+      this.ngOnInit();
+  }
+
+
+
+  procesaPropagar(id : string) {
+   // console.log(id);
+    this.eliminar(id);
+    this.ngOnInit();
+  }
+
+  
 
 }

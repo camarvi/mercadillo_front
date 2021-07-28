@@ -24,7 +24,6 @@ export class AltausuarioComponent implements OnInit {
   usuario = new UsuarioModel();
 
 
-
   constructor(private mercadillosService : MercadillosService,
               private route : ActivatedRoute) { 
   }

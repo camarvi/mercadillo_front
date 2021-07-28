@@ -8,7 +8,7 @@
           <th scope="col">Sup.</th>
           <th scope="col">F. Estado</th>
           <th scope="col">Estado</th>  
-          <th scope="col"></th>
+          <th scope="col">Operaciones</th>
         </tr>
       </thead>
       <tbody>
@@ -24,15 +24,22 @@
                 data-toggle="tooltip" data-placement="top" title="Editar"    
                 [routerLink]="['/parcela', parcela.IDPARCELAS]">
               <i class="fa fa-pen"></i>
-              <!-- fa-user-edit -->
+              <!-- far fa-eye -->
             </button>
-    <!--
-            <button class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top" 
-            title="Ver Parcelas"
-            [routerLink]="['/listadoparcelas', parcela.IDMERCADILLO]"
+
+            <button *ngIf="parcela.COD_ESTADO=='V'" class="btn btn-success ml-2" data-toggle="tooltip" data-placement="top" 
+            title="Asignar"
+            [routerLink]="['/home']"
             >
-              <i class="far fa-clipboard"></i>
-            </button> -->
+              <i class="fas fa-user-plus"></i>
+            </button> 
+
+            <button *ngIf="parcela.COD_ESTADO=='A'" class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top" 
+            title="Ver"
+            [routerLink]="['/home']"
+            >
+              <i class="far fa-eye"></i>
+            </button> 
           </td>
         </tr>
       </tbody>

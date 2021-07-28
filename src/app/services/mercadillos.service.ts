@@ -23,15 +23,15 @@ import { TarifaInterface } from '../interfaces/tarifa-response';
 })
 export class MercadillosService {
 
-  private baseUrl : string = 'http://localhost:3000';
+  private baseUrl: string = 'http://localhost:3000';
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getSexo() : Observable<Sexo[]> {
+  getSexo(): Observable<Sexo[]> {
     return this.http.get<Sexo[]>(`${this.baseUrl}/sexo`);
   }
 
-  getTipoVia() : Observable<Tipovia[]> {
+  getTipoVia(): Observable<Tipovia[]> {
     return this.http.get<Tipovia[]>(`${this.baseUrl}/tipovia`);
   }
 
@@ -40,11 +40,11 @@ export class MercadillosService {
   }
 
 
-  crearUsuario(usuario : UsuarioModel){
+  crearUsuario(usuario: UsuarioModel) {
 
-    return this.http.post(`${ this.baseUrl }/persona`, usuario)
+    return this.http.post(`${this.baseUrl}/persona`, usuario)
       .pipe(
-        map( (resp:any) => {
+        map((resp: any) => {
           console.log("Respuesta de Node");
           console.log(resp[0]);
           usuario.IDPERSONA = resp[0];
@@ -54,48 +54,48 @@ export class MercadillosService {
   }
 
 
-  updateUsuario(usuario : UsuarioModel){
+  updateUsuario(usuario: UsuarioModel) {
 
-    return this.http.put(`${ this.baseUrl}/persona/${ usuario.IDPERSONA}`, usuario);
+    return this.http.put(`${this.baseUrl}/persona/${usuario.IDPERSONA}`, usuario);
 
   }
 
 
-  buscarUsuarioAp1(ap1 : string): Observable<PersonaInterface[]>{
-    
+  buscarUsuarioAp1(ap1: string): Observable<PersonaInterface[]> {
+
     return this.http.get<PersonaInterface[]>(`${this.baseUrl}/persona_ap/${ap1}`);
 
   }
 
-  buscarUsuarioAp1Ap2(ap1 : string, ap2 : string) : Observable<PersonaInterface[]>{
+  buscarUsuarioAp1Ap2(ap1: string, ap2: string): Observable<PersonaInterface[]> {
     return this.http.get<PersonaInterface[]>(`${this.baseUrl}/persona_ap/${ap1}/${ap2}`);
   }
 
-  buscarUsuarioNombre(nombre : string, ap1 : string) : Observable<PersonaInterface[]>{
+  buscarUsuarioNombre(nombre: string, ap1: string): Observable<PersonaInterface[]> {
     return this.http.get<PersonaInterface[]>(`${this.baseUrl}/persona_nombre/${nombre}/${ap1}`);
   }
 
-  buscarUsuarioNif(nif : string) : Observable<UsuarioModel> {
+  buscarUsuarioNif(nif: string): Observable<UsuarioModel> {
     return this.http.get<UsuarioModel>(`${this.baseUrl}/persona/${nif}`);
   }
 
-  buscarUsuarioId(id : string) : Observable<UsuarioModel> {
+  buscarUsuarioId(id: string): Observable<UsuarioModel> {
     return this.http.get<UsuarioModel>(`${this.baseUrl}/personaid/${id}`);
   }
 
-  buscarMercadilloId(id : string) : Observable<MercadilloModel> {
+  buscarMercadilloId(id: string): Observable<MercadilloModel> {
     return this.http.get<MercadilloModel>(`${this.baseUrl}/mercadillo/${id}`);
   }
 
   getMercadillos(): Observable<MercadilloInterface[]> {
     return this.http.get<MercadilloInterface[]>(`${this.baseUrl}/mercadillos`);
   }
-  
-  crearMercadillo(mercadillo : MercadilloModel){
 
-    return this.http.post(`${ this.baseUrl }/mercadillo`, mercadillo)
+  crearMercadillo(mercadillo: MercadilloModel) {
+
+    return this.http.post(`${this.baseUrl}/mercadillo`, mercadillo)
       .pipe(
-        map( (resp:any) => {
+        map((resp: any) => {
           console.log("Respuesta de Node");
           console.log(resp[0]);
           mercadillo.IDMERCADILLO = resp[0];
@@ -104,24 +104,24 @@ export class MercadillosService {
       );
   }
 
-  modificarMercadillo(mercadillo : MercadilloModel){
-    return this.http.put(`${ this.baseUrl}/mercadillo/${ mercadillo.IDMERCADILLO}`, mercadillo);
+  modificarMercadillo(mercadillo: MercadilloModel) {
+    return this.http.put(`${this.baseUrl}/mercadillo/${mercadillo.IDMERCADILLO}`, mercadillo);
   }
 
-  newParcela(parcela :ParcelaModel){
+  newParcela(parcela: ParcelaModel) {
 
     //let datepipe: DatePipe = new DatePipe('en-US');
     let miparcela = new ParcelaModel;
     miparcela = parcela;
     //console.log("ANTES DE HACER EL POST EN EL SERVICIO");
     //console.log(miparcela);
-    let anio =  miparcela.FECHA_ALTA.slice(0,4);
-    let mes = miparcela.FECHA_ALTA.slice(5,7);
-    let dia = miparcela.FECHA_ALTA.slice(8,10);
+    let anio = miparcela.FECHA_ALTA.slice(0, 4);
+    let mes = miparcela.FECHA_ALTA.slice(5, 7);
+    let dia = miparcela.FECHA_ALTA.slice(8, 10);
     //console.log(anio);
     //console.log(mes);
     //console.log(dia); 
-    let fechaok=dia+ "/" + mes + "/" + anio;
+    let fechaok = dia + "/" + mes + "/" + anio;
     miparcela.FECHA_ALTA = fechaok;
     miparcela.FECHA_ESTADO = fechaok;
     //console.log("Fechas Modificadas");
@@ -131,9 +131,9 @@ export class MercadillosService {
 
     //console.log("NEWPARCELA");
     //console.log(parcela);
-    return this.http.post(`${ this.baseUrl}/parcela`, miparcela)
+    return this.http.post(`${this.baseUrl}/parcela`, miparcela)
       .pipe(
-        map((resp:any) => {
+        map((resp: any) => {
           console.log("Respuesta de Node");
           console.log(resp[0]);
           parcela.IDPARCELAS = resp[0];
@@ -142,79 +142,79 @@ export class MercadillosService {
       );
   }
 
-  modificaParcela(parcela : ParcelaModel){
+  modificaParcela(parcela: ParcelaModel) {
     let miparcela = new ParcelaModel;
     miparcela = parcela;
     // Transformar la fecha para poder insertar en oracle
-    let anio =  miparcela.FECHA_ESTADO.slice(0,4);
-    let mes = miparcela.FECHA_ESTADO.slice(5,7);
-    let dia = miparcela.FECHA_ESTADO.slice(8,10);
+    let anio = miparcela.FECHA_ESTADO.slice(0, 4);
+    let mes = miparcela.FECHA_ESTADO.slice(5, 7);
+    let dia = miparcela.FECHA_ESTADO.slice(8, 10);
     //console.log(anio);
     //console.log(mes);
     //console.log(dia); 
-    let fechaok=dia+ "/" + mes + "/" + anio;
+    let fechaok = dia + "/" + mes + "/" + anio;
     miparcela.FECHA_ESTADO = fechaok;
-    
-    return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`,miparcela);
-    
+
+    return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`, miparcela);
+
   }
 
-  getParcelaId(id : string): Observable<ParcelaInterface> {
+  getParcelaId(id: string): Observable<ParcelaInterface> {
     return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${id}`);
   }
 
-  getParcelasMer(id : string): Observable<ParcelaInterface[]> {
+  getParcelasMer(id: string): Observable<ParcelaInterface[]> {
     return this.http.get<ParcelaInterface[]>(`${this.baseUrl}/parcelas_mer/${id}`);
 
   }
 
-  getParcelaNumMer(merc: string, parc : string) : Observable<ParcelaInterface> {
+  getParcelaNumMer(merc: string, parc: string): Observable<ParcelaInterface> {
     return this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`)
-   /* this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`)
-    .subscribe(resp=>{
-      if (resp[0]){
-        //Ya existen esos datos
-        return true;
-      } else {
-        return false;
-      }
-    });    */
+    /* this.http.get<ParcelaInterface>(`${this.baseUrl}/parcela/${merc}/${parc}`)
+     .subscribe(resp=>{
+       if (resp[0]){
+         //Ya existen esos datos
+         return true;
+       } else {
+         return false;
+       }
+     });    */
 
 
 
   }
 
 
-  getTarifasMer(id : string): Observable<TarifaInterface[]> {
+  getTarifasMer(id: string): Observable<TarifaInterface[]> {
 
     return this.http.get<TarifaInterface[]>(`${this.baseUrl}/tarifas/${id}`);
   }
 
-  newTarifa(tarifa : TarifaModel){
-    
+  newTarifa(tarifa: TarifaModel) {
+
     let mitarifa = new TarifaModel;
     mitarifa = tarifa;
     let fechaFok;
-    let anioA =  mitarifa.F_INICIO.slice(0,4);
-    let mesA = mitarifa.F_INICIO.slice(5,7);
-    let diaA = mitarifa.F_INICIO.slice(8,10);
-    if (mitarifa.F_FIN){
-      let anioF =  mitarifa.F_FIN.slice(0,4);
-      let mesF = mitarifa.F_FIN.slice(5,7);
-      let diaF = mitarifa.F_FIN.slice(8,10);
-      fechaFok=diaF+ "/" + mesF + "/" + anioF;
-        
+    let anioA = mitarifa.F_INICIO.slice(0, 4);
+    let mesA = mitarifa.F_INICIO.slice(5, 7);
+    let diaA = mitarifa.F_INICIO.slice(8, 10);
+    if (mitarifa.F_FIN) {
+      let anioF = mitarifa.F_FIN.slice(0, 4);
+      let mesF = mitarifa.F_FIN.slice(5, 7);
+      let diaF = mitarifa.F_FIN.slice(8, 10);
+      fechaFok = diaF + "/" + mesF + "/" + anioF;
+
     } else {
       fechaFok = null;
     }
 
-    let fechaAok=diaA+ "/" + mesA + "/" + anioA;
+    let fechaAok = diaA + "/" + mesA + "/" + anioA;
     mitarifa.F_INICIO = fechaAok;
     mitarifa.F_FIN = fechaFok;
- 
-    return this.http.post(`${ this.baseUrl}/tarifas`, mitarifa)
+
+    return this.http.post(`${this.baseUrl}/tarifas`, mitarifa)
       .pipe(
-        map((resp:any) => {
+        map((resp: any) => {
           console.log("Respuesta de Node");
           console.log(resp[0]);
           tarifa.IDTARIFA = resp[0];
@@ -222,6 +222,10 @@ export class MercadillosService {
         })
       );
 
+  }
+
+  deleteTarifa(id: string) {
+    return this.http.delete(`${this.baseUrl}/tarifas/${id}`);
   }
 
 }
