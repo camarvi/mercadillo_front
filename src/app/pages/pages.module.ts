@@ -11,6 +11,7 @@ import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarm
 import { ParcelaComponent } from './parcelas/parcela/parcela.component';
 import { ListadoparcelasComponent } from './parcelas/listadoparcelas/listadoparcelas.component';
 import { TarifaComponent } from './tarifas/tarifa/tarifa.component';
+import { AutorizadosComponent } from './autorizados/autorizados/autorizados.component';
 
 
 
@@ -24,7 +25,8 @@ import { TarifaComponent } from './tarifas/tarifa/tarifa.component';
     BuscarmercadilloComponent,
     ParcelaComponent,
     ListadoparcelasComponent,
-    TarifaComponent
+    TarifaComponent,
+    AutorizadosComponent
 
   ],
   imports: [

@@ -11,6 +11,8 @@ import { ListadoparcelasComponent } from './pages/parcelas/listadoparcelas/lista
 import { ParcelaComponent  } from './pages/parcelas/parcela/parcela.component';
 import { TarifaComponent } from './pages/tarifas/tarifa/tarifa.component';
 
+import { AutorizadosComponent } from './pages/autorizados/autorizados/autorizados.component';
+
 import { RouterModule, Routes } from '@angular/router';
 
 
@@ -23,6 +25,7 @@ const routes : Routes=[
   { path: 'parcela/:id', component: ParcelaComponent},
   { path: 'listadoparcelas/:id/:desc', component: ListadoparcelasComponent},
   { path: 'tarifamer/:id/:desc', component: TarifaComponent },
+  { path: 'autorizados/:id', component: AutorizadosComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

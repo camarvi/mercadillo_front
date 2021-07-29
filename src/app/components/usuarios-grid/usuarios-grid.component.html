@@ -26,12 +26,9 @@
 
               <button class="btn btn-info mr-1" [routerLink]="['/nuevousuario', persona.IDPERSONA]" title="Editar">
                  <i class="fa fa-pen"></i>
-                 <!-- fa-user-edit -->
               </button>
 
-              <button class="btn btn-danger" title="Autorizados"> <!--(click)="borrarHeroe(heroe, i)"> -->
-                <!--  <i class="far fa-eye"></i>
-                  <i class="fa fa-trash"></i> -->
+              <button class="btn btn-danger" [routerLink]="['/autorizados', persona.IDPERSONA]" title="Autorizados">
                   <i class="fas fa-street-view"></i>
              </button>
 
