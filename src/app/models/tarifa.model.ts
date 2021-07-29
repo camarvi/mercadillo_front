@@ -10,7 +10,7 @@ export class TarifaModel {
         this.COD_MER = 0;
         this.F_INICIO = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
         this.TARIFA = 0;
-        this.F_FIN = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+        this.F_FIN = null;
  
      }
 }

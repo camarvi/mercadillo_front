@@ -9,12 +9,13 @@ import { MercadilloInterface, Sexo, Tipovia } from '../interfaces/mercadillos-re
 import { ParcelaInterface } from '../interfaces/parcela-response';
 import { DiaSemana } from '../interfaces/diasemana-response';
 import { UsuarioModel } from '../models/usuario.model';
-import { PersonaInterface } from '../interfaces/mercadillos-response';
+import { PersonaInterface, ParentescoInterface } from '../interfaces/mercadillos-response';
 import { MercadilloModel } from '../models/mercadillo.model';
 import { ParcelaModel } from '../models/parcela.model';
 //import { TarifaInterface } from '../interfaces/tarifa-response';
 import { TarifaModel } from '../models/tarifa.model';
 import { TarifaInterface } from '../interfaces/tarifa-response';
+import { AutorizadosInterface } from '../interfaces/autorizados-response';
 
 
 
@@ -37,6 +38,10 @@ export class MercadillosService {
 
   getDiaSemana(): Observable<DiaSemana[]> {
     return this.http.get<DiaSemana[]>(`${this.baseUrl}/diassemana`);
+  }
+
+  getParentesco(): Observable<ParentescoInterface[]>{
+    return this.http.get<ParentescoInterface[]>(`${this.baseUrl}/parentesco`);
   }
 
 
@@ -198,7 +203,7 @@ export class MercadillosService {
     let anioA = mitarifa.F_INICIO.slice(0, 4);
     let mesA = mitarifa.F_INICIO.slice(5, 7);
     let diaA = mitarifa.F_INICIO.slice(8, 10);
-    if (mitarifa.F_FIN) {
+    if (mitarifa.F_FIN!=null) {
       let anioF = mitarifa.F_FIN.slice(0, 4);
       let mesF = mitarifa.F_FIN.slice(5, 7);
       let diaF = mitarifa.F_FIN.slice(8, 10);
@@ -212,11 +217,12 @@ export class MercadillosService {
     mitarifa.F_INICIO = fechaAok;
     mitarifa.F_FIN = fechaFok;
 
+
     return this.http.post(`${this.baseUrl}/tarifas`, mitarifa)
       .pipe(
         map((resp: any) => {
-          console.log("Respuesta de Node");
-          console.log(resp[0]);
+          //console.log("Respuesta de Node");
+          //console.log(resp[0]);
           tarifa.IDTARIFA = resp[0];
           return tarifa;
         })
@@ -227,5 +233,13 @@ export class MercadillosService {
   deleteTarifa(id: string) {
     return this.http.delete(`${this.baseUrl}/tarifas/${id}`);
   }
+
+
+// AUTORIZADOS
+
+getAutorizados(id : string ): Observable<AutorizadosInterface[]> {
+  return this.http.get<AutorizadosInterface[]>(`${this.baseUrl}/autorizados/${id}`);
+}
+
 
 }

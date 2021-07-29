@@ -34,7 +34,7 @@ export interface DiaSemanaInterface {
 }
 
 
-export interface Parentesco {
+export interface ParentescoInterface {
     COD_PARENTESCO: number;
     DES_PARENTESCO: string;
 }

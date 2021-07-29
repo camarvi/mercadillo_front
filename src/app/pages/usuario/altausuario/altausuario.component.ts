@@ -29,13 +29,13 @@ export class AltausuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Captura el Id del heroe si viene como parametro en la url
+    //Captura el Id del usuario si viene como parametro en la url
     
     const id= this.route.snapshot.paramMap.get('id');
   
     console.log(id);
     
-    if (id !=='nuevo'){  //Voy a modificar un heroe
+    if (id !=='nuevo'){  //Voy a modificar un usuario
       this.mercadillosService.buscarUsuarioId(id)
         .subscribe( (resp : UsuarioModel) =>{
           this.usuario = resp[0];
@@ -60,8 +60,7 @@ export class AltausuarioComponent implements OnInit {
     this.mercadillosService.getTipoVia()
         .subscribe( resp => {
           this.vias = resp;
-        })
-
+        });
   }
 
   guardar( forma : NgForm){
@@ -81,10 +80,8 @@ export class AltausuarioComponent implements OnInit {
       icon : 'info'
     });
     Swal.showLoading();
-
-   
+ 
     let peticion : Observable<any>;
-
   
     if (this.usuario.IDPERSONA !==0 ){
       peticion = this.mercadillosService.updateUsuario(this.usuario);
@@ -92,8 +89,7 @@ export class AltausuarioComponent implements OnInit {
       peticion = this.mercadillosService.crearUsuario(this.usuario);   
     }
 
-      peticion.subscribe( resp => {
-        
+      peticion.subscribe( resp => {       
         Swal.fire({
           title : this.usuario.NOMBRE,
           text : 'Se actualizo correctamente..',
@@ -102,20 +98,5 @@ export class AltausuarioComponent implements OnInit {
 
         });
   
-
-  /*  console.log("Antes de Llamar al Servicio");
-    console.log(this.usuario);
-
-    this.mercadillosService.crearUsuario(this.usuario)
-      .subscribe( resp => {
-        console.log("Usuario Almacenado");
-      });
-
-    console.log(forma.value);
-    
-    console.log("OBJETO USUARIO VALOR");
-    console.log(this.usuario); 
-  }
-*/
   }
 }

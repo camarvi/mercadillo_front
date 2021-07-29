@@ -17,6 +17,9 @@ export class TarifasGridComponent implements OnInit {
   @Output()
   propagar = new EventEmitter<string>();
 
+  //constructor(private mercadilloService : MercadillosService,
+  //            private router: Router) { }
+
   constructor(private mercadilloService : MercadillosService,
               private router: Router) { }
 
@@ -24,7 +27,7 @@ export class TarifasGridComponent implements OnInit {
 
   }
 
-eliminar(id){
+eliminar(id, indice:number){
   //console.log("Dentro de eliminar");
   //console.log("IDTARIFA RECIBIDO " + id);
   //this.mercadilloService.deleteTarifa(id)
@@ -38,8 +41,25 @@ eliminar(id){
   //  });
   //
   //  this.router.navigate(['/tarifamer/1/ERCADILLO%20CABO%20DE%20GATA']);
-  this.propagar.emit(id);
 
+  
+
+
+  Swal.fire({
+    title:'¿Está seguro ?',
+    text :`Está seguro que desara borrar el registro`,
+    icon : 'question',
+    showConfirmButton : true,
+    showCancelButton : true
+  }).then( resp => {
+
+     if (resp.value) {
+      this.tarifas.splice(indice,1);
+      this.propagar.emit(id);
+     } 
+
+  });
+   
 }
 
 }

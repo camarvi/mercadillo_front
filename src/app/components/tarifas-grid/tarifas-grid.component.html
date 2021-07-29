@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tarifa of tarifas">
+        <tr *ngFor="let tarifa of tarifas; let i=index">
           <td>{{ tarifa.F_INICIO }}</td>
           <td>{{ tarifa.TARIFA}}</td>
           <td>{{ tarifa.F_FIN }}</td>
@@ -26,7 +26,7 @@
             
             <button class="btn btn-success mr-1" 
                 data-toggle="tooltip" data-placement="top" title="Borrar"    
-                (click)="eliminar(tarifa.IDTARIFA)"
+                (click)="eliminar(tarifa.IDTARIFA, i)"
                 >
               <i class="fa fa-trash-alt"></i>
               <!-- fa-user-edit -->
