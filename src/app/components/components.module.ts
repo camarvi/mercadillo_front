@@ -9,6 +9,7 @@ import { NoresultadosComponent } from './noresultados/noresultados.component';
 import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.component';
 import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
 import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
+import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.component';
 
 
 
@@ -20,7 +21,8 @@ import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
     NoresultadosComponent,
     MercadillosGridComponent,
     ParcelasGridComponent,
-    TarifasGridComponent
+    TarifasGridComponent,
+    ParentescoGridComponent
   ],
   exports : [
     NavbarComponent,
@@ -29,7 +31,8 @@ import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
     NoresultadosComponent,
     MercadillosGridComponent,
     ParcelasGridComponent,
-    TarifasGridComponent
+    TarifasGridComponent,
+    ParentescoGridComponent
   ],
   imports: [
     CommonModule,

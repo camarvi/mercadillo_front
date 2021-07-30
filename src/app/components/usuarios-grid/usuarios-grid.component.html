@@ -1,5 +1,4 @@
 
-
 <div class="mt-2" id="htmlData">
     <table  *ngIf="personas.length > 0"  class="table table-bordered table-striped">
         <thead class="thead-primary">
@@ -11,7 +10,7 @@
             <th scope="col">Ap2</th>
             <th scope="col">Nombre</th>
             <th scope="col">Tlf</th>
-            <th scope="col"></th>
+            <th scope="col"></th> 
           </tr>
         </thead>
         <tbody>
@@ -31,14 +30,12 @@
               <button class="btn btn-danger" [routerLink]="['/autorizados', persona.IDPERSONA]" title="Autorizados">
                   <i class="fas fa-street-view"></i>
              </button>
-
           </td>
-
-
           </tr>
          
         </tbody>
       </table>
+</div>
  
   
 

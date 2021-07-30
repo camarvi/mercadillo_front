@@ -1,0 +1,39 @@
+<div class="mt-2" id="htmlData">
+    <table *ngIf="autorizados.length > 0" class="table table-bordered table-striped">
+      <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+        <tr class="table-primary">
+          <th scope="col">Nombre</th>
+          <th scope="col">Ap1</th>
+          <th scope="col">Ap2</th>
+          <th scope="col">Parentesco</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let autorizado of autorizados; let i=index">
+          <td>{{ autorizado.NOMBRE }}</td>
+          <td>{{ autorizado.APE1 }}</td>
+          <td>{{ autorizado.APE2 }}</td>
+          <td>{{ autorizado.DES_PARENTESCO }}</td>
+          <td>
+    
+            <button class="btn btn-danger mr-1" 
+                data-toggle="tooltip" data-placement="top" title="Editar"    
+                [routerLink]="['/home', autorizado.ID_AUTORIZADO]">
+              <i class="fa fa-pen"></i>
+              <!-- fa-user-edit -->
+            </button>
+            <button class="btn btn-success mr-1" 
+            data-toggle="tooltip" data-placement="top" title="Borrar"    
+            (click)="eliminar(autorizado.ID_AUTORIZADO, i)"
+            >
+          <i class="fa fa-trash-alt"></i>
+          
+        </button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

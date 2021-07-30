@@ -20,8 +20,7 @@ export class TarifasGridComponent implements OnInit {
   //constructor(private mercadilloService : MercadillosService,
   //            private router: Router) { }
 
-  constructor(private mercadilloService : MercadillosService,
-              private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
 
@@ -47,7 +46,7 @@ eliminar(id, indice:number){
 
   Swal.fire({
     title:'¿Está seguro ?',
-    text :`Está seguro que desara borrar el registro`,
+    text :`Está seguro que desea borrar el registro`,
     icon : 'question',
     showConfirmButton : true,
     showCancelButton : true

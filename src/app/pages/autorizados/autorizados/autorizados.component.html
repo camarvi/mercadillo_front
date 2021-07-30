@@ -1,1 +1,14 @@
-<p>autorizados works!</p>
+<div *ngIf="cargando">
+    <app-cargando></app-cargando>
+</div>
+
+<div  *ngIf="!cargando" class="text-center text-uppercase mb-4">
+    <em>
+    {{ titular[0].NIF}} - {{ titular[0].APE1}} {{ titular[0].APE2 }}, {{ titular[0].NOMBRE }} 
+    </em>
+    <div><b>Listado Autorizados</b></div>
+</div>
+
+
+<app-parentesco-grid *ngIf="autorizados.length>0" [autorizados]="autorizados" (propagar)="procesaPropagar($event)"></app-parentesco-grid>
+

@@ -241,5 +241,9 @@ getAutorizados(id : string ): Observable<AutorizadosInterface[]> {
   return this.http.get<AutorizadosInterface[]>(`${this.baseUrl}/autorizados/${id}`);
 }
 
+deleteAutorizado(id : string) {
+  return this.http.delete(`${this.baseUrl}/autorizados/${id}`);
+}
+
 
 }
