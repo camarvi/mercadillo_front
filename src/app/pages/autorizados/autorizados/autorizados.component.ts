@@ -65,9 +65,8 @@ export class AutorizadosComponent implements OnInit {
 
   
   procesaPropagar(id : string) {
-    // console.log(id);
      this.eliminar(id);
-     //this.ngOnInit();
+     
    }
 
 }
