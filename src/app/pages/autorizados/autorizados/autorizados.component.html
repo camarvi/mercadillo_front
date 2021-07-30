@@ -1,13 +1,64 @@
 <div *ngIf="cargando">
     <app-cargando></app-cargando>
 </div>
+<!--
+<form class="mb-3">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="sr-only">Dni</label>
+        <input #dni type="text" class="form-control" placeholder="Dni">
+      </div>
+      <div class="form-group col-md-3">
+        <label class="sr-only">Ap1</label>
+        <input #ap1 type="text" class="form-control" placeholder="Apellido1">
+      </div>
+      <div class="form-group col-md-3">
+        <button (click)="buscarPersona(dni.value,ap1.value)" type="submit"
+          class="form-group mx-sm-2 btn btn-outline-danger mb-2">
+          <i class="fa fa-search"></i>
+          Buscar
+        </button>
+      </div>
+    </div> 
+</form>
+-->
+
 
 <div  *ngIf="!cargando" class="text-center text-uppercase mb-4">
-    <em>
+    <em><b>
     {{ titular[0].NIF}} - {{ titular[0].APE1}} {{ titular[0].APE2 }}, {{ titular[0].NOMBRE }} 
-    </em>
+    </b></em>
     <div><b>Listado Autorizados</b></div>
 </div>
+
+<form class="mb-3">
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label class="sr-only">Dni</label>
+        <input #dni type="text" class="form-control" placeholder="Dni">
+      </div>
+      <div class="form-group col-md-3">
+        <label class="sr-only">Nombre</label>
+        <input #nombre type="text" class="form-control" placeholder="Nombre">
+      </div>
+      <div class="form-group col-md-3">
+        <label class="sr-only">Ap1</label>
+        <input #ap1 type="text" class="form-control" placeholder="Apellido1">
+      </div>
+      <div class="form-group col-md-2">
+        <label class="sr-only">Parentesco</label>
+        <input #parentesco type="text" class="form-control" placeholder="Parentesco">
+      </div>
+      
+      <div class="form-group col-md-2">
+        <button (click)="buscarPersona(dni.value,ap1.value)" type="submit"
+          class="form-group btn btn-primary mb-2">
+          <i class="fas fa-user-plus"></i>
+          Añadir
+        </button>
+      </div>
+    </div> 
+</form>
 
 
 <app-parentesco-grid *ngIf="autorizados.length>0" [autorizados]="autorizados" (propagar)="procesaPropagar($event)"></app-parentesco-grid>

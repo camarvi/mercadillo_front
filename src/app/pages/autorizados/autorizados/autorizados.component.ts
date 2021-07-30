@@ -49,6 +49,13 @@ export class AutorizadosComponent implements OnInit {
     
   }
 
+  buscarPersona(dni, ap1) {
+    console.log(dni);
+    console.log(ap1);
+
+  }
+
+
   eliminar(id: string){
   
     this.mercadilloService.deleteAutorizado(id)
