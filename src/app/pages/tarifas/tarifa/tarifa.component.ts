@@ -131,8 +131,6 @@ export class TarifaComponent implements OnInit {
     }
    
 
-
-
    }
  
   atras(){

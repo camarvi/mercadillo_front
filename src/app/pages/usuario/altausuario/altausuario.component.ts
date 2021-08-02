@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NgForm , NgModel } from '@angular/forms';
+import { NgForm  } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { Sexo, Tipovia } from 'src/app/interfaces/mercadillos-response';
@@ -52,15 +53,26 @@ export class AltausuarioComponent implements OnInit {
 
   
   cargaCombox(){
-    this.mercadillosService.getSexo()
-      .subscribe( resp => {
-        this.tipoSexo = resp;
-      });
+
+    combineLatest([
+      this.mercadillosService.getSexo(),
+      this.mercadillosService.getTipoVia()
+    ]).subscribe( ([sexo,tipovia]) =>{
+      this.tipoSexo = sexo;  
+      this.vias = tipovia
+    });
+     /*
+        this.mercadillosService.getSexo()
+          .subscribe( resp => {
+          this.tipoSexo = resp;
+        });
     
-    this.mercadillosService.getTipoVia()
-        .subscribe( resp => {
+        this.mercadillosService.getTipoVia()
+          .subscribe( resp => {
           this.vias = resp;
         });
+     */      
+  
   }
 
   guardar( forma : NgForm){

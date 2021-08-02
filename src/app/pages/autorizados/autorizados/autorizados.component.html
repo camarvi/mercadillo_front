@@ -35,7 +35,7 @@
     <div class="form-row">
       <div class="form-group col-md-2">
         <label class="sr-only">Dni</label>
-        <input #dni type="text" class="form-control" placeholder="Dni">
+        <input #dni="ngModel" name="dni" type="text" class="form-control" [(ngModel)]="nuevoAutorizado.AUTORIZADO"  placeholder="Dni">
       </div>
       <div class="form-group col-md-3">
         <label class="sr-only">Nombre</label>
@@ -51,10 +51,11 @@
       </div>
       
       <div class="form-group col-md-2">
-        <button (click)="buscarPersona(dni.value,ap1.value)" type="submit"
+        <button (click)="buscarPokemon(dni.value)" type="submit"
           class="form-group btn btn-primary mb-2">
-          <i class="fas fa-user-plus"></i>
-          Añadir
+        <!--  <i class="fas fa-user-plus"></i> -->
+          <i class="fas fa-search"></i>
+            Buscar
         </button>
       </div>
     </div> 
