@@ -17,6 +17,9 @@ export class TarifasGridComponent implements OnInit {
   @Output()
   propagar = new EventEmitter<string>();
 
+  @Output()
+  propagaEditar = new EventEmitter<TarifaInterface>();
+
   //constructor(private mercadilloService : MercadillosService,
   //            private router: Router) { }
 
@@ -59,6 +62,10 @@ eliminar(id, indice:number){
 
   });
    
+}
+
+editar(tarifa : TarifaInterface) {
+  this.propagaEditar.emit(tarifa);
 }
 
 }

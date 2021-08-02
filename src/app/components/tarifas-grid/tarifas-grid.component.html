@@ -16,13 +16,18 @@
           <td>{{ tarifa.F_FIN }}</td>
           <td>
     
+            <!--
             <button class="btn btn-danger mr-1" 
                 data-toggle="tooltip" data-placement="top" title="Editar"    
-                [routerLink]="['/home', tarifa.IDTARIFA]">
+                [routerLink]="['/home', tarifa.IDTARIFA]">              
               <i class="fa fa-pen"></i>
-              <!-- fa-user-edit -->
-            </button>
+            </button> -->
 
+            <button class="btn btn-danger mr-1" 
+            data-toggle="tooltip" data-placement="top" title="Editar"    
+            (click)="editar(tarifa)">              
+            <i class="fa fa-pen"></i>
+            </button>
             
             <button class="btn btn-success mr-1" 
                 data-toggle="tooltip" data-placement="top" title="Borrar"    

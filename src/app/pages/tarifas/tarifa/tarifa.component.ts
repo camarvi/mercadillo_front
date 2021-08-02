@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
-import { MercadillosService } from 'src/app/services/mercadillos.service';
+import { MercadillosService } from '../../../services/mercadillos.service';
+import { FechasService } from '../../../services/fechas.service';
 import { TarifaInterface } from '../../../interfaces/tarifa-response';
 import { TarifaModel } from '../../../models/tarifa.model';
 
+
+
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-tarifa',
@@ -22,7 +26,8 @@ export class TarifaComponent implements OnInit {
   public nuevaTarifa = new TarifaModel();
 
   constructor(private mercadilloService : MercadillosService,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private fechasService : FechasService) { }
 
   ngOnInit(): void {
     const id= this.route.snapshot.paramMap.get('id');
@@ -33,9 +38,12 @@ export class TarifaComponent implements OnInit {
     this.mercadilloService.getTarifasMer(id)
         .subscribe( (resp)=>{
           this.tarifas = resp;
-          console.log(this.tarifas);
+          //console.log(this.tarifas);
           this.cargando = false;
         });
+    
+    console.log(this.nuevaTarifa);
+
   }
 
 
@@ -49,26 +57,21 @@ export class TarifaComponent implements OnInit {
       return;
     }
 
-   // Swal.fire({
-   //   allowOutsideClick : false,
-   //   title : 'Espere',
-   //   text: 'Guardando información..',
-   //   icon : 'info'
-   // });
-   // Swal.showLoading();
-
    
     let peticion : Observable<any>;
-   // console.log("DATOS NUEVA TARIFA");
-   //console.log(this.nuevaTarifa);
-    peticion = this.mercadilloService.newTarifa(this.nuevaTarifa); 
+    // ESTA LINEA FUNCIONA BIEN
+    // peticion = this.mercadilloService.newTarifa(this.nuevaTarifa); 
   
-   // if (this.nuevaTarifa.IDTARIFA !==0 ){
-   //   //peticion = this.mercadillosService.updateUsuario(this.usuario);
-   // } else { //NUEVO REGISTRO  
+    if (this.nuevaTarifa.IDTARIFA !==0 ){
+    //  console.log("MODIFICAR TARIFA");
+    //  console.log(this.nuevaTarifa);
+     peticion = this.mercadilloService.updateTarifa(this.nuevaTarifa);
+    // console.log("NUEVA TARIFA");
+    // console.log(this.nuevaTarifa);
+    } else { //NUEVO REGISTRO  
    //   console.log(this.nuevaTarifa);
-   //  peticion = this.mercadilloService.newTarifa(this.nuevaTarifa);   
-   // }
+     peticion = this.mercadilloService.newTarifa(this.nuevaTarifa);   
+    }
 
       peticion.subscribe( resp => {
         
@@ -77,6 +80,7 @@ export class TarifaComponent implements OnInit {
           text : 'Se almaceno correctamente..',
           icon : 'success'
         });
+        this.nuevaTarifa = new TarifaModel();
         this.ngOnInit();
         });
   
@@ -100,10 +104,39 @@ export class TarifaComponent implements OnInit {
 
 
 
+
   procesaPropagar(id : string) {
    // console.log(id);
     this.eliminar(id);
     //this.ngOnInit();
+  }
+
+  
+  procesaPropagarEditar(tarifaRecibida : TarifaInterface) {
+    
+    console.log("TarifaRecibida");
+    console.log(tarifaRecibida);
+    
+    this.nuevaTarifa.IDTARIFA = tarifaRecibida.IDTARIFA;
+    this.nuevaTarifa.COD_MER = tarifaRecibida.COD_MER;
+    this.nuevaTarifa.F_INICIO = tarifaRecibida.F_INICIO.toString();
+    this.nuevaTarifa.F_INICIO = this.fechasService.mostrarfecha(this.nuevaTarifa.F_INICIO);
+    this.nuevaTarifa.TARIFA = tarifaRecibida.TARIFA;
+
+    try {
+      this.nuevaTarifa.F_FIN = tarifaRecibida.F_FIN.toString();
+      this.nuevaTarifa.F_FIN = this.fechasService.mostrarfecha(this.nuevaTarifa.F_FIN);
+    } catch {
+      this.nuevaTarifa.F_FIN = null;
+    }
+   
+
+
+
+   }
+ 
+  atras(){
+   this.nuevaTarifa = new TarifaModel();
   }
 
   

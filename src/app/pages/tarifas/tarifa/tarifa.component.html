@@ -27,10 +27,22 @@
 
   <div class="form-inline">
 
-    <div class="form-group ml-3 justify-content-center">
+    <div *ngIf="nuevaTarifa.IDTARIFA===0" class="form-group ml-3 justify-content-center">
       <button type="submit" class="btn btn-primary">
         <i class="fa fa-save"></i>
         Guardar
+      </button>
+    </div>
+    <div *ngIf="nuevaTarifa.IDTARIFA>0" class="form-group ml-3 justify-content-center">
+      <button type="submit" class="btn btn-danger">
+        <i class="fa fa-save"></i>
+        Editar
+      </button>
+    </div>
+    <div *ngIf="nuevaTarifa.IDTARIFA>0" class="form-group ml-3 justify-content-center">
+      <button (click)="atras()" class="btn btn-primary">
+        <i class="fas fa-undo"></i>
+        Salir
       </button>
     </div>
 
@@ -40,7 +52,7 @@
 
 
 
-<app-tarifas-grid *ngIf="tarifas.length>0" [tarifas]="tarifas" (propagar)="procesaPropagar($event)">
+<app-tarifas-grid *ngIf="tarifas.length>0" [tarifas]="tarifas" (propagar)="procesaPropagar($event)" (propagaEditar)="procesaPropagarEditar($event)" >
   
 </app-tarifas-grid>
 

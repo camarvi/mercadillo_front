@@ -189,6 +189,8 @@ export class MercadillosService {
 
   }
 
+// TARIFAS
+
 
   getTarifasMer(id: string): Observable<TarifaInterface[]> {
 
@@ -232,6 +234,49 @@ export class MercadillosService {
 
   deleteTarifa(id: string) {
     return this.http.delete(`${this.baseUrl}/tarifas/${id}`);
+  }
+
+  updateTarifa(tarifa : TarifaModel) {
+
+    console.log("DENTRO DE UPDATE TARIFA")
+
+    let mitarifa = new TarifaModel;
+    mitarifa = tarifa;
+    console.log(mitarifa);
+
+    let fechaFok;
+    let anioA = mitarifa.F_INICIO.slice(0, 4);
+    let mesA = mitarifa.F_INICIO.slice(5, 7);
+    let diaA = mitarifa.F_INICIO.slice(8, 10);
+    if (mitarifa.F_FIN!=null) {
+      let anioF = mitarifa.F_FIN.slice(0, 4);
+      let mesF = mitarifa.F_FIN.slice(5, 7);
+      let diaF = mitarifa.F_FIN.slice(8, 10);
+      fechaFok = diaF + "/" + mesF + "/" + anioF;
+
+    } else {
+      fechaFok = null;
+    }
+
+    if (fechaFok ==="//") {
+      fechaFok = null;
+    }
+
+    let fechaAok = diaA + "/" + mesA + "/" + anioA;
+    mitarifa.F_INICIO = fechaAok;
+    mitarifa.F_FIN = fechaFok;
+  
+    return this.http.put(`${this.baseUrl}/tarifas/${mitarifa.IDTARIFA}`, mitarifa)
+      .pipe(
+        map((resp: any) => {
+          //console.log("Respuesta de Node");
+          //console.log(resp[0]);
+         // tarifa.IDTARIFA = resp[0];
+          return tarifa;
+        })
+      );
+
+
   }
 
 
