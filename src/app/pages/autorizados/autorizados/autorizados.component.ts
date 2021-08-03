@@ -49,10 +49,10 @@ export class AutorizadosComponent implements OnInit {
       this.titular = titular;  
       this.autorizados = autorizados;
       this.tipoParentesco = parentescos;
-      console.log("DATOS DEL TITULAR");
-      console.log(this.titular);
-      console.log("DATOS DE LOS AUTORIZADOS");
-      console.log(this.autorizados);
+      //console.log("DATOS DEL TITULAR");
+      //console.log(this.titular);
+      //console.log("DATOS DE LOS AUTORIZADOS");
+      //console.log(this.autorizados);
       this.nuevoAutorizado.AUTORIZADO = Number(id);
       this.cargando = false;
     });

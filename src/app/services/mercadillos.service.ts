@@ -84,6 +84,10 @@ export class MercadillosService {
     return this.http.get<UsuarioModel>(`${this.baseUrl}/persona/${nif}`);
   }
 
+  buscarUsuarioNifGrid(nif: string): Observable<PersonaInterface[]> {
+    return this.http.get<PersonaInterface[]>(`${this.baseUrl}/persona/${nif}`);
+  }
+
   buscarUsuarioId(id: string): Observable<UsuarioModel> {
     return this.http.get<UsuarioModel>(`${this.baseUrl}/personaid/${id}`);
   }
