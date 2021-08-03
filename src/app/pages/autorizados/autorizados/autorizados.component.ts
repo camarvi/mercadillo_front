@@ -7,10 +7,10 @@ import { UsuarioInterface } from '../../../interfaces/usuario-response';
 
 import { AutorizadosModel } from '../../../models/autorizados.model';
 import { ParentescoInterface } from '../../../interfaces/mercadillos-response';
-
+import { UsuarioModel } from  '../../../models/usuario.model';
 
 import Swal from 'sweetalert2';
-import { UsuarioModel } from 'src/app/models/usuario.model';
+
 
 
 @Component({
@@ -25,6 +25,10 @@ export class AutorizadosComponent implements OnInit {
   public titular : UsuarioInterface ;  
   public autorizados : AutorizadosInterface[] = [];
   public nuevoAutorizado = new AutorizadosModel();
+  public buscarPersonas= new UsuarioModel();
+  public id : string;
+
+
   tipoParentesco : ParentescoInterface[] = [];
 
   constructor(private mercadilloService : MercadillosService,
@@ -32,13 +36,13 @@ export class AutorizadosComponent implements OnInit {
               private router : Router) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
 
     //console.log("ANTES DE CombineLatest");
     this.cargando = true;
     combineLatest([
-      this.mercadilloService.buscarUsuarioId(id),
-      this.mercadilloService.getAutorizados(id),
+      this.mercadilloService.buscarUsuarioId(this.id),
+      this.mercadilloService.getAutorizados(this.id),
       this.mercadilloService.getParentesco()
     ]).subscribe( ([titular,autorizados,parentescos]) =>{
       if (!titular) {
@@ -49,37 +53,54 @@ export class AutorizadosComponent implements OnInit {
       this.titular = titular;  
       this.autorizados = autorizados;
       this.tipoParentesco = parentescos;
-      //console.log("DATOS DEL TITULAR");
-      //console.log(this.titular);
-      //console.log("DATOS DE LOS AUTORIZADOS");
-      //console.log(this.autorizados);
-      this.nuevoAutorizado.AUTORIZADO = Number(id);
+      this.nuevoAutorizado.AUTORIZADO = Number(this.id);
       this.cargando = false;
     });
     
   }
 
-  buscarPersona(dni, ap1) {
-    console.log(dni);
-    console.log(ap1);
-
-  }
-
-
-  buscarPokemon(termino : string){
-   // this.router.navigate(['/buscar', termino]);
-   console.log("Dentro de BuscarPokemon");
-    console.log(termino);
-    console.log("BUSCAR POR DNI");
-    this.mercadilloService.buscarUsuarioNif(termino)
+  buscarNuevoAutorizado(){  //(termino : string){
+  
+    this.mercadilloService.buscarUsuarioNif(this.buscarPersonas.NIF)
         .subscribe( (resp: UsuarioModel) => {
-          console.log(resp)
-        //  this.nuevoAutorizado.APE1 = resp.APE1;
-         // this.nuevoAutorizado.APE2 = resp.APE2;
-         // this.nuevoAutorizado.AUTORIZADO = resp.IDPERSONA;
-        //  console.log(this.nuevoAutorizado);
-        })
+          this.buscarPersonas = resp[0];
+          console.log(resp)   
+        });
   }
+
+  limpiarPantalla(){
+    this.buscarPersonas = new UsuarioModel();
+  }
+
+  guardar(){
+
+    if (this.nuevoAutorizado.PARENTESCO>0) {
+      this.nuevoAutorizado.TITULAR = Number(this.id); 
+      this.nuevoAutorizado.AUTORIZADO = this.buscarPersonas.IDPERSONA;
+      console.log(this.nuevoAutorizado);
+      this.mercadilloService.newAutorizado(this.nuevoAutorizado)
+          .subscribe( resp =>{
+            this.nuevoAutorizado.ID_AUTORIZADO = resp[0];
+
+            Swal.fire({
+              title : "ALTA",
+              text : 'Registro añadido correctamente..',
+              icon : 'success'
+            });
+
+
+          }); 
+        this.mercadilloService.getAutorizados(this.id)
+            .subscribe( resp => {
+              this.autorizados = resp;
+            });
+       this.buscarPersonas = new UsuarioModel();     
+       this.ngOnInit();  
+          
+    }
+    
+  }
+
 
   eliminar(id: string){
   
@@ -95,10 +116,10 @@ export class AutorizadosComponent implements OnInit {
   }
 
 
-  
-  procesaPropagar(id : string) {
-     this.eliminar(id);
+  procesaPropagar(codigo : string) {
+     this.eliminar(codigo);
      
    }
+
 
 }

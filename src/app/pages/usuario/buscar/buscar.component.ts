@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { PersonaInterface } from '../../../interfaces/mercadillos-response';
-import { UsuarioInterface } from 'src/app/interfaces/usuario-response';
+
 
 @Component({
   selector: 'app-buscar',

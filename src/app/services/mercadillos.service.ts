@@ -16,6 +16,7 @@ import { ParcelaModel } from '../models/parcela.model';
 import { TarifaModel } from '../models/tarifa.model';
 import { TarifaInterface } from '../interfaces/tarifa-response';
 import { AutorizadosInterface } from '../interfaces/autorizados-response';
+import { AutorizadosModel } from '../models/autorizados.model';
 
 
 
@@ -292,6 +293,16 @@ getAutorizados(id : string ): Observable<AutorizadosInterface[]> {
 
 deleteAutorizado(id : string) {
   return this.http.delete(`${this.baseUrl}/autorizados/${id}`);
+}
+
+newAutorizado( autorizado : AutorizadosModel) {
+    return this.http.post(`${this.baseUrl}/autorizados`,autorizado)
+      .pipe(
+        map((resp : any)=>{
+          autorizado.ID_AUTORIZADO = resp[0];
+          return autorizado;
+        })
+      );
 }
 
 
