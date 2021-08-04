@@ -55,6 +55,10 @@ export class AutorizadosComponent implements OnInit {
       this.tipoParentesco = parentescos;
       this.nuevoAutorizado.AUTORIZADO = Number(this.id);
       this.cargando = false;
+    //  console.log("Listado Autorizados");
+    //  console.log(this.autorizados);
+    //  console.log("BUSCAR RESULTADO ARRAY");
+    //  this.compruebaDuplicado();
     });
     
   }
@@ -62,10 +66,30 @@ export class AutorizadosComponent implements OnInit {
   buscarNuevoAutorizado(){  //(termino : string){
   
     this.mercadilloService.buscarUsuarioNif(this.buscarPersonas.NIF)
-        .subscribe( (resp: UsuarioModel) => {
-          this.buscarPersonas = resp[0];
-          console.log(resp)   
+        .subscribe( (resp: any) => {
+          if (resp.length>0) {
+            this.buscarPersonas = resp[0];
+            console.log(resp.length)   
+          //  this.compruebaDuplicado();
+             if (this.compruebaDuplicado(this.buscarPersonas.IDPERSONA)) {
+                Swal.fire({
+                  title : "Error",
+                  text : 'Ya existe el autorizado',
+                  icon : 'warning'
+                });
+                this.buscarPersonas = new UsuarioModel();
+             } 
+
+          }  else {
+            Swal.fire({
+              title : "Error",
+              text : 'Usuario no encontrado',
+              icon : 'warning'
+            });
+            this.buscarPersonas = new UsuarioModel();
+          }      
         });
+
   }
 
   limpiarPantalla(){
@@ -101,7 +125,6 @@ export class AutorizadosComponent implements OnInit {
     
   }
 
-
   eliminar(id: string){
   
     this.mercadilloService.deleteAutorizado(id)
@@ -115,6 +138,18 @@ export class AutorizadosComponent implements OnInit {
       });
   }
 
+
+  compruebaDuplicado(valor: number){
+  
+    const resultado = this.autorizados.find( autorizado => autorizado.AUTORIZADO == valor );
+    //this.array.filter(x => x.id == this.personId)[0];
+    if (resultado) {
+      return true; // VALOR DUPLICADO , NO INSERTAR
+    } else {
+      return false; // SE PUEDE INSERTAR
+    }
+
+  }
 
   procesaPropagar(codigo : string) {
      this.eliminar(codigo);
