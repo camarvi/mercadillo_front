@@ -17,16 +17,17 @@
           <td>{{ autorizado.APE2 }}</td>
           <td>{{ autorizado.DES_PARENTESCO }}</td>
           <td>
-    
+          <!--
             <button class="btn btn-danger mr-1" 
                 data-toggle="tooltip" data-placement="top" title="Editar"    
                 [routerLink]="['/home', autorizado.ID_AUTORIZADO]">
               <i class="fa fa-pen"></i>
-              <!-- fa-user-edit -->
+             
             </button>
+          -->
             <button class="btn btn-success mr-1" 
-            data-toggle="tooltip" data-placement="top" title="Borrar"    
-            (click)="eliminar(autorizado.ID_AUTORIZADO, i)"
+              data-toggle="tooltip" data-placement="top" title="Borrar"    
+              (click)="eliminar(autorizado.ID_AUTORIZADO, i)"
             >
           <i class="fa fa-trash-alt"></i>
           

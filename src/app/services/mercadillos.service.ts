@@ -17,6 +17,7 @@ import { TarifaModel } from '../models/tarifa.model';
 import { TarifaInterface } from '../interfaces/tarifa-response';
 import { AutorizadosInterface } from '../interfaces/autorizados-response';
 import { AutorizadosModel } from '../models/autorizados.model';
+import { ActividadesInterface } from '../interfaces/actividades-response';
 
 
 
@@ -28,6 +29,10 @@ export class MercadillosService {
   private baseUrl: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
+
+  getActividades(): Observable<ActividadesInterface[]> {
+    return this.http.get<ActividadesInterface[]>(`${this.baseUrl}/actividad`);
+  }
 
   getSexo(): Observable<Sexo[]> {
     return this.http.get<Sexo[]>(`${this.baseUrl}/sexo`);
