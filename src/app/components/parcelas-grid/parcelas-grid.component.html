@@ -29,7 +29,7 @@
 
             <button *ngIf="parcela.COD_ESTADO=='V'" class="btn btn-success ml-2" data-toggle="tooltip" data-placement="top" 
             title="Asignar"
-            [routerLink]="['/home']"
+            [routerLink]="['/asignaparcela', parcela.IDPARCELAS]"
             >
               <i class="fas fa-user-plus"></i>
             </button> 

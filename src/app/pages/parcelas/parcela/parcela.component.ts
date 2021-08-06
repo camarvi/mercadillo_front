@@ -113,7 +113,7 @@ export class ParcelaComponent implements OnInit {
         //console.log(resp[0]);
      //   this.parcelaBuscada.IDPARCELAS = resp[0].IDPARCELAS;
         Swal.fire({
-          title:'ERROR : EN ALTA',
+          title:'ERROR EN ALTA',
           text: 'El numero de Parcela ya existe..',
           icon: 'error',
         });
