@@ -2,45 +2,31 @@
     <div class="form-row">
       <div class="form-group col-md-2">
         <label class="sr-only">Dni</label>
-        <input name="dni" type="text" class="form-control" placeholder="Dni">
-     <!--   <input #dni="ngModel" name="dni" type="text" class="form-control" [(ngModel)]="buscarPersonas.NIF" placeholder="Dni">
-    -->  
+        <input #dni="ngModel" name="dni" type="text" class="form-control" [(ngModel)]="buscarPersonas.NIF" placeholder="Dni">
+      
     </div>
       <div class="form-group col-md-2">
-        <label class="sr-only">Nombre</label>
-        <!--
+        <label class="sr-only">Nombre</label>    
         <input #nombre="ngModel" name="nombre" type="text" [(ngModel)]="buscarPersonas.NOMBRE" class="form-control" readonly placeholder="Nombre">
-        -->   
-        <input name="nombre" type="text" class="form-control" readonly placeholder="Nombre"> 
      </div>
       <div class="form-group col-md-2">
-        <label class="sr-only">Ape1</label>
-        <!--
+        <label class="sr-only">Ape1</label>   
         <input #ape1="ngModel" name="ape1" type="text" [(ngModel)]="buscarPersonas.APE1" class="form-control" readonly  placeholder="Ape1">
-        -->    
-        <input name="ape1" type="text" class="form-control" readonly  placeholder="Ape1">
      </div>
       <div class="form-group col-md-2">
         <label class="sr-only">Ape2</label>
-        <!--
         <input #ape2="ngModel" name="ape2" type="text" [(ngModel)]="buscarPersonas.APE2" class="form-control" readonly  placeholder="Ape2">
-        -->
      </div>
 
       
-      <div *ngIf="buscarPersonas.IDPERSONA==0" class="form-group col-md-2">
-        <button type="submit"
-        class="form-group btn btn-primary mb-2">
-        <i class="fas fa-search"></i>
-          Buscar
-      </button>
-      <!-- 
-        <button (click)="buscarNuevoAutorizado()" type="submit"
+      <div class="form-group col-md-2">
+        <button (click)="buscarUsuario()" type="submit"
           class="form-group btn btn-primary mb-2">
+
           <i class="fas fa-search"></i>
             Buscar
         </button>
-        -->
+
       </div>
       <!--
       <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-2">
@@ -52,5 +38,68 @@
       </div>
     -->
     </div> 
+</form>
+
+<form>
+<!--  <form (ngSubmit)="guardar(f)" #f="ngForm"> -->
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label>F. Efecto</label>
+        <input type="date" class="form-control" name="f_efecto" required>
+        <!--
+        <input type="text" class="form-control" 
+              #nombre="ngModel" 
+              name="nombre" 
+              [class.is-invalid]="nombre.invalid && nombre.touched" 
+              [(ngModel)]="usuario.NOMBRE"
+              required minlength="5">
+        
+        <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  
+        -->
+        </div>
+  
+      <div class="form-group col-md-4">
+        <label>Actividad</label>
+        <select class="form-control"
+            name = "actividad" >
+            <option [value]="actividad.IDACTIVIDADES" *ngFor="let actividad of listadoActividades">
+                {{actividad.DESC_ACTIVIDAD}}
+            </option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label>Nº JJAA</label>
+        <input type="text" class="form-control" name="jjaa" required>
+     <!--   <input type="text" class="form-control" 
+              #ape2 = "ngModel" 
+              name="ape2"  
+              [class.is-invalid]="ape2.invalid && ape2.touched" 
+              [(ngModel)]= "usuario.APE2"   
+        >
+        <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
+      </div> -->
+    </div>
+
+    <div class="form-group col-md-2">
+        <label>F. Fin</label>
+        <input type="date" class="form-control" name="fin_vigencia" required>
+     <!--   <input type="text" class="form-control" 
+              #ape2 = "ngModel" 
+              name="ape2"  
+              [class.is-invalid]="ape2.invalid && ape2.touched" 
+              [(ngModel)]= "usuario.APE2"   
+        >
+        <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
+      </div> -->
+    </div>
+
+   </div> 
+
+   <div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary w-25">
+      <i class="fa fa-save"></i>
+      Guardar
+    </button>
+  </div>
 </form>
   

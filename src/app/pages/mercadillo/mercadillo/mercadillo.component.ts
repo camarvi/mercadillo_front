@@ -27,7 +27,7 @@ export class MercadilloComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    console.log('Parametro recibido ' + id);
+   // console.log('Parametro recibido ' + id);
 
     this.cargaCombo();
 
