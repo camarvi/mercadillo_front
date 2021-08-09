@@ -15,15 +15,20 @@ export class AsignaparcelaComponent implements OnInit {
 
   public buscarPersonas = new UsuarioModel();
   public listadoActividades : ActividadesInterface[] = []; 
-
+  public mercadillo;
+  public parcela;
 
   constructor(private mercadillosService : MercadillosService,
               private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-
+   
+    this.parcela = this.route.snapshot.paramMap.get('par');
+    console.log("Numero Parcela : " + this.parcela);
     const id = this.route.snapshot.paramMap.get('id');
     console.log("Parametro recibido " + id);
+    this.mercadillo = this.route.snapshot.paramMap.get('mercadillo');
+    console.log("Mercadillo : " + this.mercadillo);
     this.mercadillosService.getActividades()
         .subscribe( resp => {
           this.listadoActividades = resp;

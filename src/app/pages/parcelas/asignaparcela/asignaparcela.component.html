@@ -1,4 +1,11 @@
-<form class="mb-3">
+<div class="text-center mt-2">
+  <h3> {{ mercadillo }} - Parcela Numero : {{ parcela }} </h3>
+</div>
+
+
+
+
+<form class="mb-3 mt-4">
     <div class="form-row">
       <div class="form-group col-md-2">
         <label class="sr-only">Dni</label>
@@ -21,7 +28,7 @@
       
       <div class="form-group col-md-2">
         <button (click)="buscarUsuario()" type="submit"
-          class="form-group btn btn-primary mb-2">
+          class="form-group btn btn-outline-success mb-2">
 
           <i class="fas fa-search"></i>
             Buscar
@@ -39,6 +46,8 @@
     -->
     </div> 
 </form>
+
+
 
 <form>
 <!--  <form (ngSubmit)="guardar(f)" #f="ngForm"> -->

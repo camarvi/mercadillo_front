@@ -27,7 +27,7 @@ const routes : Routes=[
   { path: 'listadoparcelas/:id/:desc', component: ListadoparcelasComponent},
   { path: 'tarifamer/:id/:desc', component: TarifaComponent },
   { path: 'autorizados/:id', component: AutorizadosComponent},
-  { path: 'asignaparcela/:id', component : AsignaparcelaComponent},
+  { path: 'asignaparcela/:par/:id/:mercadillo', component : AsignaparcelaComponent},
   { path: '**', redirectTo : '/home'}
 ];
 
