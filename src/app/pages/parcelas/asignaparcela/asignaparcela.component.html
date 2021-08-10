@@ -49,62 +49,53 @@
 
 
 
-<form>
-<!--  <form (ngSubmit)="guardar(f)" #f="ngForm"> -->
+ <form (ngSubmit)="guardar(f)" #f="ngForm">
     <div class="form-row">
       <div class="form-group col-md-2">
         <label>F. Efecto</label>
-        <input type="date" class="form-control" name="f_efecto" required>
-        <!--
-        <input type="text" class="form-control" 
-              #nombre="ngModel" 
-              name="nombre" 
-              [class.is-invalid]="nombre.invalid && nombre.touched" 
-              [(ngModel)]="usuario.NOMBRE"
-              required minlength="5">
-        
-        <small *ngIf="nombre.invalid && nombre.touched" class="form-text text-danger">Ingrese 5 letras</small>  
-        -->
+        <input type="date" class="form-control" 
+              #f_efecto="ngModel" 
+              name="f_efecto" 
+              [class.is-invalid]="f_efecto.invalid && f_efecto.touched" 
+              [(ngModel)]="nuevoMovimiento.F_EFECTIVA_MOV"
+              required>
         </div>
   
       <div class="form-group col-md-4">
         <label>Actividad</label>
         <select class="form-control"
-            name = "actividad" >
+            #actividad = "ngModel"
+            name = "actividad" 
+            [(ngModel)]="nuevoMovimiento.ACTIVIDAD">
             <option [value]="actividad.IDACTIVIDADES" *ngFor="let actividad of listadoActividades">
                 {{actividad.DESC_ACTIVIDAD}}
             </option>
         </select>
+
       </div>
       <div class="form-group col-md-2">
         <label>Nº JJAA</label>
-        <input type="text" class="form-control" name="jjaa" required>
-     <!--   <input type="text" class="form-control" 
+        <input type="text" class="form-control" 
               #ape2 = "ngModel" 
-              name="ape2"  
+              name="jjaa"  
               [class.is-invalid]="ape2.invalid && ape2.touched" 
-              [(ngModel)]= "usuario.APE2"   
+              [(ngModel)]= "nuevoMovimiento.JJAA"   
         >
         <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
-      </div> -->
-    </div>
+      </div> 
+   
 
     <div class="form-group col-md-2">
         <label>F. Fin</label>
-        <input type="date" class="form-control" name="fin_vigencia" required>
-     <!--   <input type="text" class="form-control" 
-              #ape2 = "ngModel" 
-              name="ape2"  
-              [class.is-invalid]="ape2.invalid && ape2.touched" 
-              [(ngModel)]= "usuario.APE2"   
-        >
-        <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
-      </div> -->
+       <input type="date" class="form-control"  required
+              #fin_vigencia = "ngModel" 
+              name="fin_vigencia"  
+              [class.is-invalid]="fin_vigencia.invalid && fin_vigencia.touched" 
+              [(ngModel)]= "nuevoMovimiento.FIN_VIGENCIA">
+      </div> 
     </div>
 
-   </div> 
-
-   <div class="row justify-content-center">
+   <div *ngIf="buscarPersonas.IDPERSONA>0" class="row justify-content-center">
     <button type="submit" class="btn btn-primary w-25">
       <i class="fa fa-save"></i>
       Guardar

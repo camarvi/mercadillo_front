@@ -18,6 +18,7 @@ import { TarifaInterface } from '../interfaces/tarifa-response';
 import { AutorizadosInterface } from '../interfaces/autorizados-response';
 import { AutorizadosModel } from '../models/autorizados.model';
 import { ActividadesInterface } from '../interfaces/actividades-response';
+import { MovimientoModel } from '../models/movimiento.model';
 
 
 
@@ -123,6 +124,8 @@ export class MercadillosService {
     return this.http.put(`${this.baseUrl}/mercadillo/${mercadillo.IDMERCADILLO}`, mercadillo);
   }
 
+  // PARCELAS
+
   newParcela(parcela: ParcelaModel) {
 
     //let datepipe: DatePipe = new DatePipe('en-US');
@@ -197,6 +200,10 @@ export class MercadillosService {
 
 
 
+  }
+
+  modificaEstadoParcela(parcela : string, estado : string) {
+    
   }
 
 // TARIFAS
@@ -308,6 +315,55 @@ newAutorizado( autorizado : AutorizadosModel) {
           return autorizado;
         })
       );
+}
+
+// MOVIMIENTOS
+
+newMovimiento(movimiento: MovimientoModel) {
+
+  let mimovimiento = new MovimientoModel;
+  mimovimiento = movimiento;
+  let fechaFinok;
+  let anioF = mimovimiento.FIN_VIGENCIA.slice(0, 4);
+  let mesF = mimovimiento.FIN_VIGENCIA.slice(5, 7);
+  let diaF = mimovimiento.FIN_VIGENCIA.slice(8, 10);
+  fechaFinok = diaF + "/" + mesF + "/" + anioF;
+
+  let fechaEfecok;
+  let anioEfe = mimovimiento.F_EFECTIVA_MOV.slice(0, 4);
+  let mesEfe = mimovimiento.F_EFECTIVA_MOV.slice(5, 7);
+  let diaEfe = mimovimiento.F_EFECTIVA_MOV.slice(8, 10);
+  fechaEfecok = diaEfe + "/" + mesEfe + "/" + anioEfe;
+
+  mimovimiento.FIN_VIGENCIA = fechaFinok;
+  mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
+
+  /*if (mitarifa.F_FIN!=null) {
+    let anioF = mitarifa.F_FIN.slice(0, 4);
+    let mesF = mitarifa.F_FIN.slice(5, 7);
+    let diaF = mitarifa.F_FIN.slice(8, 10);
+    fechaFok = diaF + "/" + mesF + "/" + anioF;
+
+  } else {
+    fechaFok = null;
+  } */
+
+  //let fechaAok = diaA + "/" + mesA + "/" + anioA;
+  //mitarifa.F_INICIO = fechaAok;
+  //mitarifa.F_FIN = fechaFok;
+
+
+
+  return this.http.post(`${this.baseUrl}/movimiento`, mimovimiento)
+    .pipe(
+      map((resp: any) => {
+        //console.log("Respuesta de Node");
+        //console.log(resp[0]);
+        mimovimiento.IDMOV = resp[0];
+        return mimovimiento;
+      })
+    );
+
 }
 
 
