@@ -128,11 +128,10 @@ export class MercadillosService {
 
   newParcela(parcela: ParcelaModel) {
 
-    //let datepipe: DatePipe = new DatePipe('en-US');
+   
     let miparcela = new ParcelaModel;
     miparcela = parcela;
-    //console.log("ANTES DE HACER EL POST EN EL SERVICIO");
-    //console.log(miparcela);
+    
     let anio = miparcela.FECHA_ALTA.slice(0, 4);
     let mes = miparcela.FECHA_ALTA.slice(5, 7);
     let dia = miparcela.FECHA_ALTA.slice(8, 10);
@@ -202,8 +201,19 @@ export class MercadillosService {
 
   }
 
-  modificaEstadoParcela(parcela : string, estado : string) {
-    
+  modificaEstadoParcela(parcela : ParcelaModel) {
+    //let miparcela = new ParcelaModel;
+    //miparcela = parcela;
+    //
+    //let anio = miparcela.FECHA_ESTADO.slice(0, 4);
+    //let mes = miparcela.FECHA_ESTADO.slice(5, 7);
+    //let dia = miparcela.FECHA_ESTADO.slice(8, 10);
+    //let fechaok = dia + "/" + mes + "/" + anio;
+    //miparcela.FECHA_ESTADO = fechaok;
+    console.log("Dentro de Modifica Estado Parcela");
+    console.log(parcela); 
+    return this.http.put(`${this.baseUrl}/modificaparcela/${parcela.IDPARCELAS}`, parcela);
+
   }
 
 // TARIFAS

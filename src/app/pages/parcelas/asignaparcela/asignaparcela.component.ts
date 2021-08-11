@@ -5,6 +5,8 @@ import { MercadillosService } from '../../../services/mercadillos.service';
 import { UsuarioModel } from '../../../models/usuario.model';
 import { ActividadesInterface } from '../../../interfaces/actividades-response';
 import { MovimientoModel } from '../../../models/movimiento.model';
+import { ParcelaModel } from '../../../models/parcela.model';
+import { combineLatest } from 'rxjs';
 import Swal from 'sweetalert2';
 
 
@@ -21,6 +23,8 @@ export class AsignaparcelaComponent implements OnInit {
   public parcela : string;
   public id : string;
   public nuevoMovimiento = new MovimientoModel();
+  public modificaParcela = new ParcelaModel();
+
  
 
   constructor(private mercadillosService : MercadillosService,
@@ -28,12 +32,14 @@ export class AsignaparcelaComponent implements OnInit {
 
   ngOnInit(): void {
    
+    this.modificaParcela.COD_ESTADO = "A";
+    
     this.parcela = this.route.snapshot.paramMap.get('par');
-    console.log("Numero Parcela : " + this.parcela);
+    //console.log("Numero Parcela : " + this.parcela);
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log("Parametro recibido " + this.id);
+    //console.log("Parametro recibido " + this.id);
     this.mercadillo = this.route.snapshot.paramMap.get('mercadillo');
-    console.log("Mercadillo : " + this.mercadillo);
+    //console.log("Mercadillo : " + this.mercadillo);
     this.mercadillosService.getActividades()
         .subscribe( resp => {
           this.listadoActividades = resp;
@@ -79,8 +85,32 @@ export class AsignaparcelaComponent implements OnInit {
     console.log(this.buscarPersonas);
     this.nuevoMovimiento.IDPARCELA = Number(this.id);
     this.nuevoMovimiento.TITULAR = this.buscarPersonas.IDPERSONA;
-    console.log("Datos que se tienen que gaurdar");
+    console.log("Datos que se tienen que guardar");
     console.log(this.nuevoMovimiento);
+
+    this.modificaParcela.IDPARCELAS = Number(this.id);
+    this.modificaParcela.COD_ESTADO = "A";
+    console.log("DATOS PARCELA A MODIFICAR");
+    console.log(this.modificaParcela);
+
+    combineLatest([
+      this.mercadillosService.modificaEstadoParcela(this.modificaParcela),
+      this.mercadillosService.newMovimiento(this.nuevoMovimiento)
+    ]).subscribe( ([resp,resp2]) =>{
+
+      Swal.fire({
+        title : 'Asignado',
+        text : 'Se asigna parcela correctamente..',
+        icon : 'success'
+      });
+    });
+
+
+   /*
+    this.mercadillosService.modificaEstadoParcela(this.modificaParcela)
+        .subscribe ( resp => {
+          console.log(resp);
+        });
 
     this.mercadillosService.newMovimiento(this.nuevoMovimiento)
         .subscribe( resp => {
@@ -90,6 +120,7 @@ export class AsignaparcelaComponent implements OnInit {
             icon : 'success'
           });
         })
+   */
 
   }
 

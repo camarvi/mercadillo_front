@@ -39,7 +39,7 @@
 
             <button *ngIf="parcela.COD_ESTADO=='A'" class="btn btn-info ml-2" data-toggle="tooltip" data-placement="top" 
             title="Ver"
-            [routerLink]="['/home']"
+            [routerLink]="['/historico', parcela.NUMERO, parcela.IDPARCELAS, mercadillo]"
             >
               <i class="far fa-eye"></i>
             </button> 

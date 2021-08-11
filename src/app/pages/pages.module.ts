@@ -13,6 +13,7 @@ import { ListadoparcelasComponent } from './parcelas/listadoparcelas/listadoparc
 import { TarifaComponent } from './tarifas/tarifa/tarifa.component';
 import { AutorizadosComponent } from './autorizados/autorizados/autorizados.component';
 import { AsignaparcelaComponent } from './parcelas/asignaparcela/asignaparcela.component';
+import { HistoricoComponent } from './movimientos/historico/historico.component';
 
 
 
@@ -28,7 +29,8 @@ import { AsignaparcelaComponent } from './parcelas/asignaparcela/asignaparcela.c
     ListadoparcelasComponent,
     TarifaComponent,
     AutorizadosComponent,
-    AsignaparcelaComponent
+    AsignaparcelaComponent,
+    HistoricoComponent
 
   ],
   imports: [
