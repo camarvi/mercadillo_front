@@ -16,6 +16,7 @@ export class ListadoparcelasComponent implements OnInit {
   public parcelas : ParcelaInterface[] = [];
   public cargando : boolean = false;
   public mercadillo : string;
+  public id : string;
 
 
   constructor(private mercadilloService : MercadillosService,
@@ -23,14 +24,14 @@ export class ListadoparcelasComponent implements OnInit {
 
   ngOnInit(): void {
     //Obtener el Id del mercadillo
-    const id= this.route.snapshot.paramMap.get('id');
+    this.id= this.route.snapshot.paramMap.get('id');
     this.mercadillo = this.route.snapshot.paramMap.get('desc');
     this.cargando = true;
-    console.log("Id recibido " + id);
-    console.log("Nombre recibido " + this.mercadillo);
-    this.mercadilloService.getParcelasMer(id)
+   // console.log("Id recibido " + this.id);
+  //  console.log("Nombre recibido " + this.mercadillo);
+    this.mercadilloService.getParcelasMer(this.id)
       .subscribe( (resp)=>{     
-        console.log(resp);
+      //  console.log(resp);
         this.parcelas = resp;
         this.cargando = false;
       });

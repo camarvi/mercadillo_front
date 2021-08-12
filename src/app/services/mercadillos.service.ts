@@ -378,8 +378,6 @@ newMovimiento(movimiento: MovimientoModel) {
 }
 
 getDetallesMovimientos(id : string ) : Observable<MovimientoDetallenterface[]> {
-  console.log("Dentro del servicio");
-  console.log("Parametro recibido " + id);
   return this.http.get<MovimientoDetallenterface[]>(`${this.baseUrl}/movimientosdetalles/${id}`);
 }
 

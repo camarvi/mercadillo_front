@@ -1,7 +1,7 @@
 
 
 
-<div class="mt-2" id="htmlData">
+<div *ngIf="datosMercadillo" class="mt-2" id="htmlData">
     <table *ngIf="parcelas.length > 0" class="table table-bordered table-striped">
       <thead class="thead-primary">
         <!--  <tr class="d-flex"> -->
@@ -30,7 +30,7 @@
               <!-- far fa-eye -->
             </button>
 
-            <button *ngIf="parcela.COD_ESTADO=='V'" class="btn btn-success ml-2" data-toggle="tooltip" data-placement="top" 
+            <button *ngIf="parcela.COD_ESTADO=='V' || datosMercadillo.MULTITITULAR=='S'" class="btn btn-success ml-2" data-toggle="tooltip" data-placement="top" 
             title="Asignar"
             [routerLink]="['/asignaparcela', parcela.NUMERO, parcela.IDPARCELAS, mercadillo]"
             >

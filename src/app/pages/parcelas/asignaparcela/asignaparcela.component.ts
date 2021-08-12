@@ -81,17 +81,17 @@ export class AsignaparcelaComponent implements OnInit {
       });
       return;
     }
-    console.log("Datos de la Persona");
-    console.log(this.buscarPersonas);
+   // console.log("Datos de la Persona");
+   // console.log(this.buscarPersonas);
     this.nuevoMovimiento.IDPARCELA = Number(this.id);
     this.nuevoMovimiento.TITULAR = this.buscarPersonas.IDPERSONA;
-    console.log("Datos que se tienen que guardar");
-    console.log(this.nuevoMovimiento);
+   // console.log("Datos que se tienen que guardar");
+   // console.log(this.nuevoMovimiento);
 
     this.modificaParcela.IDPARCELAS = Number(this.id);
     this.modificaParcela.COD_ESTADO = "A";
-    console.log("DATOS PARCELA A MODIFICAR");
-    console.log(this.modificaParcela);
+   // console.log("DATOS PARCELA A MODIFICAR");
+   // console.log(this.modificaParcela);
 
     combineLatest([
       this.mercadillosService.modificaEstadoParcela(this.modificaParcela),
@@ -103,6 +103,9 @@ export class AsignaparcelaComponent implements OnInit {
         text : 'Se asigna parcela correctamente..',
         icon : 'success'
       });
+
+      this.buscarPersonas = new UsuarioModel();
+
     });
 
 

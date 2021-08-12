@@ -101,7 +101,7 @@ export class AutorizadosComponent implements OnInit {
     if (this.nuevoAutorizado.PARENTESCO>0) {
       this.nuevoAutorizado.TITULAR = Number(this.id); 
       this.nuevoAutorizado.AUTORIZADO = this.buscarPersonas.IDPERSONA;
-      console.log(this.nuevoAutorizado);
+   //   console.log(this.nuevoAutorizado);
       this.mercadilloService.newAutorizado(this.nuevoAutorizado)
           .subscribe( resp =>{
             this.nuevoAutorizado.ID_AUTORIZADO = resp[0];
