@@ -10,6 +10,7 @@ import { MercadillosGridComponent } from './mercadillos-grid/mercadillos-grid.co
 import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
 import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
 import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.component';
+import { MovimientosGridComponent } from './movimientos-grid/movimientos-grid.component';
 
 
 
@@ -22,7 +23,8 @@ import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.compo
     MercadillosGridComponent,
     ParcelasGridComponent,
     TarifasGridComponent,
-    ParentescoGridComponent
+    ParentescoGridComponent,
+    MovimientosGridComponent
   ],
   exports : [
     NavbarComponent,
@@ -32,7 +34,8 @@ import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.compo
     MercadillosGridComponent,
     ParcelasGridComponent,
     TarifasGridComponent,
-    ParentescoGridComponent
+    ParentescoGridComponent,
+    MovimientosGridComponent
   ],
   imports: [
     CommonModule,

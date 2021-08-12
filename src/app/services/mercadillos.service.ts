@@ -19,6 +19,7 @@ import { AutorizadosInterface } from '../interfaces/autorizados-response';
 import { AutorizadosModel } from '../models/autorizados.model';
 import { ActividadesInterface } from '../interfaces/actividades-response';
 import { MovimientoModel } from '../models/movimiento.model';
+import { MovimientoDetallenterface } from '../interfaces/movimiento-response';
 
 
 
@@ -374,6 +375,12 @@ newMovimiento(movimiento: MovimientoModel) {
       })
     );
 
+}
+
+getDetallesMovimientos(id : string ) : Observable<MovimientoDetallenterface[]> {
+  console.log("Dentro del servicio");
+  console.log("Parametro recibido " + id);
+  return this.http.get<MovimientoDetallenterface[]>(`${this.baseUrl}/movimientosdetalles/${id}`);
 }
 
 

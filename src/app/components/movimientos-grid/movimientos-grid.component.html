@@ -1,0 +1,41 @@
+<div class="mt-2" id="htmlData">
+    <table *ngIf="movimientos.length > 0" class="table table-bordered table-striped">
+      <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+        <tr class="table-primary">
+          <th scope="col">JJAA</th>
+          <th scope="col">Nif</th>
+          <th scope="col">Ap1</th>
+          <th scope="col">Ap2</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">F Mov</th>  
+          <th scope="col">Oper</th>
+          <th scope="col">Activo</th>
+          <th scope="col">F Vigen</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimiento of movimientos">
+          <td>{{ movimiento.JJAA}}</td>
+          <td>{{ movimiento.NIF }}</td>
+          <td>{{ movimiento.APE1 }}</td>
+          <td>{{ movimiento.APE2 }}</td>
+          <td>{{ movimiento.NOMBRE }}</td>
+          <td>{{ movimiento.F_EFECTIVA_MOV }}</td>
+          <td>{{ movimiento.DES_OPERACION }}</td>
+          <td>{{ movimiento.ACTIVO }}</td>
+          <td>{{ movimiento.FIN_VIGENCIA }}</td>
+          <td>
+    
+            <button *ngIf="movimiento.ACTIVO =='S'"  class="btn btn-info mr-2" 
+                data-toggle="tooltip" data-placement="top" title="Editar"    
+                [routerLink]="['/home']">
+              <i class="far fa-eye"></i>
+              <!-- fa-user-edit -->
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    

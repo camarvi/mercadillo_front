@@ -10,3 +10,17 @@ export interface MovimientoInterface {
     ACTIVO:         string;
     FIN_VIGENCIA:   Date;
 }
+
+
+export interface MovimientoDetallenterface {
+    JJAA:           string;
+    TITULAR:        number;
+    NIF:            string;
+    APE1:           string;
+    APE2:           string;
+    NOMBRE:         string;
+    F_EFECTIVA_MOV: string;
+    DES_OPERACION:  string;
+    ACTIVO:         string;
+    FIN_VIGENCIA:   string;
+}
