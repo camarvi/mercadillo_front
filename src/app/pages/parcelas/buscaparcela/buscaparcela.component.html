@@ -1,0 +1,30 @@
+<h3>Buscar Parcela </h3>
+
+<form class="mb-3">
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label class="sr-only">Mercadillo</label>
+      <select class="form-control" #mercadillo>
+        <option *ngFor="let mercadillo of mercadillos" 
+        [value]="mercadillo.IDMERCADILLO">
+      {{mercadillo.DESCRIPCION}}
+    </option> 
+  </select>      
+
+    </div>
+    <div class="form-group col-md-2">
+      <label class="sr-only">Parcela</label>
+      <input #parcela type="text" class="form-control" placeholder="Nº Parcela">
+    </div>
+    
+    <div class="form-group col-md-3">
+      <button (click)="buscarParcela(mercadillo.value,parcela.value)" type="submit"
+        class="form-group mx-sm-2 btn btn-outline-success mb-2">
+        <i class="fa fa-search"></i>
+        Buscar
+      </button>
+    </div>
+
+  </div>
+
+</form>

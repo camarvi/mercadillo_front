@@ -14,6 +14,7 @@ import { TarifaComponent } from './pages/tarifas/tarifa/tarifa.component';
 import { AutorizadosComponent } from './pages/autorizados/autorizados/autorizados.component';
 import { AsignaparcelaComponent } from './pages/parcelas/asignaparcela/asignaparcela.component';
 import { HistoricoComponent } from './pages/movimientos/historico/historico.component';
+import { BuscaparcelaComponent } from './pages/parcelas/buscaparcela/buscaparcela.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -29,6 +30,7 @@ const routes : Routes=[
   { path: 'tarifamer/:id/:desc', component: TarifaComponent },
   { path: 'autorizados/:id', component: AutorizadosComponent},
   { path: 'asignaparcela/:par/:id/:mercadillo', component : AsignaparcelaComponent},
+  { path: 'buscaparcela' , component: BuscaparcelaComponent},
   { path: 'historico/:par/:id/:mercadillo', component : HistoricoComponent},
   { path: '**', redirectTo : '/home'}
 ];

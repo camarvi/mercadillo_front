@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
 import { AltausuarioComponent } from './usuario/altausuario/altausuario.component';
 import { FormsModule }   from '@angular/forms';
-import { BuscardniComponent } from './usuario/buscardni/buscardni.component';
+//import { BuscardniComponent } from './usuario/buscardni/buscardni.component';
 import { BuscarComponent } from './usuario/buscar/buscar.component';
 import { MercadilloComponent } from './mercadillo/mercadillo/mercadillo.component';
 import { BuscarmercadilloComponent } from './mercadillo/buscarmercadillo/buscarmercadillo.component';
@@ -14,6 +14,7 @@ import { TarifaComponent } from './tarifas/tarifa/tarifa.component';
 import { AutorizadosComponent } from './autorizados/autorizados/autorizados.component';
 import { AsignaparcelaComponent } from './parcelas/asignaparcela/asignaparcela.component';
 import { HistoricoComponent } from './movimientos/historico/historico.component';
+import { BuscaparcelaComponent } from './parcelas/buscaparcela/buscaparcela.component';
 
 
 
@@ -21,7 +22,7 @@ import { HistoricoComponent } from './movimientos/historico/historico.component'
   declarations: [
     HomeComponent,
     AltausuarioComponent,
-    BuscardniComponent,
+   // BuscardniComponent,
     BuscarComponent,
     MercadilloComponent,
     BuscarmercadilloComponent,
@@ -30,7 +31,8 @@ import { HistoricoComponent } from './movimientos/historico/historico.component'
     TarifaComponent,
     AutorizadosComponent,
     AsignaparcelaComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    BuscaparcelaComponent
 
   ],
   imports: [
