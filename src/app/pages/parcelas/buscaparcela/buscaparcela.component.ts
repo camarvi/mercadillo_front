@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
 
+
 @Component({
   selector: 'app-buscaparcela',
   templateUrl: './buscaparcela.component.html',
@@ -26,7 +27,10 @@ export class BuscaparcelaComponent implements OnInit {
   }
 
 
-buscarParcela(dni : string, name : string){
+buscarParcela(mercadillo : string, parcela : string){
+
+    console.log(mercadillo);
+    console.log(parcela);
 
 }
 
