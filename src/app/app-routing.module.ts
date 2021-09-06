@@ -15,6 +15,7 @@ import { AutorizadosComponent } from './pages/autorizados/autorizados/autorizado
 import { AsignaparcelaComponent } from './pages/parcelas/asignaparcela/asignaparcela.component';
 import { HistoricoComponent } from './pages/movimientos/historico/historico.component';
 import { BuscaparcelaComponent } from './pages/parcelas/buscaparcela/buscaparcela.component';
+import { DetalleComponent } from './pages/movimientos/detalle/detalle.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -32,6 +33,7 @@ const routes : Routes=[
   { path: 'asignaparcela/:par/:id/:mercadillo', component : AsignaparcelaComponent},
   { path: 'buscaparcela' , component: BuscaparcelaComponent},
   { path: 'historico/:par/:id/:mercadillo', component : HistoricoComponent},
+  { path: 'detallemovimiento/:iddetalle', component : DetalleComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

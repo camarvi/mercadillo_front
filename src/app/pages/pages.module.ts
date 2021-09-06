@@ -15,6 +15,7 @@ import { AutorizadosComponent } from './autorizados/autorizados/autorizados.comp
 import { AsignaparcelaComponent } from './parcelas/asignaparcela/asignaparcela.component';
 import { HistoricoComponent } from './movimientos/historico/historico.component';
 import { BuscaparcelaComponent } from './parcelas/buscaparcela/buscaparcela.component';
+import { DetalleComponent } from './movimientos/detalle/detalle.component';
 
 
 
@@ -32,7 +33,8 @@ import { BuscaparcelaComponent } from './parcelas/buscaparcela/buscaparcela.comp
     AutorizadosComponent,
     AsignaparcelaComponent,
     HistoricoComponent,
-    BuscaparcelaComponent
+    BuscaparcelaComponent,
+    DetalleComponent
 
   ],
   imports: [

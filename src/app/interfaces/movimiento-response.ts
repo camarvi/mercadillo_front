@@ -13,6 +13,7 @@ export interface MovimientoInterface {
 
 
 export interface MovimientoDetallenterface {
+    IDMOV:          number;
     JJAA:           string;
     TITULAR:        number;
     NIF:            string;

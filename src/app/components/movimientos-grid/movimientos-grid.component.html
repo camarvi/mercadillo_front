@@ -28,9 +28,10 @@
           <td>{{ movimiento.FIN_VIGENCIA }}</td>
           <td>
     
+
             <button *ngIf="movimiento.ACTIVO =='S'"  class="btn btn-info mr-2" 
                 data-toggle="tooltip" data-placement="top" title="Editar"    
-                [routerLink]="['/home']">
+                [routerLink]="['/detallemovimiento', movimiento.IDMOV]">
               <i class="far fa-eye"></i>
               <!-- fa-user-edit -->
             </button>
