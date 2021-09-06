@@ -381,5 +381,9 @@ getDetallesMovimientos(id : string ) : Observable<MovimientoDetallenterface[]> {
   return this.http.get<MovimientoDetallenterface[]>(`${this.baseUrl}/movimientosdetalles/${id}`);
 }
 
+getMovimiento(id : string) : Observable<MovimientoDetallenterface> {
+  return this.http.get<MovimientoDetallenterface>(`${this.baseUrl}/movimiento/${id}`);
+}
+
 
 }

@@ -30,7 +30,7 @@ export class HistoricoComponent implements OnInit {
     this.mercadillosService.getDetallesMovimientos(this.id)
         .subscribe( resp =>{
           this.movimientos = resp;
-          console.log("Movimientos");
+          console.log("Listado de Movimientos");
           console.log(this.movimientos);
         });
     
