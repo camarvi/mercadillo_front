@@ -33,7 +33,7 @@ const routes : Routes=[
   { path: 'asignaparcela/:par/:id/:mercadillo', component : AsignaparcelaComponent},
   { path: 'buscaparcela' , component: BuscaparcelaComponent},
   { path: 'historico/:par/:id/:mercadillo', component : HistoricoComponent},
-  { path: 'detallemovimiento/:iddetalle', component : DetalleComponent},
+  { path: 'detallemovimiento/:iddetalle/:mercadillo', component : DetalleComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

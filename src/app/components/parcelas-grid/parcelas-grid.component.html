@@ -17,9 +17,11 @@
       <tbody>
         <tr *ngFor="let parcela of parcelas">
           <td>{{ parcela.NUMERO }}</td>
-          <td>{{ parcela.FECHA_ALTA | date:'dd/MM/yyyy' }}</td>
+          <td>{{ parcela.FECHA_ALTA }}</td>
+        <!--  <td>{{ parcela.FECHA_ALTA | date:'dd/MM/yyyy' }}</td>  -->
           <td>{{ parcela.SUPERFICIE }}</td>
-          <td>{{ parcela.FECHA_ESTADO | date:'dd/MM/yyyy' }}</td>
+        <!--  <td>{{ parcela.FECHA_ESTADO | date:'dd/MM/yyyy' }}</td>  -->
+          <td>{{ parcela.FECHA_ESTADO }}</td>
           <td>{{ parcela.COD_ESTADO }}</td>  
           <td>
     

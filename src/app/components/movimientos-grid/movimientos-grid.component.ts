@@ -9,6 +9,7 @@ import { MovimientoDetallenterface } from '../../interfaces/movimiento-response'
 export class MovimientosGridComponent implements OnInit {
 
   @Input() movimientos !:  MovimientoDetallenterface[];
+  @Input() nombremercadillo !:  string;
 
   constructor() { }
 

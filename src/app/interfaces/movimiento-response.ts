@@ -14,12 +14,15 @@ export interface MovimientoInterface {
 
 export interface MovimientoDetallenterface {
     IDMOV:          number;
+    IDPARCELA:      number;
     JJAA:           string;
     TITULAR:        number;
+    FECHA_MOV:      string;
     NIF:            string;
     APE1:           string;
     APE2:           string;
     NOMBRE:         string;
+    ACTIVIDAD:      number;
     F_EFECTIVA_MOV: string;
     DES_OPERACION:  string;
     ACTIVO:         string;
