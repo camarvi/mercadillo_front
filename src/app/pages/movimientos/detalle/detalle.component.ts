@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 import { MercadillosService } from '../../../services/mercadillos.service';
 
 import { MovimientoDetallenterface } from '../../../interfaces/movimiento-response';
 import { ParcelaInterface } from '../../../interfaces/parcela-response';
 import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
+import { ActividadesInterface } from '../../../interfaces/actividades-response';
+
+import { Location } from '@angular/common';
 
 import { combineLatest } from 'rxjs';
 
@@ -20,12 +25,15 @@ export class DetalleComponent implements OnInit {
   public datosMovimiento : MovimientoDetallenterface;
   public datosParcela : ParcelaInterface;
   listadoMercadillos: MercadilloInterface[] = [];
+  actividad : ActividadesInterface;
   mercadillo : string;
 
   
 
   constructor(private mercadillosServices : MercadillosService,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute,
+              private location : Location,
+              private router : Router) { }
 
   ngOnInit(): void {
     
@@ -46,11 +54,12 @@ export class DetalleComponent implements OnInit {
                 console.log("Datos de la Parcela");
                 console.log(resp[0]);
               });
-            // this.mercadillosServices.buscarMercadilloId(this.datosParcela.IDMERCADILLO)
-            //     .subscribe(resp =>{
-            //       console.log("Datos Mercadillo");
-            //       console.log(resp);
-            //     });  
+            this.mercadillosServices.getActividadId(this.datosMovimiento.ACTIVIDAD.toString())
+                 .subscribe(resp =>{
+                  console.log("Datos Actividad");
+                  this.actividad = resp[0];
+                   console.log(this.actividad);
+                 });  
           }
 
           // if (this.datosParcela.IDMERCADILLO>0) {
@@ -67,6 +76,17 @@ export class DetalleComponent implements OnInit {
 
   }
 
+  onRegresar(){
+
+    this.location.back();
+
+}
+verAutorizados() {
+ 
+    //console.log(movie.id);
+    this.router.navigate(['/autorizados', this.datosMovimiento.TITULAR]);
+  
+  }
 
 
 }

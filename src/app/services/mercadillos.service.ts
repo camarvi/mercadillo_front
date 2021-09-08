@@ -125,6 +125,13 @@ export class MercadillosService {
     return this.http.put(`${this.baseUrl}/mercadillo/${mercadillo.IDMERCADILLO}`, mercadillo);
   }
 
+  // ACTIVIDAD
+
+  getActividadId(id : string) : Observable<ActividadesInterface> {
+    return this.http.get<ActividadesInterface>(`${this.baseUrl}/actividad/${id}`);
+  }
+
+
   // PARCELAS
 
   newParcela(parcela: ParcelaModel) {
