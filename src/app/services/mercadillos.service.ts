@@ -20,6 +20,7 @@ import { AutorizadosModel } from '../models/autorizados.model';
 import { ActividadesInterface } from '../interfaces/actividades-response';
 import { MovimientoModel } from '../models/movimiento.model';
 import { MovimientoDetallenterface } from '../interfaces/movimiento-response';
+import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
 
 
 
@@ -392,5 +393,11 @@ getMovimiento(id : string) : Observable<MovimientoDetallenterface> {
   return this.http.get<MovimientoDetallenterface>(`${this.baseUrl}/movimiento/${id}`);
 }
 
+
+// INFORMES
+
+getAsignadosMer(id : string) : Observable<AdjudicadosDetallenterface[]>{
+  return this.http.get<AdjudicadosDetallenterface[]>(`${this.baseUrl}/adjudicadosmer/${id}`);
+}
 
 }

@@ -11,6 +11,7 @@ import { ParcelasGridComponent } from './parcelas-grid/parcelas-grid.component';
 import { TarifasGridComponent } from './tarifas-grid/tarifas-grid.component';
 import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.component';
 import { MovimientosGridComponent } from './movimientos-grid/movimientos-grid.component';
+import { AsignadosGridComponent } from './asignados-grid/asignados-grid.component';
 
 
 
@@ -24,7 +25,8 @@ import { MovimientosGridComponent } from './movimientos-grid/movimientos-grid.co
     ParcelasGridComponent,
     TarifasGridComponent,
     ParentescoGridComponent,
-    MovimientosGridComponent
+    MovimientosGridComponent,
+    AsignadosGridComponent
   ],
   exports : [
     NavbarComponent,
@@ -35,7 +37,8 @@ import { MovimientosGridComponent } from './movimientos-grid/movimientos-grid.co
     ParcelasGridComponent,
     TarifasGridComponent,
     ParentescoGridComponent,
-    MovimientosGridComponent
+    MovimientosGridComponent,
+    AsignadosGridComponent
   ],
   imports: [
     CommonModule,
