@@ -5,7 +5,7 @@
     <div class="form-group col-md-5">
       <label class="sr-only">Mercadillo</label>
       <select class="form-control" #mercadillo>
-        <option *ngFor="let mercadillo of mercadillos" 
+        <option *ngFor="let mercadillo of mercadillos;let i = index" 
         [value]="mercadillo.IDMERCADILLO">
       {{mercadillo.DESCRIPCION}}
     </option> 
@@ -23,8 +23,19 @@
         <i class="fa fa-search"></i>
         Buscar
       </button>
+
     </div>
 
   </div>
 
 </form>
+
+
+
+
+<app-noresultados *ngIf="noDatos==0">
+  
+</app-noresultados>
+
+
+

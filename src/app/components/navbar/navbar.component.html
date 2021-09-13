@@ -47,9 +47,26 @@
             </div>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Listados</a>
+          </li> -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Listados
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" [routerLink]="['mercadillo/nuevo']">Asignados</a>
+              <a class="dropdown-item" [routerLink]="['mercadillo/nuevo']">Autorizados</a>
+              <a class="dropdown-item" [routerLink]="['mercadillo/nuevo']">Vacantes</a>
+              <a class="dropdown-item" >Etiquetas</a>
+              <a class="dropdown-item" >Placas</a>
+             
+            </div>
           </li>
+
+
 
         </ul>
       </div>

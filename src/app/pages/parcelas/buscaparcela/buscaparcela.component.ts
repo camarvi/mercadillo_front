@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
+import { ParcelaInterface } from '../../../interfaces/parcela-response';
 
 
 @Component({
@@ -13,8 +14,12 @@ import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
 export class BuscaparcelaComponent implements OnInit {
 
   public mercadillos : MercadilloInterface[] = [];
+  public mercadillo : MercadilloInterface;
+  public parcela : ParcelaInterface;
+  public noDatos : number;
 
-  constructor(private mercadillosService : MercadillosService) { }
+  constructor(private mercadillosService : MercadillosService,
+              private router : Router) { }
 
   ngOnInit(): void {
 
@@ -24,6 +29,8 @@ export class BuscaparcelaComponent implements OnInit {
             console.log(this.mercadillos);
           })
 
+       this.noDatos=1;   
+
   }
 
 
@@ -31,6 +38,33 @@ buscarParcela(mercadillo : string, parcela : string){
 
     console.log(mercadillo);
     console.log(parcela);
+     this.mercadillosService.buscarMercadilloId(mercadillo)
+         .subscribe( resp =>{
+           this.mercadillo =resp[0];
+           console.log(this.mercadillo); 
+           if (this.mercadillo) {
+            this.mercadillosService.getParcelaNumMer(this.mercadillo.IDMERCADILLO.toString(),parcela)
+              .subscribe ( resp =>{
+               // console.log(resp[0]);
+               if (resp[0]) {
+                this.parcela = resp[0];
+                console.log(this.parcela);
+                this.router.navigate(['/historico', this.parcela.NUMERO,this.parcela.IDPARCELAS,this.mercadillo.DESCRIPCION]);
+           
+               } else {
+                this.noDatos=0;
+               }
+                
+              });   
+             
+          }   
+
+         });
+     
+      
+     //  [routerLink]="['/historico', parcela.NUMERO, parcela.IDPARCELAS, mercadillo]"
+     //this.router.navigate(['/autorizados', this.datosMovimiento.TITULAR]);
+   
 
 }
 

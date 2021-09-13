@@ -16,6 +16,7 @@ import { AsignaparcelaComponent } from './parcelas/asignaparcela/asignaparcela.c
 import { HistoricoComponent } from './movimientos/historico/historico.component';
 import { BuscaparcelaComponent } from './parcelas/buscaparcela/buscaparcela.component';
 import { DetalleComponent } from './movimientos/detalle/detalle.component';
+import { AsignadosComponent } from './informes/asignados/asignados.component';
 
 
 
@@ -34,7 +35,8 @@ import { DetalleComponent } from './movimientos/detalle/detalle.component';
     AsignaparcelaComponent,
     HistoricoComponent,
     BuscaparcelaComponent,
-    DetalleComponent
+    DetalleComponent,
+    AsignadosComponent
 
   ],
   imports: [
