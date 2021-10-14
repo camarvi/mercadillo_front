@@ -17,7 +17,7 @@ import { HistoricoComponent } from './pages/movimientos/historico/historico.comp
 import { BuscaparcelaComponent } from './pages/parcelas/buscaparcela/buscaparcela.component';
 import { DetalleComponent } from './pages/movimientos/detalle/detalle.component';
 import { AsignadosComponent } from './pages/informes/asignados/asignados.component';
-
+import { EditamovimientoComponent } from './pages/movimientos/editamovimiento/editamovimiento.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -36,11 +36,10 @@ const routes : Routes=[
   { path: 'buscaparcela' , component: BuscaparcelaComponent},
   { path: 'historico/:par/:id/:mercadillo', component : HistoricoComponent},
   { path: 'detallemovimiento/:iddetalle/:mercadillo', component : DetalleComponent},
+  { path: 'editamovimiento', component : EditamovimientoComponent },
   { path: 'informe_asignados', component : AsignadosComponent},
   { path: '**', redirectTo : '/home'}
 ];
-
-
 
 @NgModule({
   declarations: [],

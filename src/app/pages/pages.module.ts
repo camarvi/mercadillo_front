@@ -17,6 +17,7 @@ import { HistoricoComponent } from './movimientos/historico/historico.component'
 import { BuscaparcelaComponent } from './parcelas/buscaparcela/buscaparcela.component';
 import { DetalleComponent } from './movimientos/detalle/detalle.component';
 import { AsignadosComponent } from './informes/asignados/asignados.component';
+import { EditamovimientoComponent } from './movimientos/editamovimiento/editamovimiento.component';
 
 
 
@@ -36,7 +37,8 @@ import { AsignadosComponent } from './informes/asignados/asignados.component';
     HistoricoComponent,
     BuscaparcelaComponent,
     DetalleComponent,
-    AsignadosComponent
+    AsignadosComponent,
+    EditamovimientoComponent
 
   ],
   imports: [

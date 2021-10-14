@@ -11,7 +11,7 @@ import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
 import { ActividadesInterface } from '../../../interfaces/actividades-response';
 
 import { Location } from '@angular/common';
-
+import Swal from 'sweetalert2';
 import { combineLatest } from 'rxjs';
 
 @Component({
@@ -76,7 +76,7 @@ export class DetalleComponent implements OnInit {
 
   }
 
-  onRegresar(){
+onRegresar(){
 
     this.location.back();
 
@@ -86,6 +86,27 @@ verAutorizados() {
     //console.log(movie.id);
     this.router.navigate(['/autorizados', this.datosMovimiento.TITULAR]);
   
+  }
+
+altaAdjudicatario() {
+
+      // && this.datosMovimiento.ACTIVO ='S' 
+    if ( this.datosMovimiento.DES_OPERACION.toUpperCase() === 'ALTA' && this.datosMovimiento.ACTIVO.toUpperCase() === 'S') {  
+      Swal.fire({
+        allowOutsideClick : false,
+        title : 'Error',
+        text: 'El puesto/variante ya está adjudicado..',
+        icon : 'error'
+      });
+
+    }  else {
+
+      ///asignaparcela', parcela.NUMERO, parcela.IDPARCELAS, mercadillo
+      //this.router.navigate(['/editamovimiento']);
+      this.router.navigate(['asignaparcela',  this.datosParcela.NUMERO , this.datosParcela.IDPARCELAS,
+           this.mercadillo]);
+    }
+
   }
 
 

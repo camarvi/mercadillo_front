@@ -51,14 +51,8 @@ export class ParcelaComponent implements OnInit {
     
     this.id = this.route.snapshot.paramMap.get('id');
 
-   
-   // CODIGO SIN PROBAR
-    //this.parcela=null;
-    //this.parcela = new ParcelaModel();
-    //
-    //this.parcelaBuscada = null;
-    //this.parcelaBuscada = new ParcelaModel();
-   // FIN CODIGO SIN PROBAR 
+
+    console.log(this.id);
 
     if (this.id !== 'nuevo') {
       this.mercadilloService
@@ -70,12 +64,17 @@ export class ParcelaComponent implements OnInit {
           console.log(this.parcela.FECHA_ALTA);
           let TuFecha = new Date(this.parcela.FECHA_ALTA);
           this.fecha_alta_html = TuFecha.toLocaleDateString('es-ES'); // toISOString();
-          //this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
-          this.fecha_alta_html = this.fechaService.conviertefecha(this.fecha_alta_html);
+         // //this.fecha_alta_html = this.conviertefecha(this.fecha_alta_html);
+         // this.fecha_alta_html = this.fechaService.conviertefecha(this.fecha_alta_html);
+         this.fecha_alta_html = this.parcela.FECHA_ALTA;
+         this.parcela.FECHA_ESTADO = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+         console.log(this.parcela);
       });
     }
       
     this.cargaCombox();
+
+    
   }
 
 

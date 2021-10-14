@@ -172,14 +172,14 @@ export class MercadillosService {
     let miparcela = new ParcelaModel;
     miparcela = parcela;
     // Transformar la fecha para poder insertar en oracle
-    let anio = miparcela.FECHA_ESTADO.slice(0, 4);
-    let mes = miparcela.FECHA_ESTADO.slice(5, 7);
-    let dia = miparcela.FECHA_ESTADO.slice(8, 10);
-    //console.log(anio);
-    //console.log(mes);
-    //console.log(dia); 
-    let fechaok = dia + "/" + mes + "/" + anio;
-    miparcela.FECHA_ESTADO = fechaok;
+   // let anio = miparcela.FECHA_ESTADO.slice(0, 4);
+   // let mes = miparcela.FECHA_ESTADO.slice(5, 7);
+   // let dia = miparcela.FECHA_ESTADO.slice(8, 10);
+   // //console.log(anio);
+   // //console.log(mes);
+   // //console.log(dia); 
+   // let fechaok = dia + "/" + mes + "/" + anio;
+   // miparcela.FECHA_ESTADO = fechaok;
 
     return this.http.put(`${this.baseUrl}/parcela/${parcela.IDPARCELAS}`, miparcela);
 
@@ -394,10 +394,14 @@ getMovimiento(id : string) : Observable<MovimientoDetallenterface> {
 }
 
 
-// INFORMES
+// INFORMES - LISTADOS
 
 getAsignadosMer(id : string) : Observable<AdjudicadosDetallenterface[]>{
   return this.http.get<AdjudicadosDetallenterface[]>(`${this.baseUrl}/adjudicadosmer/${id}`);
+}
+
+getInformeAutorizados() : Observable<any[]> {
+  return this.http.get<any[]>(`${this.baseUrl}/informeautorizados`);
 }
 
 }
