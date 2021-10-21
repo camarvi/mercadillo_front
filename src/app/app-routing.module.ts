@@ -18,6 +18,7 @@ import { BuscaparcelaComponent } from './pages/parcelas/buscaparcela/buscaparcel
 import { DetalleComponent } from './pages/movimientos/detalle/detalle.component';
 import { AsignadosComponent } from './pages/informes/asignados/asignados.component';
 import { EditamovimientoComponent } from './pages/movimientos/editamovimiento/editamovimiento.component';
+import { BajaAdjComponent } from './pages/movimientos/baja-adj/baja-adj.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -38,6 +39,7 @@ const routes : Routes=[
   { path: 'detallemovimiento/:iddetalle/:mercadillo', component : DetalleComponent},
   { path: 'editamovimiento', component : EditamovimientoComponent },
   { path: 'informe_asignados', component : AsignadosComponent},
+  { path: 'baja_adjudicatario/:iddetalle/:mercadillo', component : BajaAdjComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

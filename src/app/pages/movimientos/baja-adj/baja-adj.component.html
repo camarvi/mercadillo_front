@@ -1,0 +1,90 @@
+<div class="container-fluid mt-3">
+
+    <div *ngIf="this.datosMovimiento" class="form-group mb-4">
+        <h3 class="text-center text-capitalize font-weight-bold">
+          {{ this.datosMovimiento.APE1 }}
+          {{ this.datosMovimiento.APE2 }} ,
+          {{ this.datosMovimiento.NOMBRE }} -
+          {{ this.datosMovimiento.NIF }}
+        </h3>
+       
+    </div>
+
+    <div class="form-group mt-3">
+        
+        <form class="mb-1">
+            <div class="form-row">
+            
+            <div class="form-group ">
+                    <label class="mr-3 font-weight-bold">Fecha Baja</label>
+             </div>    
+            <div class="form-group col-md-3">
+              <!--  <label class="sr-only">Fecha Baja</label> -->
+             
+                <input #fecha type="date" class="form-control" placeholder="Fecha Baja">
+            </div>
+              <div class="form-group col-md-3"> 
+                <button (click)="realizaBaja(fecha.value)" type="submit"
+                  class="form-group mx-sm-2 btn btn-primary mb-2">
+                  <i class="far fa-save"></i>
+                  Grabar Baja
+                </button>
+          
+              </div>
+       
+            </div>
+          
+          </form>
+
+    </div>
+
+
+
+    <div *ngIf="this.datosParcela && this.actividad" class="table-responsive">
+        <table class="table table-bordered">
+          <tbody>
+           
+            <tr class="table-warning">   
+             <!--   <th class="text-center" colspan="12">Nombre Mercadillo</th>
+                  table-secondary    -->
+             <th class="text-center" colspan="12">
+                 {{ mercadillo }}
+            </th>
+    
+            </tr>
+            <tr class="table-success">
+                <th class="text-center" colspan="12">Datos Parcela</th>
+            </tr>
+            <tr class="table-secondary">
+                <th class="text-center">Parcela</th>
+                <th class="text-center">Superficie</th>
+                <th class="text-center">Fecha Alta</th> 
+                <th class="text-center" colspan="9">Actividad</th>
+              
+            </tr>
+            <tr class="table-Light">
+                <td class="text-center">{{ datosParcela.NUMERO }}</td>
+                <td class="text-center">{{ datosParcela.SUPERFICIE }}</td>
+                <td class="text-center">{{ datosParcela.FECHA_ALTA }}</td>
+                <td class="text-center" colspan="9">{{ actividad.DESC_ACTIVIDAD }}</td>
+            </tr>
+        </tbody>    
+      </table>
+     
+</div>
+
+  <!--  
+    <form (ngSubmit)="guardar(f)" #f="ngForm">
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+            
+              <label>Fecha Baja</label>
+            
+              <input *ngIf="id === 'nuevo'" type="date" class="form-control"
+                #fecha = "ngModel"
+                name = "fecha"
+                [(ngModel)] = "parcela.FECHA_ALTA"
+              > 
+        </div>
+-->

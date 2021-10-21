@@ -28,7 +28,7 @@
         <button type="button" class="btn btn-secondary" (click)="altaAdjudicatario()">Alta Adj.</button>
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Third group">
-        <button type="button" class="btn btn-secondary">Baja Adj.</button>
+        <button type="button" class="btn btn-secondary" (click)="bajaAdjudicatario()">Baja Adj.</button>
       </div>
       <div class="btn-group mr-2" role="group" aria-label="Third group">
         <button class="btn btn-secondary" (click)="verAutorizados()">Autorizados</button>
@@ -101,12 +101,17 @@
             <th class="text-center">Fin Vigencia</th>
         </tr>
         <tr class="table-Light">
-            <td class="text-center">{{ datosParcela.NUMERO }}</td>
-            <td class="text-center">{{ datosParcela.SUPERFICIE }}</td>
+         <!--   <td class="text-center">{{ datosParcela.NUMERO }}</td>
+            <td class="text-center">{{ datosParcela.SUPERFICIE }}</td> -->
+            <td class="text-center">  {{ datosMovimiento.FECHA_MOV}} </td>
+            <td class="text_center"> {{ datosMovimiento.F_EFECTIVA_MOV}}</td>
             <td class="text-center" colspan="5">{{ datosMovimiento.DES_OPERACION }}</td>
-            <td class="text-center">{{ datosMovimiento.JJAA }}</td>
+          <!-- F_EFECTIVA_MOV  <td class="text-center">{{ datosMovimiento.JJAA }}</td> -->
+            <td class="text-center"> {{ datosMovimiento.FECHA_MOV}}</td>
             <td class="text-center">{{ datosMovimiento.ACTIVO }}</td>
-            <td class="text-center">{{ datosParcela.FECHA_ESTADO }}</td>  
+          <!--  FIN_VIGENCIA   
+            <td class="text-center">{{ datosParcela.FECHA_ESTADO }}</td>  -->
+            <td class="text-center">{{ datosMovimiento.FIN_VIGENCIA}}</td>
         </tr>
       </tbody>
     </table>

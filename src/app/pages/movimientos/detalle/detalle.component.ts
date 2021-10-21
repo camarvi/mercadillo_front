@@ -109,5 +109,20 @@ altaAdjudicatario() {
 
   }
 
+bajaAdjudicatario() {
+
+  if (this.datosMovimiento.DES_OPERACION.toUpperCase() === 'ALTA' 
+      && this.datosMovimiento.ACTIVO.toUpperCase() === 'S') {
+        this.router.navigate(['/baja_adjudicatario', this.idMovimiento,this.mercadillo]);
+      } else {
+        Swal.fire({
+          allowOutsideClick : false,
+          title : 'Error',
+          text : 'El puesto/variante no esta adjudicado..',
+          icon : 'error'
+        });
+      }
+ 
+}  
 
 }
