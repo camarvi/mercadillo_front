@@ -340,22 +340,38 @@ newAutorizado( autorizado : AutorizadosModel) {
 
 newMovimiento(movimiento: MovimientoModel) {
 
+  console.log("Servicio : Nuevo movimiento");
+  console.log(movimiento);
+
   let mimovimiento = new MovimientoModel;
   mimovimiento = movimiento;
-  let fechaFinok;
+
+  let fechaFinok : string;
   let anioF = mimovimiento.FIN_VIGENCIA.slice(0, 4);
   let mesF = mimovimiento.FIN_VIGENCIA.slice(5, 7);
   let diaF = mimovimiento.FIN_VIGENCIA.slice(8, 10);
   fechaFinok = diaF + "/" + mesF + "/" + anioF;
-
-  let fechaEfecok;
+  
+  
+  
+  let fechaEfecok : string;
   let anioEfe = mimovimiento.F_EFECTIVA_MOV.slice(0, 4);
   let mesEfe = mimovimiento.F_EFECTIVA_MOV.slice(5, 7);
   let diaEfe = mimovimiento.F_EFECTIVA_MOV.slice(8, 10);
   fechaEfecok = diaEfe + "/" + mesEfe + "/" + anioEfe;
 
-  mimovimiento.FIN_VIGENCIA = fechaFinok;
-  mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
+  if (  fechaFinok.length>4){
+    mimovimiento.FIN_VIGENCIA = fechaFinok;
+  } else {
+    mimovimiento.FIN_VIGENCIA ="";
+  }
+
+  if (fechaEfecok.length>4){
+    mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
+  } else {
+    mimovimiento.F_EFECTIVA_MOV ="";
+  }
+  
 
   /*if (mitarifa.F_FIN!=null) {
     let anioF = mitarifa.F_FIN.slice(0, 4);
@@ -393,6 +409,18 @@ getMovimiento(id : string) : Observable<MovimientoDetallenterface> {
   return this.http.get<MovimientoDetallenterface>(`${this.baseUrl}/movimiento/${id}`);
 }
 
+updateMovimiento(movimiento : MovimientoModel){
+  let mimovimiento = new MovimientoModel;
+  mimovimiento = movimiento;
+  return this.http.put(`${this.baseUrl}/movimiento/${mimovimiento.IDMOV}`, mimovimiento);
+
+} 
+
+updateMovimientoNoActivo(movimiento : MovimientoDetallenterface) {
+  let mimovimiento = new MovimientoModel;
+  mimovimiento.IDMOV = movimiento.IDMOV;
+  return this.http.put(`${this.baseUrl}/movimientonoactivo/${mimovimiento.IDMOV}`, mimovimiento);
+}
 
 // INFORMES - LISTADOS
 
