@@ -225,6 +225,10 @@ export class MercadillosService {
 
   }
 
+  getParcelasLibres(id : string) : Observable<ParcelaInterface[]> {
+    return this.http.get<ParcelaInterface[]>(`${this.baseUrl}/parcelaslibres/${id}`);
+  }
+
 // TARIFAS
 
 

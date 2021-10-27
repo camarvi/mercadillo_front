@@ -23,16 +23,16 @@ export class AsignadosComponent implements OnInit {
     this.mercadillosService.getMercadillos()
           .subscribe( (resp : MercadilloInterface[])=>{
             this.mercadillos = resp;
-
           });
   }
 
   buscarAsignados(mercadillo : string){
 
-    console.log(mercadillo);
+   // console.log(mercadillo);
     this.mercadillosService.getAsignadosMer(mercadillo)
       .subscribe( resp =>{
         this.asignados = resp;
+        console.log(this.asignados);
         if (this.asignados.length<1){
           this.noencontrados = true;
         }

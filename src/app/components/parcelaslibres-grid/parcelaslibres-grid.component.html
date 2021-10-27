@@ -1,0 +1,21 @@
+
+<div class="mt-2" id="htmlData">
+    <table  *ngIf="parcelaslibres.length > 0"  class="table table-bordered table-striped">
+        <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+          <tr class="table-primary">    
+            <th scope="col">Puesto</th>
+            <th scope="col">Superficie</th>
+            <th scope="col">F. Vacante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let libre of parcelaslibres">
+            <td >{{ libre.NUMERO }}</td>  
+            <td >{{ libre.SUPERFICIE }}</td>
+            <td >{{ libre.FECHA_ESTADO }}</td>    
+          </tr>
+        </tbody>
+      </table>
+</div>
+ 

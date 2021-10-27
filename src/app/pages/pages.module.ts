@@ -19,6 +19,7 @@ import { DetalleComponent } from './movimientos/detalle/detalle.component';
 import { AsignadosComponent } from './informes/asignados/asignados.component';
 import { EditamovimientoComponent } from './movimientos/editamovimiento/editamovimiento.component';
 import { BajaAdjComponent } from './movimientos/baja-adj/baja-adj.component';
+import { VacantesComponent } from './informes/vacantes/vacantes.component';
 
 
 
@@ -40,7 +41,8 @@ import { BajaAdjComponent } from './movimientos/baja-adj/baja-adj.component';
     DetalleComponent,
     AsignadosComponent,
     EditamovimientoComponent,
-    BajaAdjComponent
+    BajaAdjComponent,
+    VacantesComponent
 
   ],
   imports: [
