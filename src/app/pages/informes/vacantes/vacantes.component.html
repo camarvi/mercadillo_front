@@ -15,7 +15,7 @@
    
     
     <div class="form-group col-md-3">
-      <button (click)="buscarVacantes(mercadillo.value)" type="submit"
+      <button (click)="buscarVacantes(mercadillo.selectedIndex, mercadillo.value)" type="submit"
         class="form-group mx-sm-2 btn btn-outline-success mb-2">
         <i class="fa fa-search"></i>
         Buscar
@@ -27,6 +27,6 @@
 
 </form>
 
-<app-parcelaslibres-grid *ngIf="parcelaslibres.length>0" [parcelaslibres]="parcelaslibres"></app-parcelaslibres-grid>
+<app-parcelaslibres-grid *ngIf="parcelaslibres.length>0" [parcelaslibres]="parcelaslibres" [nombre_mercadillo]="this.nombre_mercadillo"  ></app-parcelaslibres-grid>
 
 <app-noresultados *ngIf="noencontrados==true"></app-noresultados>

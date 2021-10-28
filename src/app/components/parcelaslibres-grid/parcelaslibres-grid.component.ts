@@ -9,6 +9,7 @@ import { ParcelaInterface } from '../../interfaces/parcela-response';
 export class ParcelaslibresGridComponent implements OnInit {
 
   @Input() parcelaslibres!: ParcelaInterface[];
+  @Input() nombre_mercadillo !: string;
 
   constructor() { }
 

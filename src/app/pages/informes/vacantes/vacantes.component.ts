@@ -12,20 +12,29 @@ export class VacantesComponent implements OnInit {
 
   public mercadillos : MercadilloInterface[] = [];
   public parcelaslibres : ParcelaInterface[] = [];
+  public nombre_mercadillo : string;
   public noencontrados : boolean;
 
   constructor(private mercadilloService : MercadillosService) { }
 
   ngOnInit(): void {
     this.noencontrados = false;
+    this.nombre_mercadillo ="";
     this.mercadilloService.getMercadillos()
         .subscribe( (resp : MercadilloInterface[])   => {
             this.mercadillos = resp;
         });
   }
 
-  buscarVacantes(mercadillo : string){
-    this.mercadilloService.getParcelasLibres(mercadillo)
+  buscarVacantes(mercadillo : number, codigo : string){
+
+   // console.log(mercadillo);
+
+   // console.log(this.mercadillos[mercadillo].DESCRIPCION);
+
+   this.nombre_mercadillo = this.mercadillos[mercadillo].DESCRIPCION;
+
+    this.mercadilloService.getParcelasLibres(codigo)
         .subscribe( resp=>{
           console.log(resp);
           this.parcelaslibres = resp;
@@ -34,7 +43,7 @@ export class VacantesComponent implements OnInit {
             this.noencontrados = true;
           }
 
-        });
+        }); 
 
   }
 
