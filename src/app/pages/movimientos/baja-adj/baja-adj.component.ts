@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { ParcelaModel } from  '../../../models/parcela.model';
 import { MovimientoModel } from 'src/app/models/movimiento.model';
-import { FechasService } from 'src/app/services/fechas.service';
+
 
 
 
@@ -40,7 +40,6 @@ export class BajaAdjComponent implements OnInit {
   
    
   constructor(private  mercadilloService : MercadillosService,
-              private fechasService : FechasService,
               private router : Router,
               private route : ActivatedRoute) { }
 
@@ -53,24 +52,16 @@ export class BajaAdjComponent implements OnInit {
     this.mercadilloService.getMovimiento(this.idMovimiento)
         .subscribe ( resp => {
           this.datosMovimiento = resp[0];
-         // console.log("Datos del Movimiento");
-         // console.log(this.datosMovimiento);
-         // console.log("Fin datos del Movimiento");
           
           if ( this.datosMovimiento.IDPARCELA>0 ) { //  (resp[0].IDPARCELA>0) {
             this.mercadilloService.getParcelaId(resp[0].IDPARCELA)
               .subscribe(resp => {
                 this.datosParcela = resp[0];
-             //   console.log("Datos de la Parcela");
-             //   console.log(resp[0]);
-             //   console.log("MODELO PARCELA")
               });
 
               this.mercadilloService.getActividadId(this.datosMovimiento.ACTIVIDAD.toString())
               .subscribe(resp =>{
-            //   console.log("Datos Actividad");
                this.actividad = resp[0];
-            //    console.log(this.actividad);
               });  
 
             }   

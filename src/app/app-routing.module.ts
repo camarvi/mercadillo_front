@@ -38,7 +38,7 @@ const routes : Routes=[
   { path: 'buscaparcela' , component: BuscaparcelaComponent},
   { path: 'historico/:par/:id/:mercadillo', component : HistoricoComponent},
   { path: 'detallemovimiento/:iddetalle/:mercadillo', component : DetalleComponent},
-  { path: 'editamovimiento', component : EditamovimientoComponent },
+  { path: 'editamovimiento/:iddetalle/:mercadillo', component : EditamovimientoComponent },
   { path: 'informe_asignados', component : AsignadosComponent},
   { path: 'baja_adjudicatario/:iddetalle/:mercadillo', component : BajaAdjComponent},
   { path: 'puestos_vacantes', component : VacantesComponent},

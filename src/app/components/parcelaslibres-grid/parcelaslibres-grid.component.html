@@ -17,15 +17,13 @@
             <td >{{ libre.FECHA_ESTADO }}</td>    
       <!-- ASIGNAR PUESTO-->
             <td>
-            <button  
+             <button  
                 class="btn btn-success ml-2" data-toggle="tooltip" data-placement="top" 
                 title="Asignar"
                 [routerLink]="['/asignaparcela', libre.NUMERO, libre.IDPARCELAS, nombre_mercadillo ]">
-        <i class="fas fa-user-plus"></i>
-      </button> 
-    </td>
-
-
+              <i class="fas fa-user-plus"></i>
+             </button> 
+            </td>
           </tr>
         </tbody>
       </table>

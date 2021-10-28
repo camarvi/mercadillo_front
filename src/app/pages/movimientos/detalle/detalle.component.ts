@@ -125,4 +125,23 @@ bajaAdjudicatario() {
  
 }  
 
+editarMovimiento(){
+
+  // SOLO SE PUEDEN EDITAR LOS REGISTROS QUE ESTAN ACTIVOS
+
+  console.log("Dentro de editar");
+  if (this.datosMovimiento.ACTIVO.toUpperCase() === 'S') {
+    this.router.navigate(['/editamovimiento', this.idMovimiento,this.mercadillo]);
+  } else {
+    Swal.fire({
+      allowOutsideClick : false,
+      title : 'Error',
+      text : 'No es el regisro activo. No se puede modificar..',
+      icon : 'error'
+    });
+  }
+
+
+}
+
 }
