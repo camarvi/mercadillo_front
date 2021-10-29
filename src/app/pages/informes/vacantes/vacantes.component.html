@@ -23,6 +23,11 @@
 
     </div>
 
+    <div *ngIf="parcelaslibres.length>0" class="form-group col-md-2">
+      <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Exportar a Pdf </button>
+    </div>  
+
+
   </div>
 
 </form>

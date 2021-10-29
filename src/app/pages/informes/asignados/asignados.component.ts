@@ -35,9 +35,16 @@ export class AsignadosComponent implements OnInit {
         console.log(this.asignados);
         if (this.asignados.length<1){
           this.noencontrados = true;
+        } else {
+          this.noencontrados = false;
         }
       });
     
   }
+
+  generarTablaPdf(){
+    console.log("Genera Tabla");
+  }
+
 
 }

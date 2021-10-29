@@ -11,9 +11,8 @@
     </option> 
   </select>      
 
-    </div>
+  </div>
    
-    
     <div class="form-group col-md-3">
       <button (click)="buscarAsignados(mercadillo.value)" type="submit"
         class="form-group mx-sm-2 btn btn-outline-success mb-2">
@@ -23,9 +22,19 @@
 
     </div>
 
+    <div *ngIf="asignados.length>0" class="form-group col-md-2">
+      <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Exportar a Pdf </button>
+    </div>
+
   </div>
 
 </form>
+
+<!--
+<div *ngIf="asignados.length>0">
+  <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Generar Pdf </button>
+</div>
+-->
 
 <app-asignados-grid *ngIf="asignados.length>0" [asignados]="asignados"></app-asignados-grid>
 
