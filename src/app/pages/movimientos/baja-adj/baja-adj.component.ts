@@ -120,7 +120,7 @@ realizaBaja(fecha : string){
      // 2 - PONER EL ESTADO DEL MOVIMIENTO ACTUAL COMO "N"   (FUNCIONA)
      this.mercadilloService.updateMovimientoNoActivo(this.datosMovimiento),
 
-     // 3 - Registrar el nuevo movimiento (NO FUNCIONA, REVISAR CODIGO)
+     // 3 - Registrar el nuevo movimiento ( FUNCIONA )
      this.mercadilloService.newMovimiento(this.nuevoMovimiento) 
      
      

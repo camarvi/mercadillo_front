@@ -1,38 +1,39 @@
-<!--
 
-<div class="container-fluid mt-3">
+
+<div class="container-fluid mt-3 ">
 
     <div *ngIf="this.datosMovimiento" class="form-group mb-4">
         <h3 class="text-center text-capitalize font-weight-bold">
-          {{ this.datosMovimiento.ape1 }}
+          {{ this.datosMovimiento.APE1 }}
           {{ this.datosMovimiento.APE2 }} ,
           {{ this.datosMovimiento.NOMBRE }} -
           {{ this.datosMovimiento.NIF }}
         </h3>
        
     </div>
--->
-
+<!--
     <div class="form-group mt-3">
         
         <form class="mb-1">
             <div class="form-row">
             
             <div class="form-group ">
-                    <label class="mr-3 font-weight-bold">Fecha Baja</label>
+                    <label class="mr-3 font-weight-bold">Modifica Movimiento</label>
              </div>    
             <div class="form-group col-md-3">
-              <!--  <label class="sr-only">Fecha Baja</label> -->
+             <label class="sr-only">Fecha Baja</label> 
              
                 <input #fecha type="date" class="form-control" placeholder="Fecha Baja">
             </div>
               <div class="form-group col-md-3"> 
-                <button (click)="editarMovimiento()" type="submit"
+             <button (click)="editarMovimiento()" type="submit" 
+
+              <button  type="submit"
                   class="form-group mx-sm-2 btn btn-primary mb-2">
                   <i class="far fa-save"></i>
-                  Grabar Baja
+                  Grabar Modif.
                 </button>
-          
+             
               </div>
        
             </div>
@@ -40,10 +41,69 @@
           </form>
 
     </div>
+ -->
+
+    
+ <form (ngSubmit)="guardar(f)" #f="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label>F. Efecto</label>
+      <input type="date" class="form-control" 
+            #f_efecto="ngModel" 
+            name="f_efecto" 
+            [class.is-invalid]="f_efecto.invalid && f_efecto.touched" 
+            [(ngModel)]="nuevoMovimiento.F_EFECTIVA_MOV"
+            required>
+      </div>
+
+    <div class="form-group col-md-4">
+      <label>Actividad</label>
+      <select class="form-control"
+          #actividad = "ngModel"
+          name = "actividad" 
+          [(ngModel)]="nuevoMovimiento.ACTIVIDAD">
+          <option [value]="actividad.IDACTIVIDADES" *ngFor="let actividad of listadoActividades">
+              {{actividad.DESC_ACTIVIDAD}}
+          </option>
+      </select>
+
+    </div>
+    <div class="form-group col-md-2">
+      <label>Nº JJAA</label>
+      <input type="text" class="form-control" 
+            #ape2 = "ngModel" 
+            name="jjaa"  
+            [class.is-invalid]="ape2.invalid && ape2.touched" 
+            [(ngModel)]= "nuevoMovimiento.JJAA"   
+      >
+      <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
+    </div> 
+ 
+
+  <div class="form-group col-md-2">
+      <label>F. Fin</label>
+     <input type="date" class="form-control"  required
+            #fin_vigencia = "ngModel" 
+            name="fin_vigencia"  
+            [class.is-invalid]="fin_vigencia.invalid && fin_vigencia.touched" 
+            [(ngModel)]= "nuevoMovimiento.FIN_VIGENCIA">
+    </div> 
+  </div>
+
+  <!-- <div *ngIf="buscarPersonas.IDPERSONA>0" class="row justify-content-center"> -->
+  <div class="row justify-content-center mt-3">
+  
+    <button type="submit" class="btn btn-primary w-25">
+      <i class="fa fa-save"></i>
+      Guardar Modif
+    </button>
+  </div>
+
+</form>
 
 
 
-    <div *ngIf="this.datosParcela && this.actividad" class="table-responsive">
+    <div *ngIf="this.datosParcela " class="table-responsive mt-3">
         <table class="table table-bordered">
           <tbody>
            
@@ -69,8 +129,32 @@
                 <td class="text-center">{{ datosParcela.NUMERO }}</td>
                 <td class="text-center">{{ datosParcela.SUPERFICIE }}</td>
                 <td class="text-center">{{ datosParcela.FECHA_ALTA }}</td>
-                <td class="text-center" colspan="9">{{ actividad.DESC_ACTIVIDAD }}</td>
+                <td class="text-center" colspan="9">{{ nombreActividad }}</td>
             </tr>
+       
+
+          <tr class="table-primary">
+            <th class="text-center" colspan="12">Movimiento</th>
+          </tr>
+      
+
+          <tr class="table-secondary">
+            <th class="text-center">F. Alta</th>
+            <th class="text-center">F. Efecto</th>
+            <th class="text-center" colspan="5">Operacion</th>
+            <th class="text-center">F. Operacion</th>
+            <th class="text-center">Ult. Situacion</th>
+            <th class="text-center">Fin Vigencia</th>
+          </tr>
+          <tr class="table-Light">
+            <td class="text-center">  {{ datosMovimiento.FECHA_MOV}} </td>
+            <td class="text_center"> {{ datosMovimiento.F_EFECTIVA_MOV}}</td>
+            <td class="text-center" colspan="5">{{ datosMovimiento.DES_OPERACION }}</td>
+            <td class="text-center"> {{ datosMovimiento.FECHA_MOV}}</td>
+            <td class="text-center">{{ datosMovimiento.ACTIVO }}</td>
+            <td class="text-center">{{ datosMovimiento.FIN_VIGENCIA}}</td>
+        </tr>
+
         </tbody>    
       </table>
      
