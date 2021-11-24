@@ -133,31 +133,6 @@ realizaBaja(fecha : string){
 
   });
      
-    
-   // console.log("DATOS MOVIMIENTO PARA MANDARLO AL SERVICIO : ACTUALIZAR")
-   // console.log(this.datosMovimiento)
-
-   // Metodo para combinar las instrucciones en un único paso
-
-  /*
-   combineLatest([
-    this.mercadillosService.modificaEstadoParcela(this.modificaParcela),
-    this.mercadillosService.newMovimiento(this.nuevoMovimiento)
-  ]).subscribe( ([resp,resp2]) =>{
-
-    Swal.fire({
-      title : 'Asignado',
-      text : 'Se asigna parcela correctamente..',
-      icon : 'success'
-    });
-
-    this.buscarPersonas = new UsuarioModel();
-
-  });
-
-   */
-   //
-
 
 
   }
