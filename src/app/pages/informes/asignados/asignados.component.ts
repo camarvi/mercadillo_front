@@ -5,9 +5,13 @@ import { MercadilloInterface } from '../../../interfaces/mercadillos-response';
 import { AdjudicadosDetallenterface } from '../../../interfaces/informes-response';
 
 import { DatePipe } from '@angular/common';
+
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
+
+//import * as jsPDF from 'jspdf';
+//import * as jpt from 'jspdf-autotable';
 
 @Component({
   selector: 'app-asignados',
@@ -32,11 +36,16 @@ export class AsignadosComponent implements OnInit {
           });
   }
 
-  buscarAsignados(mercadillo : string){
-
+  buscarAsignados(mercadillo : number, codigo : string){ //mercadillo : string){
+    
    // console.log(mercadillo);
-   this.nombre_mercadillo = this.mercadillos[mercadillo].DESCRIPCION;
-    this.mercadillosService.getAsignadosMer(mercadillo)
+   //this.nombre_mercadillo = this.mercadillos[mercadillo].DESCRIPCION;
+   
+  //  this.mercadillosService.getAsignadosMer(mercadillo)
+
+  this.nombre_mercadillo = this.mercadillos[mercadillo].DESCRIPCION;
+
+    this.mercadillosService.getAsignadosMer(codigo)
       .subscribe( resp =>{
         this.asignados = resp;
         console.log(this.asignados);
