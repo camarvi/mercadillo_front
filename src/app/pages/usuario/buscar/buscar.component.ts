@@ -23,6 +23,8 @@ export class BuscarComponent implements OnInit {
 
   buscarPersona(dni : string, ap1 : string, ap2:string) {
 
+    console.log(ap1);
+
     dni = dni.trim().toUpperCase();
     ap1 = ap1.trim().toUpperCase();
     ap2 = ap2.trim().toUpperCase();

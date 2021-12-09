@@ -7,4 +7,6 @@ export interface AutorizadosInterface {
     NOMBRE:         string;
     PARENTESCO:     number;
     DES_PARENTESCO: string;
+//    F_ALTA:         string;
+//    F_BAJA:         string;
 }

@@ -144,8 +144,12 @@ export class AutorizadosComponent implements OnInit {
     const resultado = this.autorizados.find( autorizado => autorizado.AUTORIZADO == valor );
     //this.array.filter(x => x.id == this.personId)[0];
     if (resultado) {
+      console.log("DATOS RESULTADO ");
+      console.log(resultado);
       return true; // VALOR DUPLICADO , NO INSERTAR
     } else {
+      console.log("DATOS RESULTADO ");
+      console.log(resultado);
       return false; // SE PUEDE INSERTAR
     }
 
