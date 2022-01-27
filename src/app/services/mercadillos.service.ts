@@ -21,6 +21,7 @@ import { ActividadesInterface } from '../interfaces/actividades-response';
 import { MovimientoModel } from '../models/movimiento.model';
 import { MovimientoDetallenterface } from '../interfaces/movimiento-response';
 import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
+import { EpigrafeIAEInterface } from '../interfaces/epigrafesiae-response';
 
 
 
@@ -32,6 +33,9 @@ export class MercadillosService {
   private baseUrl: string = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
+
+
+// LLAMADAS A TABLAS AUXILIARES
 
   getActividades(): Observable<ActividadesInterface[]> {
     return this.http.get<ActividadesInterface[]>(`${this.baseUrl}/actividad`);
@@ -53,6 +57,14 @@ export class MercadillosService {
     return this.http.get<ParentescoInterface[]>(`${this.baseUrl}/parentesco`);
   }
 
+  getEpigrafesIae() : Observable<EpigrafeIAEInterface[]>{
+    return this.http.get<EpigrafeIAEInterface[]>(`${this.baseUrl}/epigrafesiae`);
+  }
+
+
+//***************************************************************************** */
+//****************************************************************************** */
+// GESTION DE USUARIOS 
 
   crearUsuario(usuario: UsuarioModel) {
 

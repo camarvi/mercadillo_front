@@ -61,7 +61,7 @@
               required>
         </div>
   
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label>Actividad</label>
         <select class="form-control"
             #actividad = "ngModel"
@@ -71,18 +71,31 @@
                 {{actividad.DESC_ACTIVIDAD}}
             </option>
         </select>
-
       </div>
-      <div class="form-group col-md-2">
-        <label>Nº JJAA</label>
+
+      <div class="form-group col-md-3">
+        <label>Epig. IAE</label>
+        <select class="form-control"
+              #iae = "ngModel" 
+              name="iae"  
+              [(ngModel)]= "nuevoMovimiento.IAE">  
+              <option [value]="epigrafe.COD_EPIG" *ngFor="let epigrafe of listadoEpigrafesIae">
+                {{epigrafe.DESCR_EPIG}}
+            </option>
+        </select>       
+        
+      </div>  
+
+      <!-- <div class="form-group col-md-2">
+        <label>Epig. IAE</label>
         <input type="text" class="form-control" 
-              #ape2 = "ngModel" 
-              name="jjaa"  
+              #iae = "ngModel" 
+              name="iae"  
               [class.is-invalid]="ape2.invalid && ape2.touched" 
-              [(ngModel)]= "nuevoMovimiento.JJAA"   
+              [(ngModel)]= "nuevoMovimiento.IAE"   
         >
-        <small *ngIf="ape2.invalid && ape2.touched" class="form-text text-danger">Ingrese 5 letras</small>
-      </div> 
+        <small *ngIf="iae.invalid && iae.touched" class="form-text text-danger">Ingrese 5 letras</small>
+      </div>  -->
    
 
     <div class="form-group col-md-2">

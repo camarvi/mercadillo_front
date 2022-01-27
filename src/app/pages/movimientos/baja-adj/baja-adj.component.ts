@@ -85,7 +85,7 @@ realizaBaja(fecha : string){
     this.nuevoMovimiento.ACTIVIDAD = this.datosMovimiento.ACTIVIDAD;
     this.nuevoMovimiento.ACTIVO = "S";
     this.nuevoMovimiento.IDPARCELA = this.datosMovimiento.IDPARCELA;
-    this.nuevoMovimiento.JJAA = this.datosMovimiento.JJAA;
+    this.nuevoMovimiento.IAE = this.datosMovimiento.IAE;
     this.nuevoMovimiento.OPERACION = "B";
     this.nuevoMovimiento.FIN_VIGENCIA = ""; //this.nuevoMovimiento.F_EFECTIVA_MOV;
     this.nuevoMovimiento.TITULAR = this.datosMovimiento.TITULAR;

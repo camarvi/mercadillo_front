@@ -4,8 +4,12 @@ import { NgForm, NgModel } from '@angular/forms';
 import { MercadillosService } from '../../../services/mercadillos.service';
 import { UsuarioModel } from '../../../models/usuario.model';
 import { ActividadesInterface } from '../../../interfaces/actividades-response';
+import { EpigrafeIAEInterface } from '../../../interfaces/epigrafesiae-response';
+
 import { MovimientoModel } from '../../../models/movimiento.model';
 import { ParcelaModel } from '../../../models/parcela.model';
+
+
 import { combineLatest } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -19,6 +23,7 @@ export class AsignaparcelaComponent implements OnInit {
 
   public buscarPersonas = new UsuarioModel();
   public listadoActividades : ActividadesInterface[] = []; 
+  public listadoEpigrafesIae : EpigrafeIAEInterface[] = [];
   public mercadillo : string;
   public parcela : string;
   public id : string;
@@ -40,12 +45,28 @@ export class AsignaparcelaComponent implements OnInit {
     //console.log("Parametro recibido " + this.id);
     this.mercadillo = this.route.snapshot.paramMap.get('mercadillo');
     //console.log("Mercadillo : " + this.mercadillo);
-    this.mercadillosService.getActividades()
-        .subscribe( resp => {
-          this.listadoActividades = resp;
-        })
+    // this.mercadillosService.getActividades()
+    //     .subscribe( resp => {
+    //       this.listadoActividades = resp;
+    //     })
+
+    this.cargaCombox();
 
   }
+
+
+  cargaCombox(){
+
+    combineLatest([
+      this.mercadillosService.getActividades(),
+      this.mercadillosService.getEpigrafesIae()
+    ]).subscribe( ([actividades,epigrafes]) =>{
+      this.listadoActividades = actividades;  
+      this.listadoEpigrafesIae= epigrafes;
+    });
+   
+  }
+
 
 
   buscarUsuario(){  //(termino : string){

@@ -10,7 +10,7 @@ export class  MovimientoModel {
     F_OPERACION:    string;
     ACTIVO:         string;
     FIN_VIGENCIA:   string;
-    JJAA:           string;
+    IAE:            string;
 
     constructor(){
         
@@ -24,7 +24,7 @@ export class  MovimientoModel {
         this.F_OPERACION = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
         this.ACTIVO = "S";
         this.FIN_VIGENCIA = "";
-        this.JJAA ="";
+        this.IAE ="";
  
     } 
 }

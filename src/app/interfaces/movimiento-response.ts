@@ -15,7 +15,7 @@ export interface MovimientoInterface {
 export interface MovimientoDetallenterface {
     IDMOV:          number;
     IDPARCELA:      number;
-    JJAA:           string;
+    IAE:           string;
     TITULAR:        number;
     FECHA_MOV:      string;
     NIF:            string;
