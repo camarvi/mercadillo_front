@@ -8,7 +8,7 @@ export class TarifaModel {
     constructor(){
         this.IDTARIFA = 0;
         this.COD_MER = 0;
-        this.F_INICIO = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+        this.F_INICIO = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' });
         this.TARIFA = 0;
         this.F_FIN = null;
  

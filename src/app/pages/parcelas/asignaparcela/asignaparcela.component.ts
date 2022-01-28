@@ -9,7 +9,7 @@ import { EpigrafeIAEInterface } from '../../../interfaces/epigrafesiae-response'
 import { MovimientoModel } from '../../../models/movimiento.model';
 import { ParcelaModel } from '../../../models/parcela.model';
 
-
+import { FechasService } from '../../../services/fechas.service';
 import { combineLatest } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -33,6 +33,7 @@ export class AsignaparcelaComponent implements OnInit {
  
 
   constructor(private mercadillosService : MercadillosService,
+              private fechaService : FechasService,
               private route : ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -51,6 +52,7 @@ export class AsignaparcelaComponent implements OnInit {
     //     })
 
     this.cargaCombox();
+ 
 
   }
 
@@ -102,49 +104,54 @@ export class AsignaparcelaComponent implements OnInit {
       });
       return;
     }
-   // console.log("Datos de la Persona");
-   // console.log(this.buscarPersonas);
+  
     this.nuevoMovimiento.IDPARCELA = Number(this.id);
     this.nuevoMovimiento.TITULAR = this.buscarPersonas.IDPERSONA;
-   // console.log("Datos que se tienen que guardar");
-   // console.log(this.nuevoMovimiento);
+    this.nuevoMovimiento.ACTIVIDAD = Number(this.nuevoMovimiento.ACTIVIDAD);
+    console.log("Datos que se tienen que guardar");
+    console.log(this.nuevoMovimiento);
 
     this.modificaParcela.IDPARCELAS = Number(this.id);
     this.modificaParcela.COD_ESTADO = "A";
-   // console.log("DATOS PARCELA A MODIFICAR");
-   // console.log(this.modificaParcela);
+ 
 
-    combineLatest([
-      this.mercadillosService.modificaEstadoParcela(this.modificaParcela),
-      this.mercadillosService.newMovimiento(this.nuevoMovimiento)
-    ]).subscribe( ([resp,resp2]) =>{
+   //*************************************************************************** */
+   //*************************************************************************** */
 
-      Swal.fire({
-        title : 'Asignado',
-        text : 'Se asigna parcela correctamente..',
-        icon : 'success'
+    this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.almacenaFecha(
+      this.nuevoMovimiento.F_EFECTIVA_MOV);
+    this.nuevoMovimiento.FIN_VIGENCIA = this.fechaService.almacenaFecha(
+      this.nuevoMovimiento.FIN_VIGENCIA);
+ 
+   //****************************************************************************** */
+  //***************************************************************************** */
+
+   console.log("DATOS DESPUES DE FECHASERVIC.ALMACENAFECHA");
+   console.log(this.nuevoMovimiento);
+   console.log("MODIFICA PARCELA " + this.modificaParcela);
+    
+
+      combineLatest([
+        this.mercadillosService.modificaEstadoParcela(this.modificaParcela),
+        this.mercadillosService.newMovimiento(this.nuevoMovimiento),
+      ]).subscribe(([resp, resp2]) => {
+        Swal.fire({
+          title: 'Asignado',
+          text: 'Se asigna parcela correctamente..',
+          icon: 'success',
+        });
+        this.buscarPersonas = new UsuarioModel();
+        this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.mostrarfecha(this.nuevoMovimiento.F_EFECTIVA_MOV);
+        this.nuevoMovimiento.FIN_VIGENCIA = this.fechaService.mostrarfecha(this.nuevoMovimiento.FIN_VIGENCIA);
+
       });
 
-      this.buscarPersonas = new UsuarioModel();
-
-    });
 
 
-   /*
-    this.mercadillosService.modificaEstadoParcela(this.modificaParcela)
-        .subscribe ( resp => {
-          console.log(resp);
-        });
+     this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.mostrarfecha(this.nuevoMovimiento.F_EFECTIVA_MOV);
+     this.nuevoMovimiento.FIN_VIGENCIA = this.fechaService.mostrarfecha(this.nuevoMovimiento.FIN_VIGENCIA);
 
-    this.mercadillosService.newMovimiento(this.nuevoMovimiento)
-        .subscribe( resp => {
-          Swal.fire({
-            title : 'Asignado',
-            text : 'Se asigna parcela correctamente..',
-            icon : 'success'
-          });
-        })
-   */
+    //console.log("TERMINAR PROCESO : " + this.nuevoMovimiento);
 
   }
 

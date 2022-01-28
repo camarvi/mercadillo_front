@@ -18,10 +18,10 @@ export class  MovimientoModel {
         this.IDPARCELA = 0;
         this.TITULAR = 0;
         this.ACTIVIDAD = 0;
-        this.FECHA_MOV = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
-        this.F_EFECTIVA_MOV = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+        this.FECHA_MOV = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' });
+        this.F_EFECTIVA_MOV = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' });
         this.OPERACION = "A";
-        this.F_OPERACION = new Date().toLocaleDateString('es-ES',{ timeZone: 'UTC' });
+        this.F_OPERACION = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' });
         this.ACTIVO = "S";
         this.FIN_VIGENCIA = "";
         this.IAE ="";

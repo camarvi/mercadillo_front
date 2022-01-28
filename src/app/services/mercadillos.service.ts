@@ -354,68 +354,84 @@ newAutorizado( autorizado : AutorizadosModel) {
 
 // MOVIMIENTOS
 
+// newMovimiento(movimiento: MovimientoModel) {
+
+//   // console.log("Servicio : Nuevo movimiento");
+//   // console.log(movimiento);
+
+//   // let mimovimiento = new MovimientoModel;
+//   // mimovimiento = movimiento;
+
+//   // let fechaFinok : string;
+//   // let anioF = mimovimiento.FIN_VIGENCIA.slice(0, 4);
+//   // let mesF = mimovimiento.FIN_VIGENCIA.slice(5, 7);
+//   // let diaF = mimovimiento.FIN_VIGENCIA.slice(8, 10);
+//   // fechaFinok = diaF + "/" + mesF + "/" + anioF;
+  
+  
+  
+//   // let fechaEfecok : string;
+//   // let anioEfe = mimovimiento.F_EFECTIVA_MOV.slice(0, 4);
+//   // let mesEfe = mimovimiento.F_EFECTIVA_MOV.slice(5, 7);
+//   // let diaEfe = mimovimiento.F_EFECTIVA_MOV.slice(8, 10);
+//   // fechaEfecok = diaEfe + "/" + mesEfe + "/" + anioEfe;
+
+//   if (  fechaFinok.length>4){
+//     mimovimiento.FIN_VIGENCIA = fechaFinok;
+//   } else {
+//     mimovimiento.FIN_VIGENCIA ="";
+//   }
+
+//   if (fechaEfecok.length>4){
+//     mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
+//   } else {
+//     mimovimiento.F_EFECTIVA_MOV ="";
+//   }
+  
+
+//   /*if (mitarifa.F_FIN!=null) {
+//     let anioF = mitarifa.F_FIN.slice(0, 4);
+//     let mesF = mitarifa.F_FIN.slice(5, 7);
+//     let diaF = mitarifa.F_FIN.slice(8, 10);
+//     fechaFok = diaF + "/" + mesF + "/" + anioF;
+
+//   } else {
+//     fechaFok = null;
+//   } */
+
+//   //let fechaAok = diaA + "/" + mesA + "/" + anioA;
+//   //mitarifa.F_INICIO = fechaAok;
+//   //mitarifa.F_FIN = fechaFok;
+
+
+
+//   return this.http.post(`${this.baseUrl}/movimiento`, mimovimiento)
+//     .pipe(
+//       map((resp: any) => {
+//         //console.log("Respuesta de Node");
+//         //console.log(resp[0]);
+//         mimovimiento.IDMOV = resp[0];
+//         return mimovimiento;
+//       })
+//     );
+
+// }
+
+
 newMovimiento(movimiento: MovimientoModel) {
 
-  console.log("Servicio : Nuevo movimiento");
-  console.log(movimiento);
-
-  let mimovimiento = new MovimientoModel;
-  mimovimiento = movimiento;
-
-  let fechaFinok : string;
-  let anioF = mimovimiento.FIN_VIGENCIA.slice(0, 4);
-  let mesF = mimovimiento.FIN_VIGENCIA.slice(5, 7);
-  let diaF = mimovimiento.FIN_VIGENCIA.slice(8, 10);
-  fechaFinok = diaF + "/" + mesF + "/" + anioF;
-  
-  
-  
-  let fechaEfecok : string;
-  let anioEfe = mimovimiento.F_EFECTIVA_MOV.slice(0, 4);
-  let mesEfe = mimovimiento.F_EFECTIVA_MOV.slice(5, 7);
-  let diaEfe = mimovimiento.F_EFECTIVA_MOV.slice(8, 10);
-  fechaEfecok = diaEfe + "/" + mesEfe + "/" + anioEfe;
-
-  if (  fechaFinok.length>4){
-    mimovimiento.FIN_VIGENCIA = fechaFinok;
-  } else {
-    mimovimiento.FIN_VIGENCIA ="";
-  }
-
-  if (fechaEfecok.length>4){
-    mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
-  } else {
-    mimovimiento.F_EFECTIVA_MOV ="";
-  }
-  
-
-  /*if (mitarifa.F_FIN!=null) {
-    let anioF = mitarifa.F_FIN.slice(0, 4);
-    let mesF = mitarifa.F_FIN.slice(5, 7);
-    let diaF = mitarifa.F_FIN.slice(8, 10);
-    fechaFok = diaF + "/" + mesF + "/" + anioF;
-
-  } else {
-    fechaFok = null;
-  } */
-
-  //let fechaAok = diaA + "/" + mesA + "/" + anioA;
-  //mitarifa.F_INICIO = fechaAok;
-  //mitarifa.F_FIN = fechaFok;
-
-
-
-  return this.http.post(`${this.baseUrl}/movimiento`, mimovimiento)
+  return this.http.post(`${this.baseUrl}/movimiento`, movimiento)
     .pipe(
       map((resp: any) => {
         //console.log("Respuesta de Node");
         //console.log(resp[0]);
-        mimovimiento.IDMOV = resp[0];
-        return mimovimiento;
+        movimiento.IDMOV = resp[0];
+        return movimiento;
       })
     );
 
 }
+
 
 getDetallesMovimientos(id : string ) : Observable<MovimientoDetallenterface[]> {
   return this.http.get<MovimientoDetallenterface[]>(`${this.baseUrl}/movimientosdetalles/${id}`);
