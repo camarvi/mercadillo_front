@@ -11,6 +11,7 @@ export interface UsuarioInterface{
     CP:         string;
     POBLACION:  string;
     MUNICIPIO:  string;
+    PROVINCIA:  string;
     FECHA_ALTA: string;
     SEXO:       number;
     TIPOVIA:    number;

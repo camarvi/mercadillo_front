@@ -11,6 +11,7 @@ export class UsuarioModel{
     CP:         string;
     POBLACION:  string;
     MUNICIPIO:  string;
+    PROVINCIA:  string;
     FECHA_ALTA: string;
     SEXO:       number;
     TIPOVIA:    number;
@@ -34,6 +35,7 @@ export class UsuarioModel{
         this.CP = "";        
         this.POBLACION = ""; 
         this.MUNICIPIO = ""; 
+        this.PROVINCIA = "";
         this.FECHA_ALTA = new Date().toLocaleDateString('en-GB',{ timeZone: 'UTC' }); // .toDateString();  //this.datePipe.transform(new Date(),"dd/MM/yyyy");
         this.SEXO = 1;   
         this.TIPOVIA = 1;

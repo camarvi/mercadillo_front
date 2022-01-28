@@ -183,7 +183,7 @@
 
   <div class="form-row">
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label>Poblacion</label>
       <input type="text" class="form-control"
         #poblacion = "ngModel"
@@ -192,13 +192,22 @@
         [(ngModel)] = "usuario.POBLACION"
       >
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label>Municipio</label>
       <input type="text" class="form-control"
         #municipio = "ngModel"
         name = "municipio"
         [class.is-invalid] = "municipio.invalid && municipio.touched"
         [(ngModel)] = "usuario.MUNICIPIO"
+      >
+    </div>
+    <div class="form-group col-md-4">
+      <label>Provincia</label>
+      <input type="text" class="form-control"
+        #provincia = "ngModel"
+        name = "provincia"
+        [class.is-invalid] = "provincia.invalid && provincia.touched"
+        [(ngModel)] = "usuario.PROVINCIA"
       >
     </div>
   </div>
