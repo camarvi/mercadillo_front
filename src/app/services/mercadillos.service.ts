@@ -448,11 +448,12 @@ updateMovimiento(movimiento : MovimientoModel){
 
 } 
 
-updateMovimientoNoActivo(movimiento : MovimientoDetallenterface) {
-  let mimovimiento = new MovimientoModel;
-  mimovimiento.IDMOV = movimiento.IDMOV;
-  return this.http.put(`${this.baseUrl}/movimientonoactivo/${mimovimiento.IDMOV}`, mimovimiento);
-}
+ updateMovimientoNoActivo(movimiento : MovimientoDetallenterface) {
+   let mimovimiento = new MovimientoModel;
+   mimovimiento.IDMOV = movimiento.IDMOV;
+   return this.http.put(`${this.baseUrl}/movimientonoactivo/${mimovimiento.IDMOV}`, mimovimiento);
+ }
+
 
 // INFORMES - LISTADOS
 

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { combineLatest } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MercadillosService } from '../../../services/mercadillos.service';
+import { FechasService } from '../../../services/fechas.service';
+
 import { AutorizadosInterface } from '../../../interfaces/autorizados-response';
 import { UsuarioInterface } from '../../../interfaces/usuario-response';
 
@@ -32,6 +34,7 @@ export class AutorizadosComponent implements OnInit {
   tipoParentesco : ParentescoInterface[] = [];
 
   constructor(private mercadilloService : MercadillosService,
+              private fechaService : FechasService,
               private route: ActivatedRoute,
               private router : Router) { }
 
@@ -101,11 +104,13 @@ export class AutorizadosComponent implements OnInit {
     if (this.nuevoAutorizado.PARENTESCO>0) {
       this.nuevoAutorizado.TITULAR = Number(this.id); 
       this.nuevoAutorizado.AUTORIZADO = this.buscarPersonas.IDPERSONA;
+      this.nuevoAutorizado.F_ALTA = this.fechaService.almacenaFecha(this.nuevoAutorizado.F_ALTA);
+      this.nuevoAutorizado.F_BAJA = this.fechaService.almacenaFecha(this.nuevoAutorizado.F_BAJA);
    //   console.log(this.nuevoAutorizado);
       this.mercadilloService.newAutorizado(this.nuevoAutorizado)
           .subscribe( resp =>{
             this.nuevoAutorizado.ID_AUTORIZADO = resp[0];
-
+           
             Swal.fire({
               title : "ALTA",
               text : 'Registro añadido correctamente..',
@@ -123,6 +128,7 @@ export class AutorizadosComponent implements OnInit {
           
     }
     
+    this.ngOnInit();  
   }
 
   eliminar(id: string){

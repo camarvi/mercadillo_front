@@ -11,6 +11,7 @@ import { combineLatest } from 'rxjs';
 import Swal from 'sweetalert2';
 
 import { MercadillosService } from '../../../services/mercadillos.service';
+import { FechasService } from '../../../services/fechas.service';
 import { ParcelaModel } from  '../../../models/parcela.model';
 import { MovimientoModel } from 'src/app/models/movimiento.model';
 
@@ -40,6 +41,7 @@ export class BajaAdjComponent implements OnInit {
   
    
   constructor(private  mercadilloService : MercadillosService,
+              private fechaService : FechasService,
               private router : Router,
               private route : ActivatedRoute) { }
 
@@ -89,7 +91,9 @@ realizaBaja(fecha : string){
     this.nuevoMovimiento.OPERACION = "B";
     this.nuevoMovimiento.FIN_VIGENCIA = ""; //this.nuevoMovimiento.F_EFECTIVA_MOV;
     this.nuevoMovimiento.TITULAR = this.datosMovimiento.TITULAR;
-    this.nuevoMovimiento.F_EFECTIVA_MOV = fecha;
+    this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.almacenaFecha(fecha);
+    console.log("DATOS NUEVO MOVIMIENTO");
+    console.log(this.nuevoMovimiento);
     
 /*
     let fechaok ="";
@@ -113,6 +117,8 @@ realizaBaja(fecha : string){
     console.log("FECHA COMPUESTA " + fechaok);
 */
 
+
+
    combineLatest([
      // 1 - Modificar estado parcela a Vacante (FUNCIONA)
       this.mercadilloService.modificaEstadoParcela(this.modeloParcela),
@@ -121,6 +127,7 @@ realizaBaja(fecha : string){
      this.mercadilloService.updateMovimientoNoActivo(this.datosMovimiento),
 
      // 3 - Registrar el nuevo movimiento ( FUNCIONA )
+     
      this.mercadilloService.newMovimiento(this.nuevoMovimiento) 
      
      

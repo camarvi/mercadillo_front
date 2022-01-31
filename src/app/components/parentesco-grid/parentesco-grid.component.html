@@ -7,6 +7,8 @@
           <th scope="col">Ap1</th>
           <th scope="col">Ap2</th>
           <th scope="col">Parentesco</th>
+          <th scope="col">F. Alta</th>
+          <th scope="col">F. Baja</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -16,6 +18,12 @@
           <td>{{ autorizado.APE1 }}</td>
           <td>{{ autorizado.APE2 }}</td>
           <td>{{ autorizado.DES_PARENTESCO }}</td>
+          <td> 
+            <span (keyup)="changeValue(i, 'name', $event)" (blur)="updateList(i, 'name', $event)" contenteditable="true">{{autorizado.F_ALTA}}</span>
+ 
+          <td>
+            <input type="text" class="form-control" [value]= autorizado.F_BAJA >
+            </td>
           <td>
           <!--
             <button class="btn btn-danger mr-1" 

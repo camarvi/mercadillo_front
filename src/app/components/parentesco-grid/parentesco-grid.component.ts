@@ -16,6 +16,9 @@ export class ParentescoGridComponent implements OnInit {
   @Output()
   propagar = new EventEmitter<string>();
 
+  editField: string;
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -40,5 +43,21 @@ export class ParentescoGridComponent implements OnInit {
   });
    
   }
+
+  changeValue(id: number, property: string, event: any) {
+
+    this.editField = event.target.textContent;
+    console.log("Dentro de ChangeValue");
+    console.log(this.editField);
+  }
+
+  updateList(id: number, property: string, event: any) {
+    const editField = event.target.textContent;
+    console.log("Dentro de updateList");
+    console.log(editField);
+  //  this.personList[id][property] = editField;
+  }
+
+
 
 }

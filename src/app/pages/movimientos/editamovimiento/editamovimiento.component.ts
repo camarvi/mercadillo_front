@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { combineLatest } from 'rxjs';
-
+import Swal from 'sweetalert2';
 import { ActividadesInterface } from  '../../../interfaces/actividades-response';
 import { MovimientoDetallenterface } from '../../../interfaces/movimiento-response';
 import { ParcelaInterface } from '../../../interfaces/parcela-response';
 import { MovimientoModel } from '../../../models/movimiento.model';
+import { EpigrafeIAEInterface } from '../../../interfaces/epigrafesiae-response';
+
 import { MercadillosService } from '../../../services/mercadillos.service';
+
+import { FechasService } from '../../../services/fechas.service';
 
 @Component({
   selector: 'app-editamovimiento',
@@ -23,6 +27,7 @@ export class EditamovimientoComponent implements OnInit {
   public datosMovimiento : MovimientoDetallenterface;
   public datosParcela : ParcelaInterface;
  
+  public listadoEpigrafesIae : EpigrafeIAEInterface[] = [];
   public listadoActividades : ActividadesInterface[] = [];
   public nuevoMovimiento = new MovimientoModel();
 
@@ -30,6 +35,7 @@ export class EditamovimientoComponent implements OnInit {
   public nombreActividad : String;
 
   constructor(private mercadilloService :  MercadillosService, 
+              private fechaService : FechasService,
               private route : ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -60,8 +66,9 @@ export class EditamovimientoComponent implements OnInit {
               this.mercadilloService.getParcelaId(resp[0].IDPARCELA),
               this.mercadilloService.getActividades(),
              // this.mercadilloService.getActividadId(this.datosMovimiento.ACTIVIDAD.toString())
-             this.mercadilloService.getActividadId("7")
-            ]).subscribe( ([resp,resp2, resp3]) =>{
+             this.mercadilloService.getActividadId(this.datosMovimiento.ACTIVIDAD.toString() ),
+             this.mercadilloService.getEpigrafesIae()
+            ]).subscribe( ([resp,resp2, resp3, resp4]) =>{
               this.datosParcela = resp[0];
               this.listadoActividades = resp2;
              // this.actividad = resp3[0];
@@ -71,6 +78,7 @@ export class EditamovimientoComponent implements OnInit {
               console.log("Actividad Actual ");
              // console.log(this.actividad.DESC_ACTIVIDAD);
               this.nombreActividad = resp3[0].DESC_ACTIVIDAD //this.actividad.DESC_ACTIVIDAD;
+              this.listadoEpigrafesIae = resp4;
             });   
             
           }
@@ -109,6 +117,34 @@ export class EditamovimientoComponent implements OnInit {
       return;
     }
     
+    this.nuevoMovimiento.IDPARCELA = this.datosMovimiento.IDPARCELA;
+    this.nuevoMovimiento.TITULAR = this.datosMovimiento.TITULAR;
+    this.nuevoMovimiento.FIN_VIGENCIA = this.fechaService.almacenaFecha(this.nuevoMovimiento.FIN_VIGENCIA);
+    this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.almacenaFecha(this.nuevoMovimiento.F_EFECTIVA_MOV);
+    
+    this.datosMovimiento.ACTIVO = 'N';
+
+    if (this.nuevoMovimiento.IDPARCELA>0) {
+    this.mercadilloService.updateMovimientoNoActivo(this.datosMovimiento)
+    .subscribe(resp =>{
+      console.log(resp);
+    })
+
+     this.mercadilloService.newMovimiento(this.nuevoMovimiento)
+     .subscribe( resp => {
+      Swal.fire({
+        title: 'Movimiento  ' + resp.IDMOV,
+        text: 'Se almaceno correctamente..',
+        icon: 'success',
+      });
+
+     }); 
+
+
+    this.nuevoMovimiento.FIN_VIGENCIA = this.fechaService.mostrarfecha(this.nuevoMovimiento.FIN_VIGENCIA);
+    this.nuevoMovimiento.F_EFECTIVA_MOV = this.fechaService.mostrarfecha(this.nuevoMovimiento.F_EFECTIVA_MOV);
+  }
+
   }
 
 

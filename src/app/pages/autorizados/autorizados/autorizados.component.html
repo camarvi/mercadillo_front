@@ -1,5 +1,5 @@
 <div *ngIf="cargando">
-    <app-cargando></app-cargando>
+  <app-cargando></app-cargando>
 </div>
 <!--
 <form class="mb-3">
@@ -24,76 +24,92 @@
 -->
 
 
-<div  *ngIf="!cargando" class="text-center text-uppercase mb-4">
-    <em><b>
-    {{ titular[0].NIF}} - {{ titular[0].APE1}} {{ titular[0].APE2 }}, {{ titular[0].NOMBRE }} 
+<div *ngIf="!cargando" class="text-center text-uppercase mb-4">
+  <em><b>
+      {{ titular[0].NIF}} - {{ titular[0].APE1}} {{ titular[0].APE2 }}, {{ titular[0].NOMBRE }}
     </b></em>
   <!--  <div><b>Listado Autorizados</b></div> -->
 </div>
 
 <form class="mb-3">
-    <div class="form-row">
-      <div class="form-group col-md-2">
-        <label class="sr-only">Dni</label>
-        <input #dni="ngModel" name="dni" type="text" class="form-control" [(ngModel)]="buscarPersonas.NIF" placeholder="Dni">
-      </div>
-      <div class="form-group col-md-2">
-        <label class="sr-only">Nombre</label>
-        <input #nombre="ngModel" name="nombre" type="text" [(ngModel)]="buscarPersonas.NOMBRE" class="form-control" readonly placeholder="Nombre">
-      </div>
-      <div class="form-group col-md-2">
-        <label class="sr-only">Ape1</label>
-        <input #ape1="ngModel" name="ape1" type="text" [(ngModel)]="buscarPersonas.APE1" class="form-control" readonly  placeholder="Ape1">
-      </div>
-      <div class="form-group col-md-2">
-        <label class="sr-only">Ape2</label>
-        <input #ape2="ngModel" name="ape2" type="text" [(ngModel)]="buscarPersonas.APE2" class="form-control" readonly  placeholder="Ape2">
-      </div>
-     <!-- <div class="form-group col-md-3">
-        <label class="sr-only">Ap1</label>
-        <input #ap1 type="text" class="form-control" placeholder="Apellido1">
-      </div> -->
-      <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-4">
-        <label class="sr-only">Parentesco</label>
-      <!--  <input #parentesco type="text" class="form-control" placeholder="Parentesco"> -->
-        <select class="form-control" 
-          #parentesco = "ngModel"
-          name = "parentesco"  
-          [(ngModel)]="nuevoAutorizado.PARENTESCO">
-          <option [value]="parent.COD_PARENTESCO" *ngFor="let parent of tipoParentesco"
-             >{{parent.DES_PARENTESCO}}
-          </option>
-        </select>
+
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label class="sr-only">Dni</label>
+      <input #dni="ngModel" name="dni" type="text" class="form-control" [(ngModel)]="buscarPersonas.NIF"
+        placeholder="Dni">
+    </div>
+    <div class="form-group col-md-2">
+      <label class="sr-only">Nombre</label>
+      <input #nombre="ngModel" name="nombre" type="text" [(ngModel)]="buscarPersonas.NOMBRE" class="form-control"
+        readonly placeholder="Nombre">
+    </div>
+    <div class="form-group col-md-2">
+      <label class="sr-only">Ape1</label>
+      <input #ape1="ngModel" name="ape1" type="text" [(ngModel)]="buscarPersonas.APE1" class="form-control" readonly
+        placeholder="Ape1">
+    </div>
+    <div class="form-group col-md-2">
+      <label class="sr-only">Ape2</label>
+      <input #ape2="ngModel" name="ape2" type="text" [(ngModel)]="buscarPersonas.APE2" class="form-control" readonly
+        placeholder="Ape2">
+    </div>
+
+    <div *ngIf="buscarPersonas.IDPERSONA==0" class="form-group col-md-2">
+      <button (click)="buscarNuevoAutorizado()" type="submit" class="form-group btn btn-outline-success mb-2">
+        <!--  <i class="fas fa-user-plus"></i> -->
+        <i class="fas fa-search"></i>
+        Buscar
+      </button>
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-3">
+      <label class="font-italic font-weight-bold">Parentesco</label>
+      <select class="form-control" #parentesco="ngModel" name="parentesco" [(ngModel)]="nuevoAutorizado.PARENTESCO">
+        <option [value]="parent.COD_PARENTESCO" *ngFor="let parent of tipoParentesco">{{parent.DES_PARENTESCO}}
+        </option>
+      </select>
+    </div>
+
+    <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-3">
+      <label class="font-italic font-weight-bold">F. Alta</label>
+      <input #falta="ngModel" name="falta" type="date" [(ngModel)]="nuevoAutorizado.F_ALTA" class="form-control"
+        placeholder="FAlta">
+    </div>
+
+    <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-3">
+      <label class="font-italic font-weight-bold">F. Baja</label>
+      <input #fbaja="ngModel" name="fbaja" type="date" [(ngModel)]="nuevoAutorizado.F_BAJA" class="form-control"
+        placeholder="FBaja">
+    </div>
+
+  </div>
+  <div class="form-row mt-3 mx-auto">
+ 
+    <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-2">
       
-      </div>
+      <button (click)="limpiarPantalla()" type="submit" class="form-group btn btn-danger mb-2">
+        <!--  <i class="fas fa-user-plus"></i> -->
+        <i class="fas fa-undo"></i>
+        Deshacer
+      </button>
+    </div>
+    <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-2 ">
       
-      <div *ngIf="buscarPersonas.IDPERSONA==0" class="form-group col-md-2">
-        <button (click)="buscarNuevoAutorizado()" type="submit"
-          class="form-group btn btn-outline-success mb-2">
+      <button (click)="guardar()" type="submit" class="form-group btn btn-primary mb-2">
         <!--  <i class="fas fa-user-plus"></i> -->
-          <i class="fas fa-search"></i>
-            Buscar
-        </button>
-      </div>
-      <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-2">
-        <button (click)="limpiarPantalla()" type="submit"
-          class="form-group btn btn-danger mb-2">
-        <!--  <i class="fas fa-user-plus"></i> -->
-          <i class="fas fa-undo"></i>
-            Deshacer
-        </button>
-      </div>
-      <div *ngIf="buscarPersonas.IDPERSONA>0" class="form-group col-md-2">
-        <button (click)="guardar()" type="submit"
-          class="form-group btn btn-primary mb-2">
-        <!--  <i class="fas fa-user-plus"></i> -->
-          <i class="fa fa-save"></i>
-            Grabar
-        </button>
-      </div>
-    </div> 
+        <i class="fa fa-save"></i>
+        Grabar
+      </button>
+    </div>
+  </div>
 </form>
 
-<div *ngIf="autorizados.length>0" class="text-center text-uppercase mb-2"><b>Listado Autorizados</b></div>
-<app-parentesco-grid *ngIf="autorizados.length>0" [autorizados]="autorizados" (propagar)="procesaPropagar($event)"></app-parentesco-grid>
 
+
+<div *ngIf="autorizados.length>0" class="text-center text-uppercase mb-2"><b>Listado Autorizados</b></div>
+<app-parentesco-grid *ngIf="autorizados.length>0" [autorizados]="autorizados" (propagar)="procesaPropagar($event)">
+</app-parentesco-grid>
