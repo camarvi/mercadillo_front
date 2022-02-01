@@ -19,10 +19,14 @@
           <td>{{ autorizado.APE2 }}</td>
           <td>{{ autorizado.DES_PARENTESCO }}</td>
           <td> 
-            <span (keyup)="changeValue(i, 'name', $event)" (blur)="updateList(i, 'name', $event)" contenteditable="true">{{autorizado.F_ALTA}}</span>
+          <!-- 
+            <span (keyup)="changeValue(i, 'name', $event)" (blur)="modificaFechaAlta(autorizado.ID_AUTORIZADO, 'name', $event)" contenteditable="true">{{autorizado.F_ALTA}}</span>
+          --> 
+            <span (blur)="modificaFechaAlta(autorizado.ID_AUTORIZADO, 'name', $event)" contenteditable="true">{{autorizado.F_ALTA}}</span>
  
           <td>
-            <input type="text" class="form-control" [value]= autorizado.F_BAJA >
+            <span (blur)="modificaFechaBaja(autorizado.ID_AUTORIZADO, 'name', $event)" contenteditable="true">{{autorizado.F_BAJA}}</span>
+ 
             </td>
           <td>
           <!--

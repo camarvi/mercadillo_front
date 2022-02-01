@@ -13,6 +13,7 @@ import { ParentescoGridComponent } from './parentesco-grid/parentesco-grid.compo
 import { MovimientosGridComponent } from './movimientos-grid/movimientos-grid.component';
 import { AsignadosGridComponent } from './asignados-grid/asignados-grid.component';
 import { ParcelaslibresGridComponent } from './parcelaslibres-grid/parcelaslibres-grid.component';
+import { ParcelasperGridComponent } from './parcelasper-grid/parcelasper-grid.component';
 
 
 
@@ -28,7 +29,8 @@ import { ParcelaslibresGridComponent } from './parcelaslibres-grid/parcelaslibre
     ParentescoGridComponent,
     MovimientosGridComponent,
     AsignadosGridComponent,
-    ParcelaslibresGridComponent
+    ParcelaslibresGridComponent,
+    ParcelasperGridComponent
   ],
   exports : [
     NavbarComponent,
@@ -41,7 +43,8 @@ import { ParcelaslibresGridComponent } from './parcelaslibres-grid/parcelaslibre
     ParentescoGridComponent,
     MovimientosGridComponent,
     AsignadosGridComponent,
-    ParcelaslibresGridComponent
+    ParcelaslibresGridComponent,
+    ParcelasperGridComponent
   ],
   imports: [
     CommonModule,

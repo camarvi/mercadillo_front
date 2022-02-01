@@ -1,0 +1,6 @@
+<h3>Listado Personas y sus puestos en todos los Mercadillos </h3>
+
+<div id="content_pdf">
+    <app-parcelasper-grid *ngIf="puestospersonas.length>0" [personaspar]="puestospersonas"></app-parcelasper-grid>
+    <app-noresultados *ngIf="noencontrados==true"></app-noresultados>
+</div>

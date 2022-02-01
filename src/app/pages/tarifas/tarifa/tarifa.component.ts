@@ -62,12 +62,15 @@ export class TarifaComponent implements OnInit {
     // ESTA LINEA FUNCIONA BIEN
     // peticion = this.mercadilloService.newTarifa(this.nuevaTarifa); 
   
+    this.nuevaTarifa.F_FIN = this.fechasService.almacenaFecha(this.nuevaTarifa.F_FIN);
+    this.nuevaTarifa.F_INICIO = this.fechasService.almacenaFecha(this.nuevaTarifa.F_INICIO);
+
     if (this.nuevaTarifa.IDTARIFA !==0 ){
-    //  console.log("MODIFICAR TARIFA");
-    //  console.log(this.nuevaTarifa);
+      console.log("MODIFICAR TARIFA");
+      console.log(this.nuevaTarifa);
      peticion = this.mercadilloService.updateTarifa(this.nuevaTarifa);
-    // console.log("NUEVA TARIFA");
-    // console.log(this.nuevaTarifa);
+     console.log("NUEVA TARIFA");
+     console.log(this.nuevaTarifa);
     } else { //NUEVO REGISTRO  
    //   console.log(this.nuevaTarifa);
      peticion = this.mercadilloService.newTarifa(this.nuevaTarifa);   

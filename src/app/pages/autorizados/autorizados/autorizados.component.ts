@@ -36,7 +36,8 @@ export class AutorizadosComponent implements OnInit {
   constructor(private mercadilloService : MercadillosService,
               private fechaService : FechasService,
               private route: ActivatedRoute,
-              private router : Router) { }
+              private router : Router
+              ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -165,6 +166,7 @@ export class AutorizadosComponent implements OnInit {
      this.eliminar(codigo);
      
    }
+
 
 
 }

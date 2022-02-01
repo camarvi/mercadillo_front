@@ -20,6 +20,7 @@ import { AsignadosComponent } from './pages/informes/asignados/asignados.compone
 import { EditamovimientoComponent } from './pages/movimientos/editamovimiento/editamovimiento.component';
 import { BajaAdjComponent } from './pages/movimientos/baja-adj/baja-adj.component';
 import { VacantesComponent } from './pages/informes/vacantes/vacantes.component';
+import { ParcelasperComponent } from './pages/informes/parcelasper/parcelasper.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -41,7 +42,8 @@ const routes : Routes=[
   { path: 'editamovimiento/:iddetalle/:mercadillo', component : EditamovimientoComponent },
   { path: 'informe_asignados', component : AsignadosComponent},
   { path: 'baja_adjudicatario/:iddetalle/:mercadillo', component : BajaAdjComponent},
-  { path: 'puestos_vacantes', component : VacantesComponent},
+  { path: 'puestos_vacantes', component : VacantesComponent },
+  { path: 'parcelasper' , component : ParcelasperComponent },
   { path: '**', redirectTo : '/home'}
 ];
 

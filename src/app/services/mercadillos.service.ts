@@ -22,6 +22,7 @@ import { MovimientoModel } from '../models/movimiento.model';
 import { MovimientoDetallenterface } from '../interfaces/movimiento-response';
 import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
 import { EpigrafeIAEInterface } from '../interfaces/epigrafesiae-response';
+import { PersonasPuestoInterface } from '../interfaces/informes-response';
 
 
 
@@ -249,7 +250,7 @@ export class MercadillosService {
     return this.http.get<TarifaInterface[]>(`${this.baseUrl}/tarifas/${id}`);
   }
 
-  newTarifa(tarifa: TarifaModel) {
+  newTarifaOLD(tarifa: TarifaModel) {
 
     let mitarifa = new TarifaModel;
     mitarifa = tarifa;
@@ -284,11 +285,27 @@ export class MercadillosService {
 
   }
 
+  newTarifa(tarifa: TarifaModel) {
+
+    return this.http.post(`${this.baseUrl}/tarifas`, tarifa)
+      .pipe(
+        map((resp: any) => {
+          //console.log("Respuesta de Node");
+          //console.log(resp[0]);
+          tarifa.IDTARIFA = resp[0];
+          return tarifa;
+        })
+      );
+
+  }
+
+  
+
   deleteTarifa(id: string) {
     return this.http.delete(`${this.baseUrl}/tarifas/${id}`);
   }
 
-  updateTarifa(tarifa : TarifaModel) {
+  updateTarifaOLD(tarifa : TarifaModel) {
 
     console.log("DENTRO DE UPDATE TARIFA")
 
@@ -332,6 +349,31 @@ export class MercadillosService {
   }
 
 
+  updateTarifa(tarifa : TarifaModel) {
+
+    console.log("DENTRO DE UPDATE TARIFA")
+
+    //let mitarifa = new TarifaModel;
+   // mitarifa = tarifa;
+   // console.log(mitarifa);
+    // return this.http.put(`${this.baseUrl}/tarifas/${mitarifa.IDTARIFA}`, mitarifa)
+    //   .pipe(
+    //     map((resp: any) => {
+    //       return tarifa;
+    //     })
+    //   );
+    
+      return this.http.put(`${this.baseUrl}/tarifas/${tarifa.IDTARIFA}`, tarifa)
+      .pipe(
+        map((resp: any) => {
+          return tarifa;
+        })
+      );
+ 
+
+  }
+
+
 // AUTORIZADOS
 
 getAutorizados(id : string ): Observable<AutorizadosInterface[]> {
@@ -352,70 +394,18 @@ newAutorizado( autorizado : AutorizadosModel) {
       );
 }
 
+updateFAltaAutorizado ( autorizado : AutorizadosModel ) {
+  return this.http.put(`${this.baseUrl}/autorizadofalta/${autorizado.ID_AUTORIZADO}`, autorizado);
+}
+
+updateFBajaAutorizado ( autorizado : AutorizadosModel ) {
+  return this.http.put(`${this.baseUrl}/autorizadofbaja/${autorizado.ID_AUTORIZADO}`, autorizado);
+}
+
+// MODIFICAR FECHA ALTA Y FECHA BAJA
+
+
 // MOVIMIENTOS
-
-// newMovimiento(movimiento: MovimientoModel) {
-
-//   // console.log("Servicio : Nuevo movimiento");
-//   // console.log(movimiento);
-
-//   // let mimovimiento = new MovimientoModel;
-//   // mimovimiento = movimiento;
-
-//   // let fechaFinok : string;
-//   // let anioF = mimovimiento.FIN_VIGENCIA.slice(0, 4);
-//   // let mesF = mimovimiento.FIN_VIGENCIA.slice(5, 7);
-//   // let diaF = mimovimiento.FIN_VIGENCIA.slice(8, 10);
-//   // fechaFinok = diaF + "/" + mesF + "/" + anioF;
-  
-  
-  
-//   // let fechaEfecok : string;
-//   // let anioEfe = mimovimiento.F_EFECTIVA_MOV.slice(0, 4);
-//   // let mesEfe = mimovimiento.F_EFECTIVA_MOV.slice(5, 7);
-//   // let diaEfe = mimovimiento.F_EFECTIVA_MOV.slice(8, 10);
-//   // fechaEfecok = diaEfe + "/" + mesEfe + "/" + anioEfe;
-
-//   if (  fechaFinok.length>4){
-//     mimovimiento.FIN_VIGENCIA = fechaFinok;
-//   } else {
-//     mimovimiento.FIN_VIGENCIA ="";
-//   }
-
-//   if (fechaEfecok.length>4){
-//     mimovimiento.F_EFECTIVA_MOV = fechaEfecok;
-//   } else {
-//     mimovimiento.F_EFECTIVA_MOV ="";
-//   }
-  
-
-//   /*if (mitarifa.F_FIN!=null) {
-//     let anioF = mitarifa.F_FIN.slice(0, 4);
-//     let mesF = mitarifa.F_FIN.slice(5, 7);
-//     let diaF = mitarifa.F_FIN.slice(8, 10);
-//     fechaFok = diaF + "/" + mesF + "/" + anioF;
-
-//   } else {
-//     fechaFok = null;
-//   } */
-
-//   //let fechaAok = diaA + "/" + mesA + "/" + anioA;
-//   //mitarifa.F_INICIO = fechaAok;
-//   //mitarifa.F_FIN = fechaFok;
-
-
-
-//   return this.http.post(`${this.baseUrl}/movimiento`, mimovimiento)
-//     .pipe(
-//       map((resp: any) => {
-//         //console.log("Respuesta de Node");
-//         //console.log(resp[0]);
-//         mimovimiento.IDMOV = resp[0];
-//         return mimovimiento;
-//       })
-//     );
-
-// }
 
 
 newMovimiento(movimiento: MovimientoModel) {
@@ -464,5 +454,11 @@ getAsignadosMer(id : string) : Observable<AdjudicadosDetallenterface[]>{
 getInformeAutorizados() : Observable<any[]> {
   return this.http.get<any[]>(`${this.baseUrl}/informeautorizados`);
 }
+
+ //PersonasPuestoInterface
+
+ getInformePersonasParcelas() : Observable<PersonasPuestoInterface[]> {
+   return this.http.get<PersonasPuestoInterface[]>(`${this.baseUrl}/personaspuestos`);
+ }
 
 }

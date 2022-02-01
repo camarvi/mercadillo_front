@@ -124,12 +124,14 @@ export class EditamovimientoComponent implements OnInit {
     
     this.datosMovimiento.ACTIVO = 'N';
 
+
     if (this.nuevoMovimiento.IDPARCELA>0) {
+    
     this.mercadilloService.updateMovimientoNoActivo(this.datosMovimiento)
     .subscribe(resp =>{
       console.log(resp);
     })
-
+     this.nuevoMovimiento.OPERACION = 'M';
      this.mercadilloService.newMovimiento(this.nuevoMovimiento)
      .subscribe( resp => {
       Swal.fire({

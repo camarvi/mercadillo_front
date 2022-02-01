@@ -20,6 +20,7 @@ import { AsignadosComponent } from './informes/asignados/asignados.component';
 import { EditamovimientoComponent } from './movimientos/editamovimiento/editamovimiento.component';
 import { BajaAdjComponent } from './movimientos/baja-adj/baja-adj.component';
 import { VacantesComponent } from './informes/vacantes/vacantes.component';
+import { ParcelasperComponent } from './informes/parcelasper/parcelasper.component';
 
 
 
@@ -42,7 +43,8 @@ import { VacantesComponent } from './informes/vacantes/vacantes.component';
     AsignadosComponent,
     EditamovimientoComponent,
     BajaAdjComponent,
-    VacantesComponent
+    VacantesComponent,
+    ParcelasperComponent
 
   ],
   imports: [

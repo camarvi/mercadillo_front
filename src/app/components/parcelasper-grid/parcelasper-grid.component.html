@@ -1,0 +1,29 @@
+
+<div class="mt-2" id="htmlData">
+    <table  *ngIf="personaspar.length > 0"  class="table table-bordered table-striped">
+        <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+          <tr class="table-primary">    
+            <th scope="col">Titular</th>
+            <th scope="col">Nif</th>
+            <th scope="col">Mercadillo</th>
+            <th scope="col">Puesto</th>
+            <th scope="col">Sup.</th>
+            <th scope="col">Actividad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let persona of personaspar">
+            <td> {{ persona.APE1 }} {{ persona.APE2 }} , {{ persona.NOMBRE }}</td>  
+            <td> {{ persona.NIF }}</td>   
+            <td> {{ persona.MERCADILLO }}</td>
+            <td >{{ persona.ACTIVIDAD }}</td>
+            <td >{{ persona.SUPERFICIE }}</td>
+            <td >{{ persona.DESC_ACTIVIDAD }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+ 
+  
+

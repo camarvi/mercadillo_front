@@ -85,7 +85,8 @@ realizaBaja(fecha : string){
    // console.log(this.modeloParcela);
     // 3 - Registrar el nuevo movimiento
     this.nuevoMovimiento.ACTIVIDAD = this.datosMovimiento.ACTIVIDAD;
-    this.nuevoMovimiento.ACTIVO = "S";
+    //this.nuevoMovimiento.ACTIVO = "S";
+    this.nuevoMovimiento.ACTIVO = "N";
     this.nuevoMovimiento.IDPARCELA = this.datosMovimiento.IDPARCELA;
     this.nuevoMovimiento.IAE = this.datosMovimiento.IAE;
     this.nuevoMovimiento.OPERACION = "B";

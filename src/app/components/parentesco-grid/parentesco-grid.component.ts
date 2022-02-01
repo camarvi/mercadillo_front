@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { MercadillosService } from '../../services/mercadillos.service';
+import { FechasService } from '../../services/fechas.service';
+
+import { AutorizadosModel  } from '../../models/autorizados.model';
+
 import { AutorizadosInterface } from '../../interfaces/autorizados-response';
 import Swal from 'sweetalert2';
 
@@ -17,9 +22,11 @@ export class ParentescoGridComponent implements OnInit {
   propagar = new EventEmitter<string>();
 
   editField: string;
+  autorizado = new AutorizadosModel();
 
 
-  constructor() { }
+  constructor(private mercadilloService : MercadillosService,
+              private fechaService : FechasService) { }
 
   ngOnInit(): void {
   }
@@ -44,20 +51,71 @@ export class ParentescoGridComponent implements OnInit {
    
   }
 
-  changeValue(id: number, property: string, event: any) {
+  // changeValue(id: number, property: string, event: any) {
 
-    this.editField = event.target.textContent;
-    console.log("Dentro de ChangeValue");
-    console.log(this.editField);
-  }
+  //   this.editField = event.target.textContent;
+  // //  console.log("Dentro de ChangeValue");
+  //  // console.log(this.editField);
+  // }
 
-  updateList(id: number, property: string, event: any) {
+
+
+  modificaFechaAlta(id: number, property: string, event: any) {
     const editField = event.target.textContent;
-    console.log("Dentro de updateList");
-    console.log(editField);
-  //  this.personList[id][property] = editField;
+   
+    console.log("MOD F alta " + editField);
+
+   if (!this.fechaService.validaFecha(editField)){     
+     Swal.fire({
+       title : "Error",
+       text : 'La fecha no es valida',
+       icon : 'warning'
+     });
+   } else {
+    // this.autorizado.F_ALTA = this.fechaService.almacenaFecha(editField);
+     this.autorizado.F_ALTA = editField;
+     this.autorizado.ID_AUTORIZADO = id; 
+     console.log("AUTORIZADOS " + this.autorizado.F_ALTA);
+     this.mercadilloService.updateFAltaAutorizado(this.autorizado)
+         .subscribe(resp=>{
+           Swal.fire({
+             //  title : "Modificado",
+               text : 'Fecha modificada correctamente',
+               icon : 'success'
+             });
+         });
+    
+   }
+  
+      
   }
 
+  modificaFechaBaja(id: number, property: string, event: any) {
+    const editField = event.target.textContent;
+    
+      if (!this.fechaService.validaFecha(editField)){  
+        Swal.fire({
+          title : "Error",
+          text : 'La fecha no es valida',
+          icon : 'warning'
+        });
+      } else {
+      // this.autorizado.F_BAJA = this.fechaService.almacenaFecha(editField);
+       this.autorizado.F_BAJA = editField;
+       this.autorizado.ID_AUTORIZADO = id; 
+       console.log("AUTORIZADOS " + this.autorizado.F_BAJA);
+       this.mercadilloService.updateFBajaAutorizado(this.autorizado)
+           .subscribe( resp => {
+             Swal.fire({
+               //  title : "Modificado",
+                 text : 'Fecha modificada correctamente',
+                 icon : 'success'
+               });
+          });
+     
+      }
+    
+  }
 
 
 }
