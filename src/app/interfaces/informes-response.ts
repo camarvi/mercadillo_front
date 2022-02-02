@@ -22,3 +22,13 @@ export interface PersonasPuestoInterface {
     DESC_ACTIVIDAD: string;
 }
 
+export interface AutorizadosPersonaInterface {
+    NIF_TITULAR: string;
+    APE1_TITULAR: string;
+    APE2_TITULAR: null | string;
+    NOMBRE_TITULAR: string;
+    NIF_AUT: string;
+    APE1_AUT: string;
+    APE2_AUT: string;
+    NOMBRE_AUT: string;
+}

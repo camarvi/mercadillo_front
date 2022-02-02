@@ -22,6 +22,7 @@ import { BajaAdjComponent } from './movimientos/baja-adj/baja-adj.component';
 import { VacantesComponent } from './informes/vacantes/vacantes.component';
 import { ParcelasperComponent } from './informes/parcelasper/parcelasper.component';
 import { MovpersonasComponent } from './movimientos/movpersonas/movpersonas.component';
+import { AutorizadosperComponent } from './informes/autorizadosper/autorizadosper.component';
 
 
 
@@ -46,7 +47,8 @@ import { MovpersonasComponent } from './movimientos/movpersonas/movpersonas.comp
     BajaAdjComponent,
     VacantesComponent,
     ParcelasperComponent,
-    MovpersonasComponent
+    MovpersonasComponent,
+    AutorizadosperComponent
 
   ],
   imports: [

@@ -1,0 +1,23 @@
+
+<div class="mt-2" id="htmlData">
+    <table  *ngIf="autorizadospers.length > 0"  class="table table-bordered table-striped table-sm">
+        <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+          <tr class="table-primary">    
+            <th scope="col">Titular</th>
+            <th scope="col">Nif Titular</th>  
+            <th scope="col">Autorizado</th>
+            <th scope="col">Nif Aut.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let autorizadoper of autorizadospers">
+            <td> {{ autorizadoper.APE1_TITULAR }} {{ autorizadoper.APE2_TITULAR }} , {{ autorizadoper.NOMBRE_TITULAR }}</td>  
+            <td> {{ autorizadoper.NIF_AUT }}</td>   
+           
+            <td >{{ autorizadoper.APE1_AUT }} {{ autorizadoper.APE2_AUT }} , {{ autorizadoper.NOMBRE_AUT }}</td>
+            <td> {{ autorizadoper.NIF_AUT }}</td>  
+        </tr>
+        </tbody>
+      </table>
+</div>

@@ -22,7 +22,7 @@ import { MovimientoModel } from '../models/movimiento.model';
 import { MovimientoDetallenterface, MoviPersonasInterface } from '../interfaces/movimiento-response';
 import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
 import { EpigrafeIAEInterface } from '../interfaces/epigrafesiae-response';
-import { PersonasPuestoInterface } from '../interfaces/informes-response';
+import { PersonasPuestoInterface , AutorizadosPersonaInterface } from '../interfaces/informes-response';
 
 
 
@@ -459,10 +459,13 @@ getInformeAutorizados() : Observable<any[]> {
   return this.http.get<any[]>(`${this.baseUrl}/informeautorizados`);
 }
 
- //PersonasPuestoInterface
-
  getInformePersonasParcelas() : Observable<PersonasPuestoInterface[]> {
    return this.http.get<PersonasPuestoInterface[]>(`${this.baseUrl}/personaspuestos`);
  }
+
+ getInformesAutorizadosPer() : Observable<AutorizadosPersonaInterface[]> {
+   return this.http.get<AutorizadosPersonaInterface[]>(`${this.baseUrl}/informeautorizados`)
+ }
+
 
 }

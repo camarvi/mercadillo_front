@@ -69,10 +69,6 @@ export class ParcelasperComponent implements OnInit {
         nifLinea = this.puestospersonas[i].NIF.toString();
       }
 
-     
-
-
-
          nuevoRegistro = [lineaNombre,
                           muestraNif,
                           this.puestospersonas[i].MERCADILLO.toString(),

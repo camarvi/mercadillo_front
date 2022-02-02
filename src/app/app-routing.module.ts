@@ -22,6 +22,7 @@ import { BajaAdjComponent } from './pages/movimientos/baja-adj/baja-adj.componen
 import { VacantesComponent } from './pages/informes/vacantes/vacantes.component';
 import { ParcelasperComponent } from './pages/informes/parcelasper/parcelasper.component';
 import { MovpersonasComponent } from './pages/movimientos/movpersonas/movpersonas.component';
+import { AutorizadosperComponent } from './pages/informes/autorizadosper/autorizadosper.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -46,6 +47,7 @@ const routes : Routes=[
   { path: 'puestos_vacantes', component : VacantesComponent },
   { path: 'parcelasper' , component : ParcelasperComponent },
   { path: 'movimientospersonas/:id/:nif/:ap1/:ap2/:nombre', component : MovpersonasComponent },
+  { path: 'informe_autorizados' , component : AutorizadosperComponent},
   { path: '**', redirectTo : '/home'}
 ];
 
