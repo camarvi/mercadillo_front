@@ -45,6 +45,7 @@ export class ParcelasperComponent implements OnInit {
      // CONTROL PARA MOSTAR NOMBRE USUARIO O NO
      let nifLinea :string = ""; // this.puestospersonas[0].NIF;
      let lineaNombre : string;
+     let muestraNif : string; 
 
      let nuevoRegistro = ['','','','','','','',''];
 
@@ -52,6 +53,7 @@ export class ParcelasperComponent implements OnInit {
       
       if (nifLinea != this.puestospersonas[i].NIF.toString()){
         nifLinea = this.puestospersonas[i].NIF.toString(); 
+        muestraNif = nifLinea;
         if (this.puestospersonas[i].APE2 === null ){
           lineaNombre = this.puestospersonas[i].APE1.toString() +  ', ' +
           this.puestospersonas[i].NOMBRE.toString()
@@ -63,6 +65,7 @@ export class ParcelasperComponent implements OnInit {
       } 
        else {
         lineaNombre = "";
+        muestraNif = "";
         nifLinea = this.puestospersonas[i].NIF.toString();
       }
 
@@ -71,7 +74,7 @@ export class ParcelasperComponent implements OnInit {
 
 
          nuevoRegistro = [lineaNombre,
-                          this.puestospersonas[i].NIF.toString(),
+                          muestraNif,
                           this.puestospersonas[i].MERCADILLO.toString(),
                           this.puestospersonas[i].PUESTO.toString(),
                           this.puestospersonas[i].SUPERFICIE.toString(),
