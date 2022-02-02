@@ -23,13 +23,19 @@
             <td >{{ persona.TLF }}</td>
             <td>
 
-              <button class="btn btn-info mr-1" [routerLink]="['/nuevousuario', persona.IDPERSONA]" title="Editar">
+              <button class="btn btn-primary mr-1" [routerLink]="['/nuevousuario', persona.IDPERSONA]" title="Editar">
                  <i class="fa fa-pen"></i>
               </button>
 
-              <button class="btn btn-danger" [routerLink]="['/autorizados', persona.IDPERSONA]" title="Autorizados">
+              <button class="btn btn-success mr-1" [routerLink]="['/autorizados', persona.IDPERSONA]" title="Autorizados">
                   <i class="fas fa-street-view"></i>
              </button>
+             <button  class="btn btn-info"
+                [routerLink]="['/movimientospersonas', persona.IDPERSONA , persona.NIF,persona.APE1,persona.APE2,persona.NOMBRE]"
+                  title="Movimientos">
+              <i class="fas fa-archive"></i>
+             </button>
+
           </td>
           </tr>
          

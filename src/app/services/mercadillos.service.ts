@@ -19,7 +19,7 @@ import { AutorizadosInterface } from '../interfaces/autorizados-response';
 import { AutorizadosModel } from '../models/autorizados.model';
 import { ActividadesInterface } from '../interfaces/actividades-response';
 import { MovimientoModel } from '../models/movimiento.model';
-import { MovimientoDetallenterface } from '../interfaces/movimiento-response';
+import { MovimientoDetallenterface, MoviPersonasInterface } from '../interfaces/movimiento-response';
 import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
 import { EpigrafeIAEInterface } from '../interfaces/epigrafesiae-response';
 import { PersonasPuestoInterface } from '../interfaces/informes-response';
@@ -250,40 +250,40 @@ export class MercadillosService {
     return this.http.get<TarifaInterface[]>(`${this.baseUrl}/tarifas/${id}`);
   }
 
-  newTarifaOLD(tarifa: TarifaModel) {
+  // newTarifaOLD(tarifa: TarifaModel) {
 
-    let mitarifa = new TarifaModel;
-    mitarifa = tarifa;
-    let fechaFok;
-    let anioA = mitarifa.F_INICIO.slice(0, 4);
-    let mesA = mitarifa.F_INICIO.slice(5, 7);
-    let diaA = mitarifa.F_INICIO.slice(8, 10);
-    if (mitarifa.F_FIN!=null) {
-      let anioF = mitarifa.F_FIN.slice(0, 4);
-      let mesF = mitarifa.F_FIN.slice(5, 7);
-      let diaF = mitarifa.F_FIN.slice(8, 10);
-      fechaFok = diaF + "/" + mesF + "/" + anioF;
+  //   let mitarifa = new TarifaModel;
+  //   mitarifa = tarifa;
+  //   let fechaFok;
+  //   let anioA = mitarifa.F_INICIO.slice(0, 4);
+  //   let mesA = mitarifa.F_INICIO.slice(5, 7);
+  //   let diaA = mitarifa.F_INICIO.slice(8, 10);
+  //   if (mitarifa.F_FIN!=null) {
+  //     let anioF = mitarifa.F_FIN.slice(0, 4);
+  //     let mesF = mitarifa.F_FIN.slice(5, 7);
+  //     let diaF = mitarifa.F_FIN.slice(8, 10);
+  //     fechaFok = diaF + "/" + mesF + "/" + anioF;
 
-    } else {
-      fechaFok = null;
-    }
+  //   } else {
+  //     fechaFok = null;
+  //   }
 
-    let fechaAok = diaA + "/" + mesA + "/" + anioA;
-    mitarifa.F_INICIO = fechaAok;
-    mitarifa.F_FIN = fechaFok;
+  //   let fechaAok = diaA + "/" + mesA + "/" + anioA;
+  //   mitarifa.F_INICIO = fechaAok;
+  //   mitarifa.F_FIN = fechaFok;
 
 
-    return this.http.post(`${this.baseUrl}/tarifas`, mitarifa)
-      .pipe(
-        map((resp: any) => {
-          //console.log("Respuesta de Node");
-          //console.log(resp[0]);
-          tarifa.IDTARIFA = resp[0];
-          return tarifa;
-        })
-      );
+  //   return this.http.post(`${this.baseUrl}/tarifas`, mitarifa)
+  //     .pipe(
+  //       map((resp: any) => {
+  //         //console.log("Respuesta de Node");
+  //         //console.log(resp[0]);
+  //         tarifa.IDTARIFA = resp[0];
+  //         return tarifa;
+  //       })
+  //     );
 
-  }
+  // }
 
   newTarifa(tarifa: TarifaModel) {
 
@@ -442,6 +442,10 @@ updateMovimiento(movimiento : MovimientoModel){
    let mimovimiento = new MovimientoModel;
    mimovimiento.IDMOV = movimiento.IDMOV;
    return this.http.put(`${this.baseUrl}/movimientonoactivo/${mimovimiento.IDMOV}`, mimovimiento);
+ }
+
+ getMovimientosPesona(id : string) : Observable<MoviPersonasInterface[]> {
+    return this.http.get<MoviPersonasInterface[]>(`${this.baseUrl}/movimientosper/${id}`)
  }
 
 

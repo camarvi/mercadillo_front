@@ -21,6 +21,7 @@ import { EditamovimientoComponent } from './pages/movimientos/editamovimiento/ed
 import { BajaAdjComponent } from './pages/movimientos/baja-adj/baja-adj.component';
 import { VacantesComponent } from './pages/informes/vacantes/vacantes.component';
 import { ParcelasperComponent } from './pages/informes/parcelasper/parcelasper.component';
+import { MovpersonasComponent } from './pages/movimientos/movpersonas/movpersonas.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -44,8 +45,10 @@ const routes : Routes=[
   { path: 'baja_adjudicatario/:iddetalle/:mercadillo', component : BajaAdjComponent},
   { path: 'puestos_vacantes', component : VacantesComponent },
   { path: 'parcelasper' , component : ParcelasperComponent },
+  { path: 'movimientospersonas/:id/:nif/:ap1/:ap2/:nombre', component : MovpersonasComponent },
   { path: '**', redirectTo : '/home'}
 ];
+
 
 @NgModule({
   declarations: [],

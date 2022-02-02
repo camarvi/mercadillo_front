@@ -28,3 +28,21 @@ export interface MovimientoDetallenterface {
     ACTIVO:         string;
     FIN_VIGENCIA:   string;
 }
+
+
+export interface MoviPersonasInterface {
+    IDMOV:            number;
+    MERCADILLO:       string;
+    PARCELA:          number;
+    SUPERFICIE:       number;
+    IAE:              string;
+    FECHA_ALTA:       string;
+    ESTADO:           string;
+    FECHA_ESTADO:     string;
+    FECHA_MOVIMIENTO: string;
+    FECHA_EFECTO:     string;
+    OPERACION:        string;
+    F_OPERACION:      string;
+    ACTIVO:           string;
+    FIN_VIGENCIA:     null | string;
+}

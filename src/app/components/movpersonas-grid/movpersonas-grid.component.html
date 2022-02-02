@@ -1,0 +1,46 @@
+<div class="mt-2" id="htmlData">
+    <table *ngIf="movimientos.length > 0" class="table table-bordered table-striped table-sm">
+      <thead class="thead-primary">
+        <!--  <tr class="d-flex"> -->
+        <tr class="table-primary ">
+          <th scope="col">Mercadillo</th>
+          <th scope="col">Par</th>
+          <th scope="col">Sup</th>
+          <th scope="col">Iae</th>
+          <th scope="col">F.Alta</th>
+          <th scope="col">Estado</th>
+          <th scope="col">F.Estado</th>
+          <th scope="col">F.Mov</th>
+          <th scope="col">F.Efecto</th>
+          <th scope="col">Oper</th>
+          <th scope="col">F.Ope</th>
+          <th scope="col">Act</th>
+          <th scope="col">F.Vigenc</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimiento of movimientos">
+          <td>{{ movimiento.MERCADILLO }}</td>
+          <td>{{ movimiento.PARCELA }}</td>
+          <td>{{ movimiento.SUPERFICIE }}</td>
+          <td>{{ movimiento.IAE }}</td>
+          <td>{{ movimiento.FECHA_ALTA }}</td>
+          <td>{{ movimiento.ESTADO }}</td>
+          <td>{{ movimiento.FECHA_ESTADO }}</td>
+          <td>{{ movimiento.FECHA_MOVIMIENTO }}</td>
+          <td>{{ movimiento.FECHA_EFECTO }}</td>
+          <td>{{ movimiento.OPERACION }}</td>
+          <td>{{ movimiento.F_OPERACION }}</td>
+          <td>{{ movimiento.ACTIVO }}</td>
+          <td>{{ movimiento.FIN_VIGENCIA }}</td>
+          <td>
+            <button *ngIf="movimiento.ACTIVO =='S'" class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top"
+              title="Editar" [routerLink]="['/detallemovimiento', movimiento.IDMOV , movimiento.MERCADILLO]">
+              <i class="far fa-eye"></i>
+              <!-- fa-user-edit -->
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>

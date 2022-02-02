@@ -1,0 +1,12 @@
+<div *ngIf="!cargando" class="text-center text-uppercase mb-4">
+    <em><b>
+            {{ nif }} - {{ ap1 }} {{ ap2 }}, {{ nombre }}
+        </b>
+    </em>
+</div>
+
+
+<div *ngIf="movimientos.length>0" class="text-center text-uppercase mb-2"><b>Movimientos Usuario</b></div>
+
+<app-movpersonas-grid *ngIf="movimientos.length>0" [movimientos]="movimientos">
+</app-movpersonas-grid>
