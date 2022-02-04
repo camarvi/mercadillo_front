@@ -1,14 +1,115 @@
 <div class="container-fluid mt-3">
 
     <div *ngIf="this.datosMovimiento" class="form-group">
-      <h4 class="text-center text-capitalize font-weight-bold">
-        {{ this.datosMovimiento.APE1 }}
-        {{ this.datosMovimiento.APE2 }} ,
-        {{ this.datosMovimiento.NOMBRE }} -
-        {{ this.datosMovimiento.NIF }}
-      </h4>
-      <h4 class="text-center text-capitalize font-weight-bold">
-        {{ nombreMercadillo }} -  
-        Parcela : {{ this.datosParcela.NUMERO }}
-      </h4>
+        <h4 class="text-center text-capitalize font-weight-bold">
+            {{ this.datosMovimiento.APE1 }}
+            {{ this.datosMovimiento.APE2 }} ,
+            {{ this.datosMovimiento.NOMBRE }} -
+            {{ this.datosMovimiento.NIF }}
+        </h4>
+        <h4 class="text-center text-capitalize font-weight-bold">
+            {{ nombreMercadillo }} -
+            Parcela : {{ this.datosParcela.NUMERO }}
+        </h4>
     </div>
+
+    <div class="text-center mt-4 mb-2">
+      <p class="text-center font-italic font-weight-bold">Dias de Venta del Titular</p> 
+      
+      <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">Lunes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">Martes</label>
+        </div>
+      
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Mi&eacute;rcoles</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Jueves</label>
+        </div>
+    </div>
+    <div  class="text-center mb-2">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Viernes</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3"> S&aacute;bado</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+            <label class="form-check-label" for="inlineCheckbox3">Domingo</label>
+        </div>
+
+    </div>
+    <div class="row justify-content-center">
+        <button type="submit" class="btn btn-outline-primary w-25 mr-5">
+          <i class="fa fa-save"></i>
+          Guardar
+        </button>
+      
+      </div>
+
+    <!-- <div class="text-left mt-4 mb-5 ml-4">
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Lunes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Martes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Mi&eacute;rcoles
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Jueves
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Viernes
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              S&aacute;bado
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
+              Domingo
+            </label>
+        </div>
+
+        
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+            <label class="form-check-label" for="defaultCheck2">
+              Disabled checkbox
+            </label>
+          </div>
+
+    </div> -->
+
+</div>
