@@ -23,6 +23,8 @@ import { VacantesComponent } from './pages/informes/vacantes/vacantes.component'
 import { ParcelasperComponent } from './pages/informes/parcelasper/parcelasper.component';
 import { MovpersonasComponent } from './pages/movimientos/movpersonas/movpersonas.component';
 import { AutorizadosperComponent } from './pages/informes/autorizadosper/autorizadosper.component';
+import { DiasventaComponent } from './pages/diasventa/diasventa.component';
+
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -48,6 +50,7 @@ const routes : Routes=[
   { path: 'parcelasper' , component : ParcelasperComponent },
   { path: 'movimientospersonas/:id/:nif/:ap1/:ap2/:nombre', component : MovpersonasComponent },
   { path: 'informe_autorizados' , component : AutorizadosperComponent},
+  { path: 'diasventa/:mov/:parcela/:mercadillo' , component : DiasventaComponent},
   { path: '**', redirectTo : '/home'}
 ];
 

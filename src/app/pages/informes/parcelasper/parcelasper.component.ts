@@ -136,7 +136,7 @@ export class ParcelasperComponent implements OnInit {
     }
 
      let hoy : Date = new Date();
-     let nombre_archivo = "asignados_" + this.datePipe.transform(hoy, 'dd_MM_yyy') + ".pdf";
+     let nombre_archivo = "parcelasper_" + this.datePipe.transform(hoy, 'dd_MM_yyy') + ".pdf";
      pdf.save(nombre_archivo);
    
 

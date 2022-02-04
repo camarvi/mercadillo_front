@@ -21,6 +21,7 @@ export class AltausuarioComponent implements OnInit {
 
   tipoSexo : Sexo[] = [];
   vias : Tipovia[] = [];
+  nuevo : boolean = false;
 
   usuario = new UsuarioModel();
 
@@ -61,18 +62,7 @@ export class AltausuarioComponent implements OnInit {
       this.tipoSexo = sexo;  
       this.vias = tipovia
     });
-     /*
-        this.mercadillosService.getSexo()
-          .subscribe( resp => {
-          this.tipoSexo = resp;
-        });
     
-        this.mercadillosService.getTipoVia()
-          .subscribe( resp => {
-          this.vias = resp;
-        });
-     */      
-  
   }
 
   guardar( forma : NgForm){
@@ -94,21 +84,33 @@ export class AltausuarioComponent implements OnInit {
     Swal.showLoading();
  
     let peticion : Observable<any>;
-  
+   
+
     if (this.usuario.IDPERSONA !==0 ){
       peticion = this.mercadillosService.updateUsuario(this.usuario);
+      this.nuevo = false;    
     } else { //NUEVO REGISTRO  
-      peticion = this.mercadillosService.crearUsuario(this.usuario);   
+      peticion = this.mercadillosService.crearUsuario(this.usuario); 
+      this.nuevo = true;
+      //this.usuario  = new UsuarioModel(); // Reinicio los valores
     }
 
       peticion.subscribe( resp => {       
         Swal.fire({
-          title : this.usuario.NOMBRE,
+          title : this.usuario.NIF,
           text : 'Se actualizo correctamente..',
           icon : 'success'
         });
 
         });
   
+      
+
   }
+
+  LimpiarFormulario(){
+    console.log("Dentro de Limpiar Formulario")
+    this.usuario = new UsuarioModel();
+  }
+
 }

@@ -23,6 +23,7 @@ import { VacantesComponent } from './informes/vacantes/vacantes.component';
 import { ParcelasperComponent } from './informes/parcelasper/parcelasper.component';
 import { MovpersonasComponent } from './movimientos/movpersonas/movpersonas.component';
 import { AutorizadosperComponent } from './informes/autorizadosper/autorizadosper.component';
+import { DiasventaComponent } from './diasventa/diasventa.component';
 
 
 
@@ -48,7 +49,8 @@ import { AutorizadosperComponent } from './informes/autorizadosper/autorizadospe
     VacantesComponent,
     ParcelasperComponent,
     MovpersonasComponent,
-    AutorizadosperComponent
+    AutorizadosperComponent,
+    DiasventaComponent
 
   ],
   imports: [

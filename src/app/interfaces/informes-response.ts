@@ -31,4 +31,6 @@ export interface AutorizadosPersonaInterface {
     APE1_AUT: string;
     APE2_AUT: string;
     NOMBRE_AUT: string;
+    F_ALTA :  null | string;
+    F_BAJA : null | string;
 }

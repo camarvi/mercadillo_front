@@ -1,0 +1,14 @@
+<div class="container-fluid mt-3">
+
+    <div *ngIf="this.datosMovimiento" class="form-group">
+      <h4 class="text-center text-capitalize font-weight-bold">
+        {{ this.datosMovimiento.APE1 }}
+        {{ this.datosMovimiento.APE2 }} ,
+        {{ this.datosMovimiento.NOMBRE }} -
+        {{ this.datosMovimiento.NIF }}
+      </h4>
+      <h4 class="text-center text-capitalize font-weight-bold">
+        {{ nombreMercadillo }} -  
+        Parcela : {{ this.datosParcela.NUMERO }}
+      </h4>
+    </div>

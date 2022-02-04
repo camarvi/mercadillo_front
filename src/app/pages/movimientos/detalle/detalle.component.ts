@@ -12,7 +12,7 @@ import { ActividadesInterface } from '../../../interfaces/actividades-response';
 
 import { Location } from '@angular/common';
 import Swal from 'sweetalert2';
-import { combineLatest } from 'rxjs';
+
 
 @Component({
   selector: 'app-detalle',
@@ -24,7 +24,10 @@ export class DetalleComponent implements OnInit {
   public idMovimiento : string;
   public datosMovimiento : MovimientoDetallenterface;
   public datosParcela : ParcelaInterface;
-  listadoMercadillos: MercadilloInterface[] = [];
+  public datosMercadillo : MercadilloInterface;
+  public multititular : string = 'N';
+
+  //listadoMercadillos: MercadilloInterface[] = [];
   actividad : ActividadesInterface;
   mercadillo : string;
 
@@ -60,6 +63,8 @@ export class DetalleComponent implements OnInit {
                   this.actividad = resp[0];
                    console.log(this.actividad);
                  });  
+          
+
           }
 
           // if (this.datosParcela.IDMERCADILLO>0) {
@@ -143,5 +148,35 @@ editarMovimiento(){
 
 
 }
+
+
+tienediasVenta() {
+
+    let esMulti : string;
+
+     console.log("DENTRO DIAS VENTA");
+     this.mercadillosServices.buscarMercadilloId(this.datosParcela.IDMERCADILLO.toString())
+         .subscribe( ( resp : MercadilloInterface)=>{
+          esMulti = resp[0].MULTITITULAR;
+          //console.log(resp);
+           //  console.log("DATOS DEL MERCADILLO");
+           //  console.log(this.datosMercadillo);
+            // return this.datosMercadillo.MULTITITULAR
+            if (esMulti ==='S') {
+            //  console.log("ES MULT" + esMulti);
+              this.router.navigate(['/diasventa',this.idMovimiento,this.datosParcela.IDPARCELAS, this.mercadillo]);
+            } else {
+              Swal.fire({
+                allowOutsideClick : false,
+                title : 'Error',
+                text:  this.mercadillo +  ' no permite multititularidad',
+                icon : 'error'
+              });
+            //  console.log("No es multi " + esMulti);
+            }
+         });  
+
+  }
+
 
 }
