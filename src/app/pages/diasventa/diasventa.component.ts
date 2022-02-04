@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { MercadillosService } from '../../services/mercadillos.service';
 
+import { NgForm  } from '@angular/forms';
+
 import { MovimientoDetallenterface } from '../../interfaces/movimiento-response';
 import { ParcelaInterface } from '../../interfaces/parcela-response';
 
