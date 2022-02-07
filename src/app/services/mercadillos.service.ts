@@ -24,6 +24,8 @@ import { AdjudicadosDetallenterface } from '../interfaces/informes-response';
 import { EpigrafeIAEInterface } from '../interfaces/epigrafesiae-response';
 import { PersonasPuestoInterface , AutorizadosPersonaInterface } from '../interfaces/informes-response';
 
+import { DiasVentaUsuarioInterface } from '../interfaces/diasventausuario-response';
+import { DiasVentaUsuarioModel } from '../models/diasventausuario.model';
 
 
 @Injectable({
@@ -445,8 +447,34 @@ updateMovimiento(movimiento : MovimientoModel){
  }
 
  getMovimientosPesona(id : string) : Observable<MoviPersonasInterface[]> {
-    return this.http.get<MoviPersonasInterface[]>(`${this.baseUrl}/movimientosper/${id}`)
+    return this.http.get<MoviPersonasInterface[]>(`${this.baseUrl}/movimientosper/${id}`);
  }
+
+
+// DIAS VENTA  - MULTITITULAR
+//////////////////////
+/////////////////////////
+//////////////////////////////
+/////////////////////////////
+//////////////////////////////  DiasVentaUsuarioModel
+
+getDiasVentaUsuario(id : string) : Observable<DiasVentaUsuarioInterface> {
+  return this.http.get<DiasVentaUsuarioInterface>(`${this.baseUrl}/diasventamov/${id}`);
+}
+
+newDiasVentaUsuario(diasventa: DiasVentaUsuarioModel) {
+
+  return this.http.post(`${this.baseUrl}/diasventa`, diasventa)
+    .pipe(
+      map((resp: any) => {
+        //console.log("Respuesta de Node");
+        //console.log(resp[0]);
+        diasventa.IDVENTA = resp[0];
+        return diasventa;
+      })
+    );
+
+}
 
 
 // INFORMES - LISTADOS
