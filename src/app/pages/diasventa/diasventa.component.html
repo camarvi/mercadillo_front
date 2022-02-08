@@ -1,6 +1,6 @@
 <div class="container-fluid mt-3">
 
-  <div *ngIf="this.datosMovimiento || this.misDiasVenta" class="form-group">
+  <div *ngIf="this.datosMovimiento" class="form-group">
     <h4 class="text-center text-capitalize font-weight-bold">
       {{ this.datosMovimiento.APE1 }}
       {{ this.datosMovimiento.APE2 }} ,
@@ -10,8 +10,14 @@
     <h4 class="text-center text-capitalize font-weight-bold">
       {{ nombreMercadillo }} -
       Parcela : {{ this.datosParcela.NUMERO }}
+
     </h4>
   </div>
+
+ <div *ngIf="misDiasVenta.IDMOV>0">
+
+ 
+
 
   <form (ngSubmit)="guardar(f)" #f="ngForm">
 
@@ -86,59 +92,9 @@
       </button>
 
     </div>
-  </form>
+  </form> 
 
-  <!-- <div class="text-left mt-4 mb-5 ml-4">
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Lunes
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Martes
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Mi&eacute;rcoles
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Jueves
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Viernes
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            S&aacute;bado
-          </label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-          <label class="form-check-label font-italic font-weight-bold" for="defaultCheck1">
-            Domingo
-          </label>
-      </div>
-      
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-          <label class="form-check-label" for="defaultCheck2">
-            Disabled checkbox
-          </label>
-        </div>
-  </div> -->
+</div>
 
 </div>
 

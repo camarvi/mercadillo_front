@@ -476,6 +476,12 @@ newDiasVentaUsuario(diasventa: DiasVentaUsuarioModel) {
 
 }
 
+updateDiasVentaUsuario(diasventa : DiasVentaUsuarioModel){
+    //let mimovimiento = new MovimientoModel;
+    //mimovimiento = movimiento;
+    return this.http.put(`${this.baseUrl}/diasventa/${diasventa.IDVENTA}`, diasventa);
+}
+
 
 // INFORMES - LISTADOS
 
