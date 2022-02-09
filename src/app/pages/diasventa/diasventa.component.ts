@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute , Router } from '@angular/router';
 import { combineLatest, Observable } from 'rxjs';
 import { MercadillosService } from '../../services/mercadillos.service';
 
@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MovimientoDetallenterface } from '../../interfaces/movimiento-response';
 import { ParcelaInterface } from '../../interfaces/parcela-response';
-import { DiasVentaUsuarioInterface } from '../../interfaces/diasventausuario-response';
+//import { DiasVentaUsuarioInterface } from '../../interfaces/diasventausuario-response';
 import { DiasVentaUsuarioModel } from '../../models/diasventausuario.model';
 
 @Component({
@@ -27,8 +27,9 @@ export class DiasventaComponent implements OnInit {
   public muestroDias: boolean = false;
 
   constructor(
-    private mercadillosServices: MercadillosService,
-    private route: ActivatedRoute
+        private mercadillosServices: MercadillosService,
+        private route: ActivatedRoute,
+        private router : Router
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class DiasventaComponent implements OnInit {
 
     this.mercadillosServices
       .getDiasVentaUsuario(this.route.snapshot.paramMap.get('mov'))
-      .subscribe((resp: DiasVentaUsuarioInterface) => {
+      .subscribe((resp: DiasVentaUsuarioModel) => {
         console.log(resp[0]);
         if (typeof resp[0] === 'undefined') {
           console.log('SIN DATOS');
@@ -198,4 +199,18 @@ export class DiasventaComponent implements OnInit {
       });
     });
   }
+
+
+  volverAtras() {
+    
+       
+    //  this.router.navigate(['/detalle_exp', id_expediente],{skipLocationChange: true, replaceUrl: false});
+  
+      this.router.navigate(['/detallemovimiento', this.idMovimiento, this.nombreMercadillo],{skipLocationChange: true, replaceUrl: false});
+
+    
+    }
+
+
+
 }

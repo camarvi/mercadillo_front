@@ -458,9 +458,16 @@ updateMovimiento(movimiento : MovimientoModel){
 /////////////////////////////
 //////////////////////////////  DiasVentaUsuarioModel
 
-getDiasVentaUsuario(id : string) : Observable<DiasVentaUsuarioInterface> {
-  return this.http.get<DiasVentaUsuarioInterface>(`${this.baseUrl}/diasventamov/${id}`);
+// getDiasVentaUsuario(id : string) : Observable<DiasVentaUsuarioInterface> {
+//   return this.http.get<DiasVentaUsuarioInterface>(`${this.baseUrl}/diasventamov/${id}`);
+// }
+
+
+getDiasVentaUsuario(id : string) : Observable<DiasVentaUsuarioModel> {
+  return this.http.get<DiasVentaUsuarioModel>(`${this.baseUrl}/diasventamov/${id}`);
 }
+
+
 
 newDiasVentaUsuario(diasventa: DiasVentaUsuarioModel) {
 
