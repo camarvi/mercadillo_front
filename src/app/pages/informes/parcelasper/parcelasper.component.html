@@ -2,18 +2,22 @@
 
 <div *ngIf="!cargando" class="text-center text-uppercase mb-4">
 
-  <!-- <button class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top"
-  title="Editar">
-  <i class="far fa-eye"></i>
- 
-</button> -->
+ <button (click)="generarTablaPdf()" type="button" 
+      data-toggle="tooltip" data-placement="top" title="Pdf" 
+      class="btn btn-outline-danger mr-2 mt-2"> 
+      <i class="far fa-file-pdf"></i>
+      Exportar a Pdf 
+</button>
 
-<!-- <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Exportar a Pdf </button> -->
+
 <button (click)="generarTablaPdf()" type="button" 
-  data-toggle="tooltip" data-placement="top" title="Pdf" 
-  class="btn btn-danger mr-2 mt-2"> Exportar a Pdf </button>
+    data-toggle="tooltip" data-placement="top" title="Pdf" 
+    class="btn btn-outline-success mr-2 mt-2"> 
+    <i class="far fa-file-excel"></i>
+    Exportar a Excell
+</button>   
 
-   
+
 </div>
 
 <div *ngIf="!cargando && puestospersonas.length == 0">

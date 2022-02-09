@@ -15,7 +15,7 @@
    <!-- mercadillo.value,  mercadillo.selectedIndex, mercadillo.value-->
     <div class="form-group col-md-3">
       <button (click)="buscarAsignados(mercadillo.selectedIndex, mercadillo.value)" type="submit"
-        class="form-group mx-sm-2 btn btn-outline-success mb-2">
+        class="form-group mx-sm-2 btn btn-outline-primary mb-2">
         <i class="fa fa-search"></i>
         Buscar
       </button>
@@ -23,9 +23,17 @@
     </div>
 
     <div *ngIf="asignados.length>0" class="form-group col-md-2">
-      <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Exportar a Pdf </button>
+      <button (click)="generarTablaPdf()" type="button" class="btn btn-outline-danger mb-2 ml-3"> 
+        Descargar <i class="far fa-file-pdf"></i>
+        </button>
     </div>
-
+    <div *ngIf="asignados.length>0" class="form-group col-md-2">
+      <button (click)="generaExcell()" type="button" class="btn btn-outline-success mb-2 ml-3"> 
+        Descargar
+        <i class="far fa-file-excel"></i> </button>
+    </div>
+   
+    
   </div>
 
 </form>

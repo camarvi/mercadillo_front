@@ -136,5 +136,13 @@ export class AsignadosComponent implements OnInit {
 
   }
 
+  generaExcell(){
+
+    let miObjetoJson = JSON.stringify(this.asignados)
+    console.log("Objeto Json Para Excell")  
+    console.log(miObjetoJson);
+
+  }
+
 
 }

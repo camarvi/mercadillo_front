@@ -4,7 +4,9 @@
 
    <button (click)="generarTablaPdf()" type="button" 
     data-toggle="tooltip" data-placement="top" title="Pdf" 
-    class="btn btn-danger mr-2 mt-2"> Exportar a Pdf </button>
+    class="btn btn-danger mr-2 mt-2"> 
+    <i class="far fa-file-pdf"> </i>
+    Exportar a Pdf </button>
 </div>
   
   <div *ngIf="!cargando && autorizadosPersonas.length == 0">

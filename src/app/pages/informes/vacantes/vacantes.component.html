@@ -24,8 +24,15 @@
     </div>
 
     <div *ngIf="parcelaslibres.length>0" class="form-group col-md-2">
-      <button (click)="generarTablaPdf()" type="button" class="btn btn-danger mb-2 ml-3"> Exportar a Pdf </button>
-    </div>  
+      <button (click)="generarTablaPdf()" type="button" class="btn btn-outline-danger mb-2 ml-3"> 
+        Descargar <i class="far fa-file-pdf"></i>
+        </button>
+    </div>
+    <div *ngIf="parcelaslibres.length>0" class="form-group col-md-2">
+      <button type="button" class="btn btn-outline-success mb-2 ml-3"> 
+        Descargar
+        <i class="far fa-file-excel"></i> </button>
+    </div>
 
 
   </div>
